@@ -1046,7 +1046,10 @@ public class Checker extends AbstractParseTreeVisitor<ArrayList <Pair <Type, Boo
 		}
 		if (ctx.the_third_for_expression() != null)
 			visit(ctx.the_third_for_expression());
-		return visit(ctx.statement());
+		symbol_table.begin_scope();
+		ArrayList <Pair <Type, Boolean>> returnlist = visit(ctx.statement());
+		symbol_table.end_scope();
+		return returnlist;
 	}
 	/**
 	 * {@inheritDoc}
@@ -1082,7 +1085,10 @@ public class Checker extends AbstractParseTreeVisitor<ArrayList <Pair <Type, Boo
 			throw new RuntimeException(ctx.getStart().getLine() + " " + ctx.getStart().getCharPositionInLine());
 		if (!while_expression.get(0).a.equal(symbol_table.BOOL))
 			throw new RuntimeException(ctx.getStart().getLine() + " " + ctx.getStart().getCharPositionInLine());
-		return visit(ctx.statement());
+		symbol_table.begin_scope();
+		ArrayList <Pair <Type, Boolean>> returnlist = visit(ctx.statement());
+		symbol_table.end_scope();
+		return returnlist;
 	}
 	/**
 	 * {@inheritDoc}
