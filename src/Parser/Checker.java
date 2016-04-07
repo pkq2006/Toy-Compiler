@@ -1,6 +1,5 @@
 // Generated from MinamiKotori.g4 by ANTLR 4.5.3
 package Parser;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
