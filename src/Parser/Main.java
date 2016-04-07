@@ -11,10 +11,9 @@ public class Main
 {
 	static Symbol_table symbol_table;
 
-	public static void compile_start(String file_name) throws IOException
+	public static void compile_start(InputStream src) throws IOException
 	{
-		File file = new File(file_name);
-		InputStreamReader source = new InputStreamReader(new FileInputStream(file));
+		InputStreamReader source = new InputStreamReader(src);
 		ANTLRInputStream input = new ANTLRInputStream(source);
 		MinamiKotoriLexer lexer = new MinamiKotoriLexer(input);
 		CommonTokenStream token = new CommonTokenStream(lexer);
@@ -41,24 +40,14 @@ public class Main
 	public static void main(String args[]) throws Exception
 	{
 		symbol_table = new Symbol_table();
-		boolean compile_finish = true;
-		/*
 		try
 		{
-			String file_name = "test.MinamiKotori";
-			compile_start(file_name);
+			compile_start(System.in);
 		}
 		catch(Exception e)
 		{
-			System.out.println(e.toString());
-			compile_finish = false;
+			System.exit(1);
 		}
-		*/
-		String file_name = "test.MinamiKotori";
-		compile_start(file_name);
-		if (compile_finish)
-			System.out.println("1");
-		else
-			System.out.println("0");
+		System.exit(0);
 	}
 }
