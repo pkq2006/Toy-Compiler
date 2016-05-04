@@ -4,17 +4,17 @@ $t_main_0 = alloc 4
 $t_main_1 = alloc 4 
 $t_main_2 = alloc 4 
 $t_main_3 = alloc 4 
-$s0 = move 18 
+$s0 = move 3 
 store 4 $t_main_3 $s0 0
 $s0 = load 4 $t_main_3 0
 store 4 $t_main_0 $s0 0
 $t_main_4 = alloc 4 
-$s0 = move 12 
+$s0 = move 2 
 store 4 $t_main_4 $s0 0
 $s0 = load 4 $t_main_4 0
 store 4 $t_main_1 $s0 0
 $t_main_5 = alloc 4 
-$s0 = move 6 
+$s0 = move 1 
 store 4 $t_main_5 $s0 0
 $s0 = load 4 $t_main_5 0
 store 4 $t_main_2 $s0 0
@@ -62,38 +62,38 @@ $t_tak_14 = load 4 $t_tak_4 0
 $t_tak_15 = load 4 $t_tak_5 0
 $v0 = call tak $t_tak_13 $t_tak_14 $t_tak_15
 store 4 $t_tak_10 $v0 0
-$t_tak_16 = load 4 $t_tak_10 0
+$t_tak_16 = alloc 4 
 $t_tak_17 = alloc 4 
 $t_tak_18 = alloc 4 
-$t_tak_19 = alloc 4 
 $s0 = move 1 
-store 4 $t_tak_19 $s0 0
-$s0 = load 4 $t_tak_4 0
-$s1 = load 4 $t_tak_19 0
-$s0 = sub $s0 $s1 
 store 4 $t_tak_18 $s0 0
-$t_tak_20 = load 4 $t_tak_18 0
-$t_tak_21 = load 4 $t_tak_5 0
-$t_tak_22 = load 4 $t_tak_3 0
-$v0 = call tak $t_tak_20 $t_tak_21 $t_tak_22
-store 4 $t_tak_17 $v0 0
-$t_tak_23 = load 4 $t_tak_17 0
-$t_tak_24 = alloc 4 
-$t_tak_25 = alloc 4 
-$t_tak_26 = alloc 4 
-$s0 = move 1 
-store 4 $t_tak_26 $s0 0
-$s0 = load 4 $t_tak_5 0
-$s1 = load 4 $t_tak_26 0
+$s0 = load 4 $t_tak_4 0
+$s1 = load 4 $t_tak_18 0
 $s0 = sub $s0 $s1 
-store 4 $t_tak_25 $s0 0
-$t_tak_27 = load 4 $t_tak_25 0
-$t_tak_28 = load 4 $t_tak_3 0
-$t_tak_29 = load 4 $t_tak_4 0
-$v0 = call tak $t_tak_27 $t_tak_28 $t_tak_29
-store 4 $t_tak_24 $v0 0
-$t_tak_30 = load 4 $t_tak_24 0
-$v0 = call tak $t_tak_16 $t_tak_23 $t_tak_30
+store 4 $t_tak_17 $s0 0
+$t_tak_19 = load 4 $t_tak_17 0
+$t_tak_20 = load 4 $t_tak_5 0
+$t_tak_21 = load 4 $t_tak_3 0
+$v0 = call tak $t_tak_19 $t_tak_20 $t_tak_21
+store 4 $t_tak_16 $v0 0
+$t_tak_22 = alloc 4 
+$t_tak_23 = alloc 4 
+$t_tak_24 = alloc 4 
+$s0 = move 1 
+store 4 $t_tak_24 $s0 0
+$s0 = load 4 $t_tak_5 0
+$s1 = load 4 $t_tak_24 0
+$s0 = sub $s0 $s1 
+store 4 $t_tak_23 $s0 0
+$t_tak_25 = load 4 $t_tak_23 0
+$t_tak_26 = load 4 $t_tak_3 0
+$t_tak_27 = load 4 $t_tak_4 0
+$v0 = call tak $t_tak_25 $t_tak_26 $t_tak_27
+store 4 $t_tak_22 $v0 0
+$t_tak_28 = load 4 $t_tak_10 0
+$t_tak_29 = load 4 $t_tak_16 0
+$t_tak_30 = load 4 $t_tak_22 0
+$v0 = call tak $t_tak_28 $t_tak_29 $t_tak_30
 store 4 $t_tak_9 $v0 0
 $s0 = load 4 $t_tak_8 0
 $s1 = load 4 $t_tak_9 0

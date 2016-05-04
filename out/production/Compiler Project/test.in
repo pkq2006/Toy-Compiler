@@ -7,8 +7,8 @@ int main(){
 	int a;
 	int b;
 	int c;
-	a=18;
-	b=12;
-	c=6;
+	a=3;
+	b=2;
+	c=1;
 	return tak(a,b,c);
 }

@@ -1109,7 +1109,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 	{
 		Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> return_list = new Pair<>(variable_prefix + (temporary_variable_counter ++).toString(), new Pair<>(new ArrayList<>(), new ArrayList<>()));
 		return_list.b.a.add(new Instruction("alloc", 4, return_list.a));
-		ArrayList <String> parameters = new ArrayList<>();
+		ArrayList <String> value_list = new ArrayList<>();
 		if (ctx.arguments() != null)
 		{
 			for (int i = 0; i < ctx.arguments().assignment_expression().size(); i ++)
@@ -1117,13 +1117,29 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 				Pair <String, Pair<ArrayList<Instruction>, ArrayList<Instruction>>> tmp = visit(ctx.arguments().assignment_expression(i));
 				return_list.b.a.addAll(tmp.b.a);
 				return_list.b.b.addAll(tmp.b.b);
-				String register_id = variable_prefix + (temporary_variable_counter ++).toString();
-				return_list.b.a.add(new Instruction("load", 4, tmp.a, register_id));
-				parameters.add(register_id);
+				value_list.add(tmp.a);
 			}
 		}
 		String function_name = ctx.Identifier().getText();
-		function_name = get_function_name(function_name);
+		String true_function_name = get_function_name(function_name);
+		ArrayList <String> parameters = new ArrayList<>();
+		if (!function_name.equals(true_function_name))
+		{
+			for (int i = 0; i < value_list.size(); i ++)
+			{
+				return_list.b.a.add(new Instruction("load", 4, value_list.get(i), "$a" + Integer.toString(i)));
+				parameters.add("$a" + Integer.toString(i));
+			}
+		}
+		else
+		{
+			for (int i = 0; i < value_list.size(); i ++)
+			{
+				String new_register_id = variable_prefix + (temporary_variable_counter ++).toString();
+				return_list.b.a.add(new Instruction("load", 4, value_list.get(i), new_register_id));
+				parameters.add(new_register_id);
+			}
+		}
 		return_list.b.a.add(new Instruction("call", function_name, parameters, "$v0"));
 		return_list.b.a.add(new Instruction("store", 4, return_list.a, "$v0"));
 		return return_list;
