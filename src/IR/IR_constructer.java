@@ -978,7 +978,23 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 		return_list.b.a.add(new Instruction("alloc", 4, return_list.a));
 		String value = ctx.getText();
 		value = value.substring(1, value.length() - 1);
+		String tmp = "";
 		char[] value_char = value.toCharArray();
+		for (int i = 0; i < value.length(); i ++)
+			if (value_char[i] == '\\')
+			{
+				if (value_char[i + 1] == 'n')
+					tmp += '\n';
+				else if (value_char[i + 1] == '\\')
+					tmp += '\\';
+				else if (value_char[i + 1] == '"')
+					tmp += '"';
+				i ++;
+			}
+			else
+				tmp += value_char[i];
+		value = tmp;
+		value_char = value.toCharArray();
 		ArrayList <Integer> value_ascii = new ArrayList<>();
 		for (int i = 0; i < value.length(); i ++)
 			value_ascii.add((int)value_char[i]);

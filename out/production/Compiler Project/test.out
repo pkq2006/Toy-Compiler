@@ -1,7 +1,7 @@
 func main {
 %main_start:
 $t_main_0 = alloc 4 
-$s0 = alloc 12 
+$s0 = alloc 16 
 store 4 $t_main_0 $s0 0
 $t_main_1 = alloc 4 
 $s0 = load 4 $t_main_0 0
@@ -24,46 +24,95 @@ $t_main_5 = alloc 4
 $s0 = load 4 $t_main_1 0
 store 4 $t_main_5 $s0 0
 $s0 = load 4 $t_main_5 0
-$s0 = add $s0 4 
+$s0 = add $s0 8 
 $t_main_5 = move $s0 
 $s0 = load 4 $t_main_4 0
 store 4 $t_main_5 $s0 0
 $t_main_6 = alloc 4 
-$s0 = move 40 
-store 4 $t_main_6 $s0 0
 $t_main_7 = alloc 4 
 $s0 = load 4 $t_main_1 0
 store 4 $t_main_7 $s0 0
 $s0 = load 4 $t_main_7 0
-$s0 = add $s0 8 
+$s0 = add $s0 0 
 $t_main_7 = move $s0 
-$s0 = load 4 $t_main_6 0
-store 4 $t_main_7 $s0 0
 $t_main_8 = alloc 4 
+$s0 = load 4 $t_main_1 0
+store 4 $t_main_8 $s0 0
+$s0 = load 4 $t_main_8 0
+$s0 = add $s0 8 
+$t_main_8 = move $s0 
+$s0 = load 4 $t_main_7 0
+$s1 = load 4 $t_main_8 0
+$s2 = sgt $s0 $s1 
+store 4 $t_main_6 $s2 0
 $t_main_9 = alloc 4 
 $s0 = load 4 $t_main_1 0
 store 4 $t_main_9 $s0 0
 $s0 = load 4 $t_main_9 0
-$s0 = add $s0 0 
+$s0 = add $s0 4 
 $t_main_9 = move $s0 
+$s0 = load 4 $t_main_6 0
+store 4 $t_main_9 $s0 0
 $t_main_10 = alloc 4 
 $s0 = load 4 $t_main_1 0
 store 4 $t_main_10 $s0 0
 $s0 = load 4 $t_main_10 0
 $s0 = add $s0 4 
 $t_main_10 = move $s0 
+$s0 = load 4 $t_main_10 0
+br $s0 %if_true_0 %if_false_0
+%if_true_0:
 $t_main_11 = alloc 4 
-$s0 = load 4 $t_main_1 0
+$s0 = move 40 
 store 4 $t_main_11 $s0 0
+$t_main_12 = alloc 4 
+$s0 = load 4 $t_main_1 0
+store 4 $t_main_12 $s0 0
+$s0 = load 4 $t_main_12 0
+$s0 = add $s0 12 
+$t_main_12 = move $s0 
 $s0 = load 4 $t_main_11 0
+store 4 $t_main_12 $s0 0
+jump %if_end_0
+%if_false_0:
+$t_main_13 = alloc 4 
+$s0 = move 80 
+store 4 $t_main_13 $s0 0
+$t_main_14 = alloc 4 
+$s0 = load 4 $t_main_1 0
+store 4 $t_main_14 $s0 0
+$s0 = load 4 $t_main_14 0
+$s0 = add $s0 12 
+$t_main_14 = move $s0 
+$s0 = load 4 $t_main_13 0
+store 4 $t_main_14 $s0 0
+jump %if_end_0
+%if_end_0:
+$t_main_15 = alloc 4 
+$t_main_16 = alloc 4 
+$s0 = load 4 $t_main_1 0
+store 4 $t_main_16 $s0 0
+$s0 = load 4 $t_main_16 0
+$s0 = add $s0 0 
+$t_main_16 = move $s0 
+$t_main_17 = alloc 4 
+$s0 = load 4 $t_main_1 0
+store 4 $t_main_17 $s0 0
+$s0 = load 4 $t_main_17 0
 $s0 = add $s0 8 
-$t_main_11 = move $s0 
-$s0 = load 4 $t_main_9 0
-$s1 = load 4 $t_main_10 0
+$t_main_17 = move $s0 
+$t_main_18 = alloc 4 
+$s0 = load 4 $t_main_1 0
+store 4 $t_main_18 $s0 0
+$s0 = load 4 $t_main_18 0
+$s0 = add $s0 12 
+$t_main_18 = move $s0 
+$s0 = load 4 $t_main_16 0
+$s1 = load 4 $t_main_17 0
 $s0 = add $s0 $s1 
-$s1 = load 4 $t_main_11 0
+$s1 = load 4 $t_main_18 0
 $s0 = add $s0 $s1 
-store 4 $t_main_8 $s0 0
-$v0 = load 4 $t_main_8 0
+store 4 $t_main_15 $s0 0
+$v0 = load 4 $t_main_15 0
 ret $v0
 }
