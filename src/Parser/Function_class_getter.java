@@ -252,6 +252,13 @@ public class Function_class_getter extends AbstractParseTreeVisitor<ArrayList <T
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public ArrayList<Type> visitEquality_operators(MinamiKotoriParser.Equality_operatorsContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public ArrayList <Type> visitIs_equal_operator(MinamiKotoriParser.Is_equal_operatorContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
@@ -267,6 +274,13 @@ public class Function_class_getter extends AbstractParseTreeVisitor<ArrayList <T
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public ArrayList <Type> visitRelation_expression(MinamiKotoriParser.Relation_expressionContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public ArrayList<Type> visitRelation_operators(MinamiKotoriParser.Relation_operatorsContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -308,6 +322,13 @@ public class Function_class_getter extends AbstractParseTreeVisitor<ArrayList <T
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public ArrayList<Type> visitShift_operators(MinamiKotoriParser.Shift_operatorsContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public ArrayList <Type> visitLshift_operator(MinamiKotoriParser.Lshift_operatorContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
@@ -323,6 +344,13 @@ public class Function_class_getter extends AbstractParseTreeVisitor<ArrayList <T
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public ArrayList <Type> visitAdd_expression(MinamiKotoriParser.Add_expressionContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public ArrayList<Type> visitAdd_operators(MinamiKotoriParser.Add_operatorsContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -345,6 +373,13 @@ public class Function_class_getter extends AbstractParseTreeVisitor<ArrayList <T
 	 */
 	@Override public ArrayList <Type> visitMultiply_expression(MinamiKotoriParser.Multiply_expressionContext ctx) {
 		return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public ArrayList<Type> visitMultiply_operators(MinamiKotoriParser.Multiply_operatorsContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -530,6 +565,13 @@ public class Function_class_getter extends AbstractParseTreeVisitor<ArrayList <T
 				.getCharPositionInLine()));
 		return null;
 	}
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public ArrayList<Type> visitBase_statement(MinamiKotoriParser.Base_statementContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

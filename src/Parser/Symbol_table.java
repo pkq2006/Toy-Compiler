@@ -10,7 +10,7 @@ import javax.print.attribute.standard.MediaSize;
 public class Symbol_table
 {
     public int current_scope;
-    ArrayList <HashMap <Name, Type>> table;
+    public ArrayList <HashMap <Name, Type>> table;
 	public Type BOOL, INT, STRING, VOID;
 	public Type TRUE, FALSE, NULL;
 
@@ -135,6 +135,12 @@ public class Symbol_table
         table.get(current_scope).put(id, type);
     }
 
+	public void put(Name id, Type type)
+	{
+		int scpoe = find(id);
+		table.get(current_scope).put(id, type);
+	}
+
     public Type get(Name id, Pair <Integer, Integer> position)
     {
         int scope = find(id);
@@ -142,6 +148,14 @@ public class Symbol_table
 	        throw new RuntimeException(position.a + " " + position.b);
         return table.get(scope).get(id);
     }
+
+	public Type get(Name id)
+	{
+		int scope = find(id);
+		if (scope == -1)
+			System.out.println(id.name);
+		return table.get(scope).get(id);
+	}
 
     public void begin_scope()
     {

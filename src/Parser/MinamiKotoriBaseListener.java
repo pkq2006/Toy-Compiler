@@ -316,6 +316,18 @@ public class MinamiKotoriBaseListener implements MinamiKotoriListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterEquality_operators(MinamiKotoriParser.Equality_operatorsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitEquality_operators(MinamiKotoriParser.Equality_operatorsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterIs_equal_operator(MinamiKotoriParser.Is_equal_operatorContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -347,6 +359,18 @@ public class MinamiKotoriBaseListener implements MinamiKotoriListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitRelation_expression(MinamiKotoriParser.Relation_expressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterRelation_operators(MinamiKotoriParser.Relation_operatorsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitRelation_operators(MinamiKotoriParser.Relation_operatorsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -412,6 +436,18 @@ public class MinamiKotoriBaseListener implements MinamiKotoriListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterShift_operators(MinamiKotoriParser.Shift_operatorsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitShift_operators(MinamiKotoriParser.Shift_operatorsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterLshift_operator(MinamiKotoriParser.Lshift_operatorContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -448,6 +484,18 @@ public class MinamiKotoriBaseListener implements MinamiKotoriListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterAdd_operators(MinamiKotoriParser.Add_operatorsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAdd_operators(MinamiKotoriParser.Add_operatorsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterPlus_operator(MinamiKotoriParser.Plus_operatorContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -479,6 +527,18 @@ public class MinamiKotoriBaseListener implements MinamiKotoriListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitMultiply_expression(MinamiKotoriParser.Multiply_expressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterMultiply_operators(MinamiKotoriParser.Multiply_operatorsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitMultiply_operators(MinamiKotoriParser.Multiply_operatorsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -767,6 +827,18 @@ public class MinamiKotoriBaseListener implements MinamiKotoriListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitFunction_definition(MinamiKotoriParser.Function_definitionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterBase_statement(MinamiKotoriParser.Base_statementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBase_statement(MinamiKotoriParser.Base_statementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

@@ -19,4 +19,9 @@ public class Name {
         }
         return s;
     }
+
+    public String get_name()
+    {
+	    return name;
+    }
 }

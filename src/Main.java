@@ -1,4 +1,5 @@
 import Parser.*;
+import IR.*;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonToken;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -6,6 +7,7 @@ import org.antlr.v4.runtime.misc.Pair;
 import org.antlr.v4.runtime.tree.ParseTree;
 
 import java.io.*;
+import java.util.ArrayList;
 
 public class Main
 {
@@ -32,22 +34,39 @@ public class Main
 			if (test.return_type != symbol_table.INT)
 				throw new RuntimeException("what the f**k?");
 		}
+		symbol_table.begin_scope();
 		Checker checker = new Checker();
 		checker.symbol_table = symbol_table;
 		checker.visit(parse_tree);
+		symbol_table.end_scope();
+		IR_constructer constructer = new IR_constructer();
+		constructer.symbol_table = symbol_table;
+		constructer.checker = checker;
+		Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> IR_list = constructer.visit(parse_tree);
+		for (int i = 0; i < IR_list.b.a.size(); i ++)
+			IR_list.b.a.get(i).print();
 	}
 
 	public static void main(String args[]) throws Exception
 	{
 		symbol_table = new Symbol_table();
+		/*
 		try
 		{
 			compile_start(System.in);
 		}
 		catch(Exception e)
 		{
+			System.out.println(e.getMessage());
 			System.exit(1);
 		}
 		System.exit(0);
+		*/
+		File input_file = new File("src/test.in");
+		File output_file = new File("src/test.out");
+		InputStream in = new FileInputStream(input_file);
+		PrintStream out = new PrintStream(output_file);
+		Instruction.out = out;
+		compile_start(in);
 	}
 }

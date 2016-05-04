@@ -51,10 +51,9 @@ public class Checker extends AbstractParseTreeVisitor<ArrayList <Pair <Type, Boo
 		variable.type_name = visit(ctx.type()).get(0).a;
 		if (variable.type_name.equal(symbol_table.VOID))
 			throw new RuntimeException(ctx.getStart().getLine() + " " + ctx.getStart().getCharPositionInLine());
-		symbol_table.put(variable.name, variable, new Pair <Integer, Integer>(ctx.getStart().getLine(), ctx.getStart()
-				.getCharPositionInLine()));
+		symbol_table.put(variable.name, variable, new Pair<>(ctx.getStart().getLine(), ctx.getStart().getCharPositionInLine()));
 		visit(ctx.init_declarator());
-		return new ArrayList <Pair <Type, Boolean>>();
+		return new ArrayList<>();
 	}
 	/**
 	 * {@inheritDoc}
@@ -91,7 +90,7 @@ public class Checker extends AbstractParseTreeVisitor<ArrayList <Pair <Type, Boo
 	 */
 	@Override public ArrayList <Pair <Type, Boolean>> visitClass_declaration(MinamiKotoriParser.Class_declarationContext ctx)
 	{
-		return new ArrayList<Pair<Type, Boolean>>();
+		return new ArrayList<>();
 	}
 	/**
 	 * {@inheritDoc}
@@ -106,7 +105,7 @@ public class Checker extends AbstractParseTreeVisitor<ArrayList <Pair <Type, Boo
 		type.dim = ctx.Left_square_bracket().size();
 		type.type_name = visit(ctx.non_array_type()).get(0).a;
 		type.name = type.type_name.name;
-		ArrayList <Pair <Type, Boolean>> arraylist = new ArrayList <Pair <Type, Boolean>>();
+		ArrayList <Pair <Type, Boolean>> arraylist = new ArrayList<>();
 		arraylist.add(new Pair <>(type, false));
 		return arraylist;
 	}
@@ -119,7 +118,7 @@ public class Checker extends AbstractParseTreeVisitor<ArrayList <Pair <Type, Boo
 	@Override public ArrayList <Pair <Type, Boolean>> visitInit_declarator(MinamiKotoriParser.Init_declaratorContext ctx)
 	{
 		Name name = Name.getSymbolName(ctx.declarator().getText());
-		Type variable = symbol_table.get(name, new Pair <Integer, Integer>(ctx.getStart().getLine(), ctx.getStart()
+		Type variable = symbol_table.get(name, new Pair<>(ctx.getStart().getLine(), ctx.getStart()
 				.getCharPositionInLine()));
 		if (ctx.initializer() != null)
 		{
@@ -129,7 +128,7 @@ public class Checker extends AbstractParseTreeVisitor<ArrayList <Pair <Type, Boo
 			if (!variable.type_name.equal(arraylist.get(0).a))
 				throw new RuntimeException(ctx.getStart().getLine() + " " + ctx.getStart().getCharPositionInLine());
 		}
-		return new ArrayList<Pair<Type, Boolean>>();
+		return new ArrayList<>();
 	}
 	/**
 	 * {@inheritDoc}
@@ -358,6 +357,13 @@ public class Checker extends AbstractParseTreeVisitor<ArrayList <Pair <Type, Boo
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public ArrayList<Pair<Type,Boolean>> visitEquality_operators(MinamiKotoriParser.Equality_operatorsContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public ArrayList <Pair <Type, Boolean>> visitIs_equal_operator(MinamiKotoriParser.Is_equal_operatorContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
@@ -388,6 +394,13 @@ public class Checker extends AbstractParseTreeVisitor<ArrayList <Pair <Type, Boo
 		returnlist.add(new Pair<>(symbol_table.BOOL, false));
 		return returnlist;
 	}
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public ArrayList<Pair<Type,Boolean>> visitRelation_operators(MinamiKotoriParser.Relation_operatorsContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -444,6 +457,13 @@ public class Checker extends AbstractParseTreeVisitor<ArrayList <Pair <Type, Boo
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public ArrayList<Pair<Type,Boolean>> visitShift_operators(MinamiKotoriParser.Shift_operatorsContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public ArrayList <Pair <Type, Boolean>> visitLshift_operator(MinamiKotoriParser.Lshift_operatorContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
@@ -483,7 +503,11 @@ public class Checker extends AbstractParseTreeVisitor<ArrayList <Pair <Type, Boo
 			for (int i = 1; i < list.size(); i ++)
 				if (!list.get(i).a.equal(symbol_table.STRING))
 					throw new RuntimeException(ctx.getStart().getLine() + " " + ctx.getStart().getCharPositionInLine());
-			if (ctx.minus_operator().size() > 0)
+			int minus_operator_size = 0;
+			for (int i = 0; i < ctx.add_operators().size(); i ++)
+				if (ctx.add_operators(i).minus_operator() != null)
+					minus_operator_size ++;
+			if (minus_operator_size > 0)
 				throw new RuntimeException(ctx.getStart().getLine() + " " + ctx.getStart().getCharPositionInLine());
 			returnlist.add(new Pair<>(list.get(0).a, false));
 		}
@@ -491,6 +515,13 @@ public class Checker extends AbstractParseTreeVisitor<ArrayList <Pair <Type, Boo
 			throw new RuntimeException(ctx.getStart().getLine() + " " + ctx.getStart().getCharPositionInLine());
 		return returnlist;
 	}
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public ArrayList<Pair<Type,Boolean>> visitAdd_operators(MinamiKotoriParser.Add_operatorsContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -530,6 +561,13 @@ public class Checker extends AbstractParseTreeVisitor<ArrayList <Pair <Type, Boo
 		returnlist.add(new Pair<>(symbol_table.INT, false));
 		return returnlist;
 	}
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public ArrayList<Pair<Type,Boolean>> visitMultiply_operators(MinamiKotoriParser.Multiply_operatorsContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -612,7 +650,6 @@ public class Checker extends AbstractParseTreeVisitor<ArrayList <Pair <Type, Boo
 				now.type_name = temp.type_name;
 				now.members = temp.members;
 				now.dim = temp.dim - 1;
-				now.dimension = temp.dimension;
 				is_lvalue = true;
 			}
 			if (ctx.postfix(i).get_member_operator() != null)
@@ -674,8 +711,7 @@ public class Checker extends AbstractParseTreeVisitor<ArrayList <Pair <Type, Boo
 							for (int j = 0; j < ctx.postfix(i).function_call_expression().arguments()
 									.assignment_expression().size(); j ++)
 							{
-								ArrayList <Pair <Type, Boolean>> tmp = visit(ctx.postfix(i).function_call_expression
-										().arguments().assignment_expression(j));
+								ArrayList <Pair <Type, Boolean>> tmp = visit(ctx.postfix(i).function_call_expression().arguments().assignment_expression(j));
 								if (tmp.size() != 1)
 									throw new RuntimeException(ctx.getStart().getLine() + " " + ctx.getStart().getCharPositionInLine());
 								list.addAll(tmp);
@@ -722,9 +758,7 @@ public class Checker extends AbstractParseTreeVisitor<ArrayList <Pair <Type, Boo
 		ArrayList <Pair <Type, Boolean>> returnlist = new ArrayList<>();
 		if (ctx.Identifier() != null)
 		{
-			Type type = symbol_table.get(Name.getSymbolName(ctx.Identifier().getText()), new Pair<>(ctx.getStart()
-					.getLine(), ctx
-					.getStart().getCharPositionInLine()));
+			Type type = symbol_table.get(Name.getSymbolName(ctx.Identifier().getText()), new Pair<>(ctx.getStart().getLine(), ctx.getStart().getCharPositionInLine()));
 			returnlist.add(new Pair<>(type.type_name, true));
 		}
 		if (ctx.constant() != null)
@@ -885,7 +919,6 @@ public class Checker extends AbstractParseTreeVisitor<ArrayList <Pair <Type, Boo
 		type.dim = ctx.Left_square_bracket().size();
 		type.type_name = visit(ctx.non_array_type()).get(0).a;
 		type.name = type.type_name.name;
-		type.dimension = new ArrayList <>();
 		for (int i = 0; i < ctx.expression().size(); i ++)
 		{
 			ArrayList <Pair <Type, Boolean>> arraylist = visit(ctx.expression(i));
@@ -943,19 +976,29 @@ public class Checker extends AbstractParseTreeVisitor<ArrayList <Pair <Type, Boo
 			for (int i = 0; i < type.parameters.size(); i ++)
 				symbol_table.put(type.parameters.get(i).name, type.parameters.get(i), new Pair<>(ctx.getStart()
 						.getLine(), ctx.getStart().getCharPositionInLine()));
-		for (Iterator <MinamiKotoriParser.DeclarationContext> i = ctx.declaration().iterator(); i.hasNext(); )
-			visit(i.next());
-		for (Iterator <MinamiKotoriParser.StatementContext> i = ctx.statement().iterator(); i.hasNext(); )
+		for (int i = 0; i < ctx.base_statement().size(); i ++)
 		{
-			ArrayList <Pair <Type, Boolean>> tmp = visit(i.next());
-			returnlist.addAll(tmp);
+			if (ctx.base_statement(i).declaration() != null)
+				visit(ctx.base_statement(i).declaration());
+			else
+			{
+				ArrayList <Pair <Type, Boolean>> tmp = visit(ctx.base_statement(i).statement());
+				returnlist.addAll(tmp);
+			}
 		}
 		for (int i = 0; i < returnlist.size(); i ++)
 			if (!returnlist.get(i).a.equal(type.return_type))
 				throw new RuntimeException(ctx.getStart().getLine() + " " + ctx.getStart().getCharPositionInLine());
 		symbol_table.end_scope();
-		return new ArrayList <Pair <Type, Boolean>>();
+		return new ArrayList<>();
 	}
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public ArrayList<Pair<Type,Boolean>> visitBase_statement(MinamiKotoriParser.Base_statementContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -982,7 +1025,7 @@ public class Checker extends AbstractParseTreeVisitor<ArrayList <Pair <Type, Boo
 		if (ctx.declaration() != null)
 		{
 			visit(ctx.declaration());
-			return new ArrayList <Pair <Type, Boolean>>();
+			return new ArrayList<>();
 		}
 		return visitChildren(ctx);
 	}
@@ -995,7 +1038,7 @@ public class Checker extends AbstractParseTreeVisitor<ArrayList <Pair <Type, Boo
 	@Override public ArrayList <Pair <Type, Boolean>> visitAssignment_statement(MinamiKotoriParser.Assignment_statementContext ctx)
 	{
 		visit(ctx.expression());
-		return new ArrayList<Pair<Type, Boolean>>();
+		return new ArrayList<>();
 	}
 	/**
 	 * {@inheritDoc}
@@ -1007,14 +1050,15 @@ public class Checker extends AbstractParseTreeVisitor<ArrayList <Pair <Type, Boo
 	{
 		symbol_table.begin_scope();
 		ArrayList <Pair <Type, Boolean>> returnlist = new ArrayList <>();
-		for (Iterator <MinamiKotoriParser.DeclarationContext> i = ctx.declaration().iterator(); i.hasNext(); )
+		for (int i = 0; i < ctx.base_statement().size(); i ++)
 		{
-			visit(i.next());
-		}
-		for (Iterator <MinamiKotoriParser.StatementContext> i = ctx.statement().iterator(); i.hasNext(); )
-		{
-			ArrayList <Pair <Type, Boolean>> tmp = visit(i.next());
-			returnlist.addAll(tmp);
+			if (ctx.base_statement(i).declaration() != null)
+				visit(ctx.base_statement(i).declaration());
+			else
+			{
+				ArrayList <Pair <Type, Boolean>> tmp = visit(ctx.base_statement(i).statement());
+				returnlist.addAll(tmp);
+			}
 		}
 		symbol_table.end_scope();
 		return returnlist;
@@ -1105,7 +1149,7 @@ public class Checker extends AbstractParseTreeVisitor<ArrayList <Pair <Type, Boo
 			if (ctx.expression() != null)
 				return visit(ctx.expression());
 			else
-				return new ArrayList <Pair <Type, Boolean>>();
+				return new ArrayList<>();
 		}
 		int dep = 0;
 		ParserRuleContext now = ctx;
@@ -1121,7 +1165,7 @@ public class Checker extends AbstractParseTreeVisitor<ArrayList <Pair <Type, Boo
 		}
 		if (dep == 0)
 			throw new RuntimeException(ctx.getStart().getLine() + " " + ctx.getStart().getCharPositionInLine());
-		return new ArrayList <Pair <Type, Boolean>>();
+		return new ArrayList<>();
 	}
 	/**
 	 * {@inheritDoc}

@@ -161,6 +161,12 @@ public interface MinamiKotoriVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitEquality_expression(MinamiKotoriParser.Equality_expressionContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link MinamiKotoriParser#equality_operators}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitEquality_operators(MinamiKotoriParser.Equality_operatorsContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link MinamiKotoriParser#is_equal_operator}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -178,6 +184,12 @@ public interface MinamiKotoriVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitRelation_expression(MinamiKotoriParser.Relation_expressionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link MinamiKotoriParser#relation_operators}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitRelation_operators(MinamiKotoriParser.Relation_operatorsContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link MinamiKotoriParser#smaller_operator}.
 	 * @param ctx the parse tree
@@ -209,6 +221,12 @@ public interface MinamiKotoriVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitShift_expression(MinamiKotoriParser.Shift_expressionContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link MinamiKotoriParser#shift_operators}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitShift_operators(MinamiKotoriParser.Shift_operatorsContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link MinamiKotoriParser#lshift_operator}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -227,6 +245,12 @@ public interface MinamiKotoriVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitAdd_expression(MinamiKotoriParser.Add_expressionContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link MinamiKotoriParser#add_operators}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAdd_operators(MinamiKotoriParser.Add_operatorsContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link MinamiKotoriParser#plus_operator}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -244,6 +268,12 @@ public interface MinamiKotoriVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitMultiply_expression(MinamiKotoriParser.Multiply_expressionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link MinamiKotoriParser#multiply_operators}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMultiply_operators(MinamiKotoriParser.Multiply_operatorsContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link MinamiKotoriParser#multiply_operator}.
 	 * @param ctx the parse tree
@@ -388,6 +418,12 @@ public interface MinamiKotoriVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitFunction_definition(MinamiKotoriParser.Function_definitionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link MinamiKotoriParser#base_statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBase_statement(MinamiKotoriParser.Base_statementContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link MinamiKotoriParser#parameter_list}.
 	 * @param ctx the parse tree

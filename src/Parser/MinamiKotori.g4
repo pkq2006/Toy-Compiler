@@ -18,6 +18,7 @@ type
 	:	non_array_type
 	|	array_declaration_type
 	;
+
 non_array_type
 	:	type_name
 	|	class_declaration
@@ -101,8 +102,12 @@ bitwise_and_operator
     ;
 
 equality_expression //bool can be the expreesion at the left or the right of equality operator
-	:	relation_expression ((is_equal_operator | not_equal_operator) relation_expression)*
+	:	relation_expression (equality_operators relation_expression)*
 	;
+
+equality_operators
+    :   (is_equal_operator | not_equal_operator)
+    ;
 
 is_equal_operator
 	:	'=='
@@ -113,8 +118,12 @@ not_equal_operator
 	;
 
 relation_expression //bool can't be the expression at the left or the right of relation operator
-	:	shift_expression ((smaller_operator | bigger_operator | smaller_equal_operator | bigger_equal_operator) shift_expression)?
+	:	shift_expression (relation_operators shift_expression)?
 	;
+
+relation_operators
+    :   (smaller_operator | bigger_operator | smaller_equal_operator | bigger_equal_operator)
+    ;
 
 smaller_operator
 	:	'<'
@@ -133,8 +142,12 @@ bigger_equal_operator
 	;
 
 shift_expression
-	:	add_expression ((lshift_operator | rshift_operator) add_expression)*
+	:	add_expression (shift_operators add_expression)*
 	;
+
+shift_operators
+    :   (lshift_operator | rshift_operator)
+    ;
 
 lshift_operator
 	:	'<<'
@@ -145,8 +158,12 @@ rshift_operator
 	;
 
 add_expression
-	:	multiply_expression ((plus_operator | minus_operator) multiply_expression)*
+	:	multiply_expression (add_operators multiply_expression)*
 	;
+
+add_operators
+    :   (plus_operator | minus_operator)
+    ;
 
 plus_operator
 	:	'+'
@@ -157,8 +174,12 @@ minus_operator
 	;
 
 multiply_expression
-	:	unary_expression ((multiply_operator | divide_operator | mod_operator) unary_expression)*
+	:	unary_expression (multiply_operators unary_expression)*
 	;
+
+multiply_operators
+    :   (multiply_operator | divide_operator | mod_operator)
+    ;
 
 multiply_operator
 	:	'*'
@@ -314,8 +335,13 @@ builtin_constant
 	;
 
 function_definition
-	:	type Identifier Left_bracket (parameter_list)? Right_bracket Left_brace (statement | declaration)* Right_brace
+	:	type Identifier Left_bracket (parameter_list)? Right_bracket Left_brace base_statement* Right_brace
 	;
+
+base_statement
+    :   declaration
+    |   statement
+    ;
 
 parameter_list
 	:	parameter (',' parameter)*
@@ -338,7 +364,7 @@ assignment_statement
 	;
 
 compound_statement
-	:	Left_brace (declaration | statement)* Right_brace
+	:	Left_brace base_statement* Right_brace
 	;
 
 loop_statement

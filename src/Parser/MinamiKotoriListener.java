@@ -258,6 +258,16 @@ public interface MinamiKotoriListener extends ParseTreeListener {
 	 */
 	void exitEquality_expression(MinamiKotoriParser.Equality_expressionContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link MinamiKotoriParser#equality_operators}.
+	 * @param ctx the parse tree
+	 */
+	void enterEquality_operators(MinamiKotoriParser.Equality_operatorsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MinamiKotoriParser#equality_operators}.
+	 * @param ctx the parse tree
+	 */
+	void exitEquality_operators(MinamiKotoriParser.Equality_operatorsContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link MinamiKotoriParser#is_equal_operator}.
 	 * @param ctx the parse tree
 	 */
@@ -287,6 +297,16 @@ public interface MinamiKotoriListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitRelation_expression(MinamiKotoriParser.Relation_expressionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MinamiKotoriParser#relation_operators}.
+	 * @param ctx the parse tree
+	 */
+	void enterRelation_operators(MinamiKotoriParser.Relation_operatorsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MinamiKotoriParser#relation_operators}.
+	 * @param ctx the parse tree
+	 */
+	void exitRelation_operators(MinamiKotoriParser.Relation_operatorsContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link MinamiKotoriParser#smaller_operator}.
 	 * @param ctx the parse tree
@@ -338,6 +358,16 @@ public interface MinamiKotoriListener extends ParseTreeListener {
 	 */
 	void exitShift_expression(MinamiKotoriParser.Shift_expressionContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link MinamiKotoriParser#shift_operators}.
+	 * @param ctx the parse tree
+	 */
+	void enterShift_operators(MinamiKotoriParser.Shift_operatorsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MinamiKotoriParser#shift_operators}.
+	 * @param ctx the parse tree
+	 */
+	void exitShift_operators(MinamiKotoriParser.Shift_operatorsContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link MinamiKotoriParser#lshift_operator}.
 	 * @param ctx the parse tree
 	 */
@@ -368,6 +398,16 @@ public interface MinamiKotoriListener extends ParseTreeListener {
 	 */
 	void exitAdd_expression(MinamiKotoriParser.Add_expressionContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link MinamiKotoriParser#add_operators}.
+	 * @param ctx the parse tree
+	 */
+	void enterAdd_operators(MinamiKotoriParser.Add_operatorsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MinamiKotoriParser#add_operators}.
+	 * @param ctx the parse tree
+	 */
+	void exitAdd_operators(MinamiKotoriParser.Add_operatorsContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link MinamiKotoriParser#plus_operator}.
 	 * @param ctx the parse tree
 	 */
@@ -397,6 +437,16 @@ public interface MinamiKotoriListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitMultiply_expression(MinamiKotoriParser.Multiply_expressionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MinamiKotoriParser#multiply_operators}.
+	 * @param ctx the parse tree
+	 */
+	void enterMultiply_operators(MinamiKotoriParser.Multiply_operatorsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MinamiKotoriParser#multiply_operators}.
+	 * @param ctx the parse tree
+	 */
+	void exitMultiply_operators(MinamiKotoriParser.Multiply_operatorsContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link MinamiKotoriParser#multiply_operator}.
 	 * @param ctx the parse tree
@@ -637,6 +687,16 @@ public interface MinamiKotoriListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitFunction_definition(MinamiKotoriParser.Function_definitionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MinamiKotoriParser#base_statement}.
+	 * @param ctx the parse tree
+	 */
+	void enterBase_statement(MinamiKotoriParser.Base_statementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MinamiKotoriParser#base_statement}.
+	 * @param ctx the parse tree
+	 */
+	void exitBase_statement(MinamiKotoriParser.Base_statementContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link MinamiKotoriParser#parameter_list}.
 	 * @param ctx the parse tree

@@ -205,6 +205,13 @@ public class Class_name_getter<Void> extends AbstractParseTreeVisitor<Void> impl
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public Void visitEquality_operators(MinamiKotoriParser.Equality_operatorsContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public Void visitIs_equal_operator(MinamiKotoriParser.Is_equal_operatorContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
@@ -220,6 +227,13 @@ public class Class_name_getter<Void> extends AbstractParseTreeVisitor<Void> impl
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public Void visitRelation_expression(MinamiKotoriParser.Relation_expressionContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public Void visitRelation_operators(MinamiKotoriParser.Relation_operatorsContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -261,6 +275,13 @@ public class Class_name_getter<Void> extends AbstractParseTreeVisitor<Void> impl
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public Void visitShift_operators(MinamiKotoriParser.Shift_operatorsContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public Void visitLshift_operator(MinamiKotoriParser.Lshift_operatorContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
@@ -282,6 +303,13 @@ public class Class_name_getter<Void> extends AbstractParseTreeVisitor<Void> impl
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public Void visitAdd_operators(MinamiKotoriParser.Add_operatorsContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public Void visitPlus_operator(MinamiKotoriParser.Plus_operatorContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
@@ -290,6 +318,13 @@ public class Class_name_getter<Void> extends AbstractParseTreeVisitor<Void> impl
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public Void visitMinus_operator(MinamiKotoriParser.Minus_operatorContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public Void visitMultiply_operators(MinamiKotoriParser.Multiply_operatorsContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -465,6 +500,13 @@ public class Class_name_getter<Void> extends AbstractParseTreeVisitor<Void> impl
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public Void visitFunction_definition(MinamiKotoriParser.Function_definitionContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public Void visitBase_statement(MinamiKotoriParser.Base_statementContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

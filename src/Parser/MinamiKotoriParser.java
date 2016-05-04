@@ -35,24 +35,26 @@ public class MinamiKotoriParser extends Parser {
 		RULE_logical_and_expression = 16, RULE_logical_and_operator = 17, RULE_bitwise_or_expression = 18, 
 		RULE_bitwise_or_operator = 19, RULE_bitwise_xor_expression = 20, RULE_bitwise_xor_operator = 21, 
 		RULE_bitwise_and_expression = 22, RULE_bitwise_and_operator = 23, RULE_equality_expression = 24, 
-		RULE_is_equal_operator = 25, RULE_not_equal_operator = 26, RULE_relation_expression = 27, 
-		RULE_smaller_operator = 28, RULE_bigger_operator = 29, RULE_smaller_equal_operator = 30, 
-		RULE_bigger_equal_operator = 31, RULE_shift_expression = 32, RULE_lshift_operator = 33, 
-		RULE_rshift_operator = 34, RULE_add_expression = 35, RULE_plus_operator = 36, 
-		RULE_minus_operator = 37, RULE_multiply_expression = 38, RULE_multiply_operator = 39, 
-		RULE_divide_operator = 40, RULE_mod_operator = 41, RULE_unary_expression = 42, 
-		RULE_postfix_expression = 43, RULE_primary_expression = 44, RULE_constant = 45, 
-		RULE_integer_constant = 46, RULE_string_constant = 47, RULE_postfix = 48, 
-		RULE_get_member_operator = 49, RULE_plusplus_operator = 50, RULE_minusminus_operator = 51, 
-		RULE_unary_operator = 52, RULE_not_sign_operator = 53, RULE_bitwise_not_operator = 54, 
-		RULE_expression = 55, RULE_function_call_expression = 56, RULE_arguments = 57, 
-		RULE_new_operation = 58, RULE_array_new_type = 59, RULE_class_new_type = 60, 
-		RULE_builtin_constant = 61, RULE_function_definition = 62, RULE_parameter_list = 63, 
-		RULE_parameter = 64, RULE_statement = 65, RULE_assignment_statement = 66, 
-		RULE_compound_statement = 67, RULE_loop_statement = 68, RULE_for_loop_statement = 69, 
-		RULE_the_first_for_expression = 70, RULE_the_second_for_expression = 71, 
-		RULE_the_third_for_expression = 72, RULE_while_loop_statement = 73, RULE_branch_statement = 74, 
-		RULE_if_statement = 75;
+		RULE_equality_operators = 25, RULE_is_equal_operator = 26, RULE_not_equal_operator = 27, 
+		RULE_relation_expression = 28, RULE_relation_operators = 29, RULE_smaller_operator = 30, 
+		RULE_bigger_operator = 31, RULE_smaller_equal_operator = 32, RULE_bigger_equal_operator = 33, 
+		RULE_shift_expression = 34, RULE_shift_operators = 35, RULE_lshift_operator = 36, 
+		RULE_rshift_operator = 37, RULE_add_expression = 38, RULE_add_operators = 39, 
+		RULE_plus_operator = 40, RULE_minus_operator = 41, RULE_multiply_expression = 42, 
+		RULE_multiply_operators = 43, RULE_multiply_operator = 44, RULE_divide_operator = 45, 
+		RULE_mod_operator = 46, RULE_unary_expression = 47, RULE_postfix_expression = 48, 
+		RULE_primary_expression = 49, RULE_constant = 50, RULE_integer_constant = 51, 
+		RULE_string_constant = 52, RULE_postfix = 53, RULE_get_member_operator = 54, 
+		RULE_plusplus_operator = 55, RULE_minusminus_operator = 56, RULE_unary_operator = 57, 
+		RULE_not_sign_operator = 58, RULE_bitwise_not_operator = 59, RULE_expression = 60, 
+		RULE_function_call_expression = 61, RULE_arguments = 62, RULE_new_operation = 63, 
+		RULE_array_new_type = 64, RULE_class_new_type = 65, RULE_builtin_constant = 66, 
+		RULE_function_definition = 67, RULE_base_statement = 68, RULE_parameter_list = 69, 
+		RULE_parameter = 70, RULE_statement = 71, RULE_assignment_statement = 72, 
+		RULE_compound_statement = 73, RULE_loop_statement = 74, RULE_for_loop_statement = 75, 
+		RULE_the_first_for_expression = 76, RULE_the_second_for_expression = 77, 
+		RULE_the_third_for_expression = 78, RULE_while_loop_statement = 79, RULE_branch_statement = 80, 
+		RULE_if_statement = 81;
 	public static final String[] ruleNames = {
 		"program", "declaration", "variable_declaration", "type", "non_array_type", 
 		"type_name", "class_declaration", "array_declaration_type", "init_declarator", 
@@ -61,17 +63,18 @@ public class MinamiKotoriParser extends Parser {
 		"logical_and_expression", "logical_and_operator", "bitwise_or_expression", 
 		"bitwise_or_operator", "bitwise_xor_expression", "bitwise_xor_operator", 
 		"bitwise_and_expression", "bitwise_and_operator", "equality_expression", 
-		"is_equal_operator", "not_equal_operator", "relation_expression", "smaller_operator", 
-		"bigger_operator", "smaller_equal_operator", "bigger_equal_operator", 
-		"shift_expression", "lshift_operator", "rshift_operator", "add_expression", 
-		"plus_operator", "minus_operator", "multiply_expression", "multiply_operator", 
+		"equality_operators", "is_equal_operator", "not_equal_operator", "relation_expression", 
+		"relation_operators", "smaller_operator", "bigger_operator", "smaller_equal_operator", 
+		"bigger_equal_operator", "shift_expression", "shift_operators", "lshift_operator", 
+		"rshift_operator", "add_expression", "add_operators", "plus_operator", 
+		"minus_operator", "multiply_expression", "multiply_operators", "multiply_operator", 
 		"divide_operator", "mod_operator", "unary_expression", "postfix_expression", 
 		"primary_expression", "constant", "integer_constant", "string_constant", 
 		"postfix", "get_member_operator", "plusplus_operator", "minusminus_operator", 
 		"unary_operator", "not_sign_operator", "bitwise_not_operator", "expression", 
 		"function_call_expression", "arguments", "new_operation", "array_new_type", 
-		"class_new_type", "builtin_constant", "function_definition", "parameter_list", 
-		"parameter", "statement", "assignment_statement", "compound_statement", 
+		"class_new_type", "builtin_constant", "function_definition", "base_statement", 
+		"parameter_list", "parameter", "statement", "assignment_statement", "compound_statement", 
 		"loop_statement", "for_loop_statement", "the_first_for_expression", "the_second_for_expression", 
 		"the_third_for_expression", "while_loop_statement", "branch_statement", 
 		"if_statement"
@@ -183,59 +186,59 @@ public class MinamiKotoriParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(156);
+			setState(168);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,1,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
-					setState(154);
+					setState(166);
 					_errHandler.sync(this);
 					switch ( getInterpreter().adaptivePredict(_input,0,_ctx) ) {
 					case 1:
 						{
-						setState(152);
+						setState(164);
 						function_definition();
 						}
 						break;
 					case 2:
 						{
-						setState(153);
+						setState(165);
 						declaration();
 						}
 						break;
 					}
 					} 
 				}
-				setState(158);
+				setState(170);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,1,_ctx);
 			}
-			setState(159);
+			setState(171);
 			function_definition();
-			setState(164);
+			setState(176);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << T__2) | (1L << T__3) | (1L << T__4) | (1L << T__5) | (1L << Identifier))) != 0)) {
 				{
-				setState(162);
+				setState(174);
 				_errHandler.sync(this);
 				switch ( getInterpreter().adaptivePredict(_input,2,_ctx) ) {
 				case 1:
 					{
-					setState(160);
+					setState(172);
 					function_definition();
 					}
 					break;
 				case 2:
 					{
-					setState(161);
+					setState(173);
 					declaration();
 					}
 					break;
 				}
 				}
-				setState(166);
+				setState(178);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -282,20 +285,20 @@ public class MinamiKotoriParser extends Parser {
 		DeclarationContext _localctx = new DeclarationContext(_ctx, getState());
 		enterRule(_localctx, 2, RULE_declaration);
 		try {
-			setState(169);
+			setState(181);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,4,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(167);
+				setState(179);
 				variable_declaration();
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(168);
+				setState(180);
 				class_declaration();
 				}
 				break;
@@ -344,11 +347,11 @@ public class MinamiKotoriParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(171);
+			setState(183);
 			type();
-			setState(172);
+			setState(184);
 			init_declarator();
-			setState(173);
+			setState(185);
 			match(T__0);
 			}
 		}
@@ -393,20 +396,20 @@ public class MinamiKotoriParser extends Parser {
 		TypeContext _localctx = new TypeContext(_ctx, getState());
 		enterRule(_localctx, 6, RULE_type);
 		try {
-			setState(177);
+			setState(189);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,5,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(175);
+				setState(187);
 				non_array_type();
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(176);
+				setState(188);
 				array_declaration_type();
 				}
 				break;
@@ -453,7 +456,7 @@ public class MinamiKotoriParser extends Parser {
 		Non_array_typeContext _localctx = new Non_array_typeContext(_ctx, getState());
 		enterRule(_localctx, 8, RULE_non_array_type);
 		try {
-			setState(181);
+			setState(193);
 			switch (_input.LA(1)) {
 			case T__1:
 			case T__2:
@@ -462,14 +465,14 @@ public class MinamiKotoriParser extends Parser {
 			case Identifier:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(179);
+				setState(191);
 				type_name();
 				}
 				break;
 			case T__5:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(180);
+				setState(192);
 				class_declaration();
 				}
 				break;
@@ -515,7 +518,7 @@ public class MinamiKotoriParser extends Parser {
 		enterRule(_localctx, 10, RULE_type_name);
 		int _la;
 		try {
-			setState(185);
+			setState(197);
 			switch (_input.LA(1)) {
 			case T__1:
 			case T__2:
@@ -523,7 +526,7 @@ public class MinamiKotoriParser extends Parser {
 			case T__4:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(183);
+				setState(195);
 				((Type_nameContext)_localctx).builtin_type = _input.LT(1);
 				_la = _input.LA(1);
 				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << T__2) | (1L << T__3) | (1L << T__4))) != 0)) ) {
@@ -536,7 +539,7 @@ public class MinamiKotoriParser extends Parser {
 			case Identifier:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(184);
+				setState(196);
 				match(Identifier);
 				}
 				break;
@@ -597,31 +600,31 @@ public class MinamiKotoriParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(187);
+			setState(199);
 			match(T__5);
-			setState(188);
+			setState(200);
 			match(Identifier);
-			setState(189);
+			setState(201);
 			match(Left_brace);
-			setState(196);
+			setState(208);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << T__2) | (1L << T__3) | (1L << T__4) | (1L << T__5) | (1L << Identifier))) != 0)) {
 				{
 				{
-				setState(190);
+				setState(202);
 				type();
-				setState(191);
+				setState(203);
 				declarator();
-				setState(192);
+				setState(204);
 				match(T__0);
 				}
 				}
-				setState(198);
+				setState(210);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(199);
+			setState(211);
 			match(Right_brace);
 			}
 		}
@@ -674,21 +677,21 @@ public class MinamiKotoriParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(201);
+			setState(213);
 			non_array_type();
-			setState(204); 
+			setState(216); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(202);
+				setState(214);
 				match(Left_square_bracket);
-				setState(203);
+				setState(215);
 				match(Right_square_bracket);
 				}
 				}
-				setState(206); 
+				setState(218); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( _la==Left_square_bracket );
@@ -738,15 +741,15 @@ public class MinamiKotoriParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(208);
+			setState(220);
 			declarator();
-			setState(211);
+			setState(223);
 			_la = _input.LA(1);
 			if (_la==T__6) {
 				{
-				setState(209);
+				setState(221);
 				match(T__6);
-				setState(210);
+				setState(222);
 				initializer();
 				}
 			}
@@ -791,7 +794,7 @@ public class MinamiKotoriParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(213);
+			setState(225);
 			match(Identifier);
 			}
 		}
@@ -835,7 +838,7 @@ public class MinamiKotoriParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(215);
+			setState(227);
 			assignment_expression();
 			}
 		}
@@ -892,25 +895,25 @@ public class MinamiKotoriParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(222);
+			setState(234);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,11,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
-					setState(217);
+					setState(229);
 					unary_expression();
-					setState(218);
+					setState(230);
 					assignment_operator();
 					}
 					} 
 				}
-				setState(224);
+				setState(236);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,11,_ctx);
 			}
-			setState(225);
+			setState(237);
 			calculation_expression();
 			}
 		}
@@ -951,7 +954,7 @@ public class MinamiKotoriParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(227);
+			setState(239);
 			match(T__6);
 			}
 		}
@@ -995,7 +998,7 @@ public class MinamiKotoriParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(229);
+			setState(241);
 			logical_or_expression();
 			}
 		}
@@ -1049,21 +1052,21 @@ public class MinamiKotoriParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(231);
+			setState(243);
 			logical_and_expression();
-			setState(237);
+			setState(249);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==T__7) {
 				{
 				{
-				setState(232);
+				setState(244);
 				logical_or_operator();
-				setState(233);
+				setState(245);
 				logical_and_expression();
 				}
 				}
-				setState(239);
+				setState(251);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -1106,7 +1109,7 @@ public class MinamiKotoriParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(240);
+			setState(252);
 			match(T__7);
 			}
 		}
@@ -1160,21 +1163,21 @@ public class MinamiKotoriParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(242);
+			setState(254);
 			bitwise_or_expression();
-			setState(248);
+			setState(260);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==T__8) {
 				{
 				{
-				setState(243);
+				setState(255);
 				logical_and_operator();
-				setState(244);
+				setState(256);
 				bitwise_or_expression();
 				}
 				}
-				setState(250);
+				setState(262);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -1217,7 +1220,7 @@ public class MinamiKotoriParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(251);
+			setState(263);
 			match(T__8);
 			}
 		}
@@ -1271,21 +1274,21 @@ public class MinamiKotoriParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(253);
+			setState(265);
 			bitwise_xor_expression();
-			setState(259);
+			setState(271);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==T__9) {
 				{
 				{
-				setState(254);
+				setState(266);
 				bitwise_or_operator();
-				setState(255);
+				setState(267);
 				bitwise_xor_expression();
 				}
 				}
-				setState(261);
+				setState(273);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -1328,7 +1331,7 @@ public class MinamiKotoriParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(262);
+			setState(274);
 			match(T__9);
 			}
 		}
@@ -1382,21 +1385,21 @@ public class MinamiKotoriParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(264);
+			setState(276);
 			bitwise_and_expression();
-			setState(270);
+			setState(282);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==T__10) {
 				{
 				{
-				setState(265);
+				setState(277);
 				bitwise_xor_operator();
-				setState(266);
+				setState(278);
 				bitwise_and_expression();
 				}
 				}
-				setState(272);
+				setState(284);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -1439,7 +1442,7 @@ public class MinamiKotoriParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(273);
+			setState(285);
 			match(T__10);
 			}
 		}
@@ -1493,21 +1496,21 @@ public class MinamiKotoriParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(275);
+			setState(287);
 			equality_expression();
-			setState(281);
+			setState(293);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==T__11) {
 				{
 				{
-				setState(276);
+				setState(288);
 				bitwise_and_operator();
-				setState(277);
+				setState(289);
 				equality_expression();
 				}
 				}
-				setState(283);
+				setState(295);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -1550,7 +1553,7 @@ public class MinamiKotoriParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(284);
+			setState(296);
 			match(T__11);
 			}
 		}
@@ -1572,17 +1575,11 @@ public class MinamiKotoriParser extends Parser {
 		public Relation_expressionContext relation_expression(int i) {
 			return getRuleContext(Relation_expressionContext.class,i);
 		}
-		public List<Is_equal_operatorContext> is_equal_operator() {
-			return getRuleContexts(Is_equal_operatorContext.class);
+		public List<Equality_operatorsContext> equality_operators() {
+			return getRuleContexts(Equality_operatorsContext.class);
 		}
-		public Is_equal_operatorContext is_equal_operator(int i) {
-			return getRuleContext(Is_equal_operatorContext.class,i);
-		}
-		public List<Not_equal_operatorContext> not_equal_operator() {
-			return getRuleContexts(Not_equal_operatorContext.class);
-		}
-		public Not_equal_operatorContext not_equal_operator(int i) {
-			return getRuleContext(Not_equal_operatorContext.class,i);
+		public Equality_operatorsContext equality_operators(int i) {
+			return getRuleContext(Equality_operatorsContext.class,i);
 		}
 		public Equality_expressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -1610,38 +1607,85 @@ public class MinamiKotoriParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(286);
+			setState(298);
 			relation_expression();
-			setState(295);
+			setState(304);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==T__12 || _la==T__13) {
 				{
 				{
-				setState(289);
-				switch (_input.LA(1)) {
-				case T__12:
-					{
-					setState(287);
-					is_equal_operator();
-					}
-					break;
-				case T__13:
-					{
-					setState(288);
-					not_equal_operator();
-					}
-					break;
-				default:
-					throw new NoViableAltException(this);
-				}
-				setState(291);
+				setState(299);
+				equality_operators();
+				setState(300);
 				relation_expression();
 				}
 				}
-				setState(297);
+				setState(306);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
+			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class Equality_operatorsContext extends ParserRuleContext {
+		public Is_equal_operatorContext is_equal_operator() {
+			return getRuleContext(Is_equal_operatorContext.class,0);
+		}
+		public Not_equal_operatorContext not_equal_operator() {
+			return getRuleContext(Not_equal_operatorContext.class,0);
+		}
+		public Equality_operatorsContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_equality_operators; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof MinamiKotoriListener ) ((MinamiKotoriListener)listener).enterEquality_operators(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof MinamiKotoriListener ) ((MinamiKotoriListener)listener).exitEquality_operators(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MinamiKotoriVisitor ) return ((MinamiKotoriVisitor<? extends T>)visitor).visitEquality_operators(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final Equality_operatorsContext equality_operators() throws RecognitionException {
+		Equality_operatorsContext _localctx = new Equality_operatorsContext(_ctx, getState());
+		enterRule(_localctx, 50, RULE_equality_operators);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(309);
+			switch (_input.LA(1)) {
+			case T__12:
+				{
+				setState(307);
+				is_equal_operator();
+				}
+				break;
+			case T__13:
+				{
+				setState(308);
+				not_equal_operator();
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
 			}
 			}
 		}
@@ -1678,11 +1722,11 @@ public class MinamiKotoriParser extends Parser {
 
 	public final Is_equal_operatorContext is_equal_operator() throws RecognitionException {
 		Is_equal_operatorContext _localctx = new Is_equal_operatorContext(_ctx, getState());
-		enterRule(_localctx, 50, RULE_is_equal_operator);
+		enterRule(_localctx, 52, RULE_is_equal_operator);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(298);
+			setState(311);
 			match(T__12);
 			}
 		}
@@ -1719,11 +1763,11 @@ public class MinamiKotoriParser extends Parser {
 
 	public final Not_equal_operatorContext not_equal_operator() throws RecognitionException {
 		Not_equal_operatorContext _localctx = new Not_equal_operatorContext(_ctx, getState());
-		enterRule(_localctx, 52, RULE_not_equal_operator);
+		enterRule(_localctx, 54, RULE_not_equal_operator);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(300);
+			setState(313);
 			match(T__13);
 			}
 		}
@@ -1745,17 +1789,8 @@ public class MinamiKotoriParser extends Parser {
 		public Shift_expressionContext shift_expression(int i) {
 			return getRuleContext(Shift_expressionContext.class,i);
 		}
-		public Smaller_operatorContext smaller_operator() {
-			return getRuleContext(Smaller_operatorContext.class,0);
-		}
-		public Bigger_operatorContext bigger_operator() {
-			return getRuleContext(Bigger_operatorContext.class,0);
-		}
-		public Smaller_equal_operatorContext smaller_equal_operator() {
-			return getRuleContext(Smaller_equal_operatorContext.class,0);
-		}
-		public Bigger_equal_operatorContext bigger_equal_operator() {
-			return getRuleContext(Bigger_equal_operatorContext.class,0);
+		public Relation_operatorsContext relation_operators() {
+			return getRuleContext(Relation_operatorsContext.class,0);
 		}
 		public Relation_expressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -1778,51 +1813,104 @@ public class MinamiKotoriParser extends Parser {
 
 	public final Relation_expressionContext relation_expression() throws RecognitionException {
 		Relation_expressionContext _localctx = new Relation_expressionContext(_ctx, getState());
-		enterRule(_localctx, 54, RULE_relation_expression);
+		enterRule(_localctx, 56, RULE_relation_expression);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(302);
+			setState(315);
 			shift_expression();
-			setState(311);
+			setState(319);
 			_la = _input.LA(1);
 			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__14) | (1L << T__15) | (1L << T__16) | (1L << T__17))) != 0)) {
 				{
-				setState(307);
-				switch (_input.LA(1)) {
-				case T__14:
-					{
-					setState(303);
-					smaller_operator();
-					}
-					break;
-				case T__15:
-					{
-					setState(304);
-					bigger_operator();
-					}
-					break;
-				case T__16:
-					{
-					setState(305);
-					smaller_equal_operator();
-					}
-					break;
-				case T__17:
-					{
-					setState(306);
-					bigger_equal_operator();
-					}
-					break;
-				default:
-					throw new NoViableAltException(this);
-				}
-				setState(309);
+				setState(316);
+				relation_operators();
+				setState(317);
 				shift_expression();
 				}
 			}
 
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class Relation_operatorsContext extends ParserRuleContext {
+		public Smaller_operatorContext smaller_operator() {
+			return getRuleContext(Smaller_operatorContext.class,0);
+		}
+		public Bigger_operatorContext bigger_operator() {
+			return getRuleContext(Bigger_operatorContext.class,0);
+		}
+		public Smaller_equal_operatorContext smaller_equal_operator() {
+			return getRuleContext(Smaller_equal_operatorContext.class,0);
+		}
+		public Bigger_equal_operatorContext bigger_equal_operator() {
+			return getRuleContext(Bigger_equal_operatorContext.class,0);
+		}
+		public Relation_operatorsContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_relation_operators; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof MinamiKotoriListener ) ((MinamiKotoriListener)listener).enterRelation_operators(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof MinamiKotoriListener ) ((MinamiKotoriListener)listener).exitRelation_operators(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MinamiKotoriVisitor ) return ((MinamiKotoriVisitor<? extends T>)visitor).visitRelation_operators(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final Relation_operatorsContext relation_operators() throws RecognitionException {
+		Relation_operatorsContext _localctx = new Relation_operatorsContext(_ctx, getState());
+		enterRule(_localctx, 58, RULE_relation_operators);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(325);
+			switch (_input.LA(1)) {
+			case T__14:
+				{
+				setState(321);
+				smaller_operator();
+				}
+				break;
+			case T__15:
+				{
+				setState(322);
+				bigger_operator();
+				}
+				break;
+			case T__16:
+				{
+				setState(323);
+				smaller_equal_operator();
+				}
+				break;
+			case T__17:
+				{
+				setState(324);
+				bigger_equal_operator();
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
+			}
 			}
 		}
 		catch (RecognitionException re) {
@@ -1858,11 +1946,11 @@ public class MinamiKotoriParser extends Parser {
 
 	public final Smaller_operatorContext smaller_operator() throws RecognitionException {
 		Smaller_operatorContext _localctx = new Smaller_operatorContext(_ctx, getState());
-		enterRule(_localctx, 56, RULE_smaller_operator);
+		enterRule(_localctx, 60, RULE_smaller_operator);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(313);
+			setState(327);
 			match(T__14);
 			}
 		}
@@ -1899,11 +1987,11 @@ public class MinamiKotoriParser extends Parser {
 
 	public final Bigger_operatorContext bigger_operator() throws RecognitionException {
 		Bigger_operatorContext _localctx = new Bigger_operatorContext(_ctx, getState());
-		enterRule(_localctx, 58, RULE_bigger_operator);
+		enterRule(_localctx, 62, RULE_bigger_operator);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(315);
+			setState(329);
 			match(T__15);
 			}
 		}
@@ -1940,11 +2028,11 @@ public class MinamiKotoriParser extends Parser {
 
 	public final Smaller_equal_operatorContext smaller_equal_operator() throws RecognitionException {
 		Smaller_equal_operatorContext _localctx = new Smaller_equal_operatorContext(_ctx, getState());
-		enterRule(_localctx, 60, RULE_smaller_equal_operator);
+		enterRule(_localctx, 64, RULE_smaller_equal_operator);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(317);
+			setState(331);
 			match(T__16);
 			}
 		}
@@ -1981,11 +2069,11 @@ public class MinamiKotoriParser extends Parser {
 
 	public final Bigger_equal_operatorContext bigger_equal_operator() throws RecognitionException {
 		Bigger_equal_operatorContext _localctx = new Bigger_equal_operatorContext(_ctx, getState());
-		enterRule(_localctx, 62, RULE_bigger_equal_operator);
+		enterRule(_localctx, 66, RULE_bigger_equal_operator);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(319);
+			setState(333);
 			match(T__17);
 			}
 		}
@@ -2007,17 +2095,11 @@ public class MinamiKotoriParser extends Parser {
 		public Add_expressionContext add_expression(int i) {
 			return getRuleContext(Add_expressionContext.class,i);
 		}
-		public List<Lshift_operatorContext> lshift_operator() {
-			return getRuleContexts(Lshift_operatorContext.class);
+		public List<Shift_operatorsContext> shift_operators() {
+			return getRuleContexts(Shift_operatorsContext.class);
 		}
-		public Lshift_operatorContext lshift_operator(int i) {
-			return getRuleContext(Lshift_operatorContext.class,i);
-		}
-		public List<Rshift_operatorContext> rshift_operator() {
-			return getRuleContexts(Rshift_operatorContext.class);
-		}
-		public Rshift_operatorContext rshift_operator(int i) {
-			return getRuleContext(Rshift_operatorContext.class,i);
+		public Shift_operatorsContext shift_operators(int i) {
+			return getRuleContext(Shift_operatorsContext.class,i);
 		}
 		public Shift_expressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -2040,43 +2122,90 @@ public class MinamiKotoriParser extends Parser {
 
 	public final Shift_expressionContext shift_expression() throws RecognitionException {
 		Shift_expressionContext _localctx = new Shift_expressionContext(_ctx, getState());
-		enterRule(_localctx, 64, RULE_shift_expression);
+		enterRule(_localctx, 68, RULE_shift_expression);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(321);
+			setState(335);
 			add_expression();
-			setState(330);
+			setState(341);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==T__18 || _la==T__19) {
 				{
 				{
-				setState(324);
-				switch (_input.LA(1)) {
-				case T__18:
-					{
-					setState(322);
-					lshift_operator();
-					}
-					break;
-				case T__19:
-					{
-					setState(323);
-					rshift_operator();
-					}
-					break;
-				default:
-					throw new NoViableAltException(this);
-				}
-				setState(326);
+				setState(336);
+				shift_operators();
+				setState(337);
 				add_expression();
 				}
 				}
-				setState(332);
+				setState(343);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
+			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class Shift_operatorsContext extends ParserRuleContext {
+		public Lshift_operatorContext lshift_operator() {
+			return getRuleContext(Lshift_operatorContext.class,0);
+		}
+		public Rshift_operatorContext rshift_operator() {
+			return getRuleContext(Rshift_operatorContext.class,0);
+		}
+		public Shift_operatorsContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_shift_operators; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof MinamiKotoriListener ) ((MinamiKotoriListener)listener).enterShift_operators(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof MinamiKotoriListener ) ((MinamiKotoriListener)listener).exitShift_operators(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MinamiKotoriVisitor ) return ((MinamiKotoriVisitor<? extends T>)visitor).visitShift_operators(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final Shift_operatorsContext shift_operators() throws RecognitionException {
+		Shift_operatorsContext _localctx = new Shift_operatorsContext(_ctx, getState());
+		enterRule(_localctx, 70, RULE_shift_operators);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(346);
+			switch (_input.LA(1)) {
+			case T__18:
+				{
+				setState(344);
+				lshift_operator();
+				}
+				break;
+			case T__19:
+				{
+				setState(345);
+				rshift_operator();
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
 			}
 			}
 		}
@@ -2113,11 +2242,11 @@ public class MinamiKotoriParser extends Parser {
 
 	public final Lshift_operatorContext lshift_operator() throws RecognitionException {
 		Lshift_operatorContext _localctx = new Lshift_operatorContext(_ctx, getState());
-		enterRule(_localctx, 66, RULE_lshift_operator);
+		enterRule(_localctx, 72, RULE_lshift_operator);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(333);
+			setState(348);
 			match(T__18);
 			}
 		}
@@ -2154,11 +2283,11 @@ public class MinamiKotoriParser extends Parser {
 
 	public final Rshift_operatorContext rshift_operator() throws RecognitionException {
 		Rshift_operatorContext _localctx = new Rshift_operatorContext(_ctx, getState());
-		enterRule(_localctx, 68, RULE_rshift_operator);
+		enterRule(_localctx, 74, RULE_rshift_operator);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(335);
+			setState(350);
 			match(T__19);
 			}
 		}
@@ -2180,17 +2309,11 @@ public class MinamiKotoriParser extends Parser {
 		public Multiply_expressionContext multiply_expression(int i) {
 			return getRuleContext(Multiply_expressionContext.class,i);
 		}
-		public List<Plus_operatorContext> plus_operator() {
-			return getRuleContexts(Plus_operatorContext.class);
+		public List<Add_operatorsContext> add_operators() {
+			return getRuleContexts(Add_operatorsContext.class);
 		}
-		public Plus_operatorContext plus_operator(int i) {
-			return getRuleContext(Plus_operatorContext.class,i);
-		}
-		public List<Minus_operatorContext> minus_operator() {
-			return getRuleContexts(Minus_operatorContext.class);
-		}
-		public Minus_operatorContext minus_operator(int i) {
-			return getRuleContext(Minus_operatorContext.class,i);
+		public Add_operatorsContext add_operators(int i) {
+			return getRuleContext(Add_operatorsContext.class,i);
 		}
 		public Add_expressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -2213,43 +2336,90 @@ public class MinamiKotoriParser extends Parser {
 
 	public final Add_expressionContext add_expression() throws RecognitionException {
 		Add_expressionContext _localctx = new Add_expressionContext(_ctx, getState());
-		enterRule(_localctx, 70, RULE_add_expression);
+		enterRule(_localctx, 76, RULE_add_expression);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(337);
+			setState(352);
 			multiply_expression();
-			setState(346);
+			setState(358);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==T__20 || _la==T__21) {
 				{
 				{
-				setState(340);
-				switch (_input.LA(1)) {
-				case T__20:
-					{
-					setState(338);
-					plus_operator();
-					}
-					break;
-				case T__21:
-					{
-					setState(339);
-					minus_operator();
-					}
-					break;
-				default:
-					throw new NoViableAltException(this);
-				}
-				setState(342);
+				setState(353);
+				add_operators();
+				setState(354);
 				multiply_expression();
 				}
 				}
-				setState(348);
+				setState(360);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
+			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class Add_operatorsContext extends ParserRuleContext {
+		public Plus_operatorContext plus_operator() {
+			return getRuleContext(Plus_operatorContext.class,0);
+		}
+		public Minus_operatorContext minus_operator() {
+			return getRuleContext(Minus_operatorContext.class,0);
+		}
+		public Add_operatorsContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_add_operators; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof MinamiKotoriListener ) ((MinamiKotoriListener)listener).enterAdd_operators(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof MinamiKotoriListener ) ((MinamiKotoriListener)listener).exitAdd_operators(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MinamiKotoriVisitor ) return ((MinamiKotoriVisitor<? extends T>)visitor).visitAdd_operators(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final Add_operatorsContext add_operators() throws RecognitionException {
+		Add_operatorsContext _localctx = new Add_operatorsContext(_ctx, getState());
+		enterRule(_localctx, 78, RULE_add_operators);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(363);
+			switch (_input.LA(1)) {
+			case T__20:
+				{
+				setState(361);
+				plus_operator();
+				}
+				break;
+			case T__21:
+				{
+				setState(362);
+				minus_operator();
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
 			}
 			}
 		}
@@ -2286,11 +2456,11 @@ public class MinamiKotoriParser extends Parser {
 
 	public final Plus_operatorContext plus_operator() throws RecognitionException {
 		Plus_operatorContext _localctx = new Plus_operatorContext(_ctx, getState());
-		enterRule(_localctx, 72, RULE_plus_operator);
+		enterRule(_localctx, 80, RULE_plus_operator);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(349);
+			setState(365);
 			match(T__20);
 			}
 		}
@@ -2327,11 +2497,11 @@ public class MinamiKotoriParser extends Parser {
 
 	public final Minus_operatorContext minus_operator() throws RecognitionException {
 		Minus_operatorContext _localctx = new Minus_operatorContext(_ctx, getState());
-		enterRule(_localctx, 74, RULE_minus_operator);
+		enterRule(_localctx, 82, RULE_minus_operator);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(351);
+			setState(367);
 			match(T__21);
 			}
 		}
@@ -2353,23 +2523,11 @@ public class MinamiKotoriParser extends Parser {
 		public Unary_expressionContext unary_expression(int i) {
 			return getRuleContext(Unary_expressionContext.class,i);
 		}
-		public List<Multiply_operatorContext> multiply_operator() {
-			return getRuleContexts(Multiply_operatorContext.class);
+		public List<Multiply_operatorsContext> multiply_operators() {
+			return getRuleContexts(Multiply_operatorsContext.class);
 		}
-		public Multiply_operatorContext multiply_operator(int i) {
-			return getRuleContext(Multiply_operatorContext.class,i);
-		}
-		public List<Divide_operatorContext> divide_operator() {
-			return getRuleContexts(Divide_operatorContext.class);
-		}
-		public Divide_operatorContext divide_operator(int i) {
-			return getRuleContext(Divide_operatorContext.class,i);
-		}
-		public List<Mod_operatorContext> mod_operator() {
-			return getRuleContexts(Mod_operatorContext.class);
-		}
-		public Mod_operatorContext mod_operator(int i) {
-			return getRuleContext(Mod_operatorContext.class,i);
+		public Multiply_operatorsContext multiply_operators(int i) {
+			return getRuleContext(Multiply_operatorsContext.class,i);
 		}
 		public Multiply_expressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -2392,49 +2550,99 @@ public class MinamiKotoriParser extends Parser {
 
 	public final Multiply_expressionContext multiply_expression() throws RecognitionException {
 		Multiply_expressionContext _localctx = new Multiply_expressionContext(_ctx, getState());
-		enterRule(_localctx, 76, RULE_multiply_expression);
+		enterRule(_localctx, 84, RULE_multiply_expression);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(353);
+			setState(369);
 			unary_expression();
-			setState(363);
+			setState(375);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__22) | (1L << T__23) | (1L << T__24))) != 0)) {
 				{
 				{
-				setState(357);
-				switch (_input.LA(1)) {
-				case T__22:
-					{
-					setState(354);
-					multiply_operator();
-					}
-					break;
-				case T__23:
-					{
-					setState(355);
-					divide_operator();
-					}
-					break;
-				case T__24:
-					{
-					setState(356);
-					mod_operator();
-					}
-					break;
-				default:
-					throw new NoViableAltException(this);
-				}
-				setState(359);
+				setState(370);
+				multiply_operators();
+				setState(371);
 				unary_expression();
 				}
 				}
-				setState(365);
+				setState(377);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
+			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class Multiply_operatorsContext extends ParserRuleContext {
+		public Multiply_operatorContext multiply_operator() {
+			return getRuleContext(Multiply_operatorContext.class,0);
+		}
+		public Divide_operatorContext divide_operator() {
+			return getRuleContext(Divide_operatorContext.class,0);
+		}
+		public Mod_operatorContext mod_operator() {
+			return getRuleContext(Mod_operatorContext.class,0);
+		}
+		public Multiply_operatorsContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_multiply_operators; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof MinamiKotoriListener ) ((MinamiKotoriListener)listener).enterMultiply_operators(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof MinamiKotoriListener ) ((MinamiKotoriListener)listener).exitMultiply_operators(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MinamiKotoriVisitor ) return ((MinamiKotoriVisitor<? extends T>)visitor).visitMultiply_operators(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final Multiply_operatorsContext multiply_operators() throws RecognitionException {
+		Multiply_operatorsContext _localctx = new Multiply_operatorsContext(_ctx, getState());
+		enterRule(_localctx, 86, RULE_multiply_operators);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(381);
+			switch (_input.LA(1)) {
+			case T__22:
+				{
+				setState(378);
+				multiply_operator();
+				}
+				break;
+			case T__23:
+				{
+				setState(379);
+				divide_operator();
+				}
+				break;
+			case T__24:
+				{
+				setState(380);
+				mod_operator();
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
 			}
 			}
 		}
@@ -2471,11 +2679,11 @@ public class MinamiKotoriParser extends Parser {
 
 	public final Multiply_operatorContext multiply_operator() throws RecognitionException {
 		Multiply_operatorContext _localctx = new Multiply_operatorContext(_ctx, getState());
-		enterRule(_localctx, 78, RULE_multiply_operator);
+		enterRule(_localctx, 88, RULE_multiply_operator);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(366);
+			setState(383);
 			match(T__22);
 			}
 		}
@@ -2512,11 +2720,11 @@ public class MinamiKotoriParser extends Parser {
 
 	public final Divide_operatorContext divide_operator() throws RecognitionException {
 		Divide_operatorContext _localctx = new Divide_operatorContext(_ctx, getState());
-		enterRule(_localctx, 80, RULE_divide_operator);
+		enterRule(_localctx, 90, RULE_divide_operator);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(368);
+			setState(385);
 			match(T__23);
 			}
 		}
@@ -2553,11 +2761,11 @@ public class MinamiKotoriParser extends Parser {
 
 	public final Mod_operatorContext mod_operator() throws RecognitionException {
 		Mod_operatorContext _localctx = new Mod_operatorContext(_ctx, getState());
-		enterRule(_localctx, 82, RULE_mod_operator);
+		enterRule(_localctx, 92, RULE_mod_operator);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(370);
+			setState(387);
 			match(T__24);
 			}
 		}
@@ -2615,52 +2823,52 @@ public class MinamiKotoriParser extends Parser {
 
 	public final Unary_expressionContext unary_expression() throws RecognitionException {
 		Unary_expressionContext _localctx = new Unary_expressionContext(_ctx, getState());
-		enterRule(_localctx, 84, RULE_unary_expression);
+		enterRule(_localctx, 94, RULE_unary_expression);
 		try {
-			setState(380);
+			setState(397);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,27,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(372);
+				setState(389);
 				postfix_expression();
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(373);
+				setState(390);
 				unary_operator();
-				setState(374);
+				setState(391);
 				unary_expression();
 				}
 				break;
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(376);
+				setState(393);
 				function_call_expression();
 				}
 				break;
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(377);
+				setState(394);
 				new_operation();
 				}
 				break;
 			case 5:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(378);
+				setState(395);
 				builtin_constant();
 				}
 				break;
 			case 6:
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(379);
+				setState(396);
 				integer_constant();
 				}
 				break;
@@ -2708,24 +2916,24 @@ public class MinamiKotoriParser extends Parser {
 
 	public final Postfix_expressionContext postfix_expression() throws RecognitionException {
 		Postfix_expressionContext _localctx = new Postfix_expressionContext(_ctx, getState());
-		enterRule(_localctx, 86, RULE_postfix_expression);
+		enterRule(_localctx, 96, RULE_postfix_expression);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(382);
+			setState(399);
 			primary_expression();
-			setState(386);
+			setState(403);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__25) | (1L << T__26) | (1L << T__27) | (1L << Left_square_bracket))) != 0)) {
 				{
 				{
-				setState(383);
+				setState(400);
 				postfix();
 				}
 				}
-				setState(388);
+				setState(405);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -2776,40 +2984,40 @@ public class MinamiKotoriParser extends Parser {
 
 	public final Primary_expressionContext primary_expression() throws RecognitionException {
 		Primary_expressionContext _localctx = new Primary_expressionContext(_ctx, getState());
-		enterRule(_localctx, 88, RULE_primary_expression);
+		enterRule(_localctx, 98, RULE_primary_expression);
 		try {
-			setState(396);
+			setState(413);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,29,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(389);
+				setState(406);
 				match(Identifier);
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(390);
+				setState(407);
 				constant();
 				}
 				break;
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(391);
+				setState(408);
 				match(Left_bracket);
-				setState(392);
+				setState(409);
 				expression();
-				setState(393);
+				setState(410);
 				match(Right_bracket);
 				}
 				break;
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(395);
+				setState(412);
 				function_call_expression();
 				}
 				break;
@@ -2854,22 +3062,22 @@ public class MinamiKotoriParser extends Parser {
 
 	public final ConstantContext constant() throws RecognitionException {
 		ConstantContext _localctx = new ConstantContext(_ctx, getState());
-		enterRule(_localctx, 90, RULE_constant);
+		enterRule(_localctx, 100, RULE_constant);
 		try {
-			setState(400);
+			setState(417);
 			switch (_input.LA(1)) {
 			case Sign:
 			case Decimal_constant:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(398);
+				setState(415);
 				integer_constant();
 				}
 				break;
 			case StringLiteral:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(399);
+				setState(416);
 				string_constant();
 				}
 				break;
@@ -2912,21 +3120,21 @@ public class MinamiKotoriParser extends Parser {
 
 	public final Integer_constantContext integer_constant() throws RecognitionException {
 		Integer_constantContext _localctx = new Integer_constantContext(_ctx, getState());
-		enterRule(_localctx, 92, RULE_integer_constant);
+		enterRule(_localctx, 102, RULE_integer_constant);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(403);
+			setState(420);
 			_la = _input.LA(1);
 			if (_la==Sign) {
 				{
-				setState(402);
+				setState(419);
 				match(Sign);
 				}
 			}
 
-			setState(405);
+			setState(422);
 			match(Decimal_constant);
 			}
 		}
@@ -2964,11 +3172,11 @@ public class MinamiKotoriParser extends Parser {
 
 	public final String_constantContext string_constant() throws RecognitionException {
 		String_constantContext _localctx = new String_constantContext(_ctx, getState());
-		enterRule(_localctx, 94, RULE_string_constant);
+		enterRule(_localctx, 104, RULE_string_constant);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(407);
+			setState(424);
 			match(StringLiteral);
 			}
 		}
@@ -3023,38 +3231,38 @@ public class MinamiKotoriParser extends Parser {
 
 	public final PostfixContext postfix() throws RecognitionException {
 		PostfixContext _localctx = new PostfixContext(_ctx, getState());
-		enterRule(_localctx, 96, RULE_postfix);
+		enterRule(_localctx, 106, RULE_postfix);
 		try {
-			setState(420);
+			setState(437);
 			switch (_input.LA(1)) {
 			case Left_square_bracket:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(409);
+				setState(426);
 				match(Left_square_bracket);
-				setState(410);
+				setState(427);
 				expression();
-				setState(411);
+				setState(428);
 				match(Right_square_bracket);
 				}
 				break;
 			case T__25:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(413);
+				setState(430);
 				get_member_operator();
-				setState(416);
+				setState(433);
 				_errHandler.sync(this);
 				switch ( getInterpreter().adaptivePredict(_input,32,_ctx) ) {
 				case 1:
 					{
-					setState(414);
+					setState(431);
 					match(Identifier);
 					}
 					break;
 				case 2:
 					{
-					setState(415);
+					setState(432);
 					function_call_expression();
 					}
 					break;
@@ -3064,14 +3272,14 @@ public class MinamiKotoriParser extends Parser {
 			case T__26:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(418);
+				setState(435);
 				plusplus_operator();
 				}
 				break;
 			case T__27:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(419);
+				setState(436);
 				minusminus_operator();
 				}
 				break;
@@ -3112,11 +3320,11 @@ public class MinamiKotoriParser extends Parser {
 
 	public final Get_member_operatorContext get_member_operator() throws RecognitionException {
 		Get_member_operatorContext _localctx = new Get_member_operatorContext(_ctx, getState());
-		enterRule(_localctx, 98, RULE_get_member_operator);
+		enterRule(_localctx, 108, RULE_get_member_operator);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(422);
+			setState(439);
 			match(T__25);
 			}
 		}
@@ -3153,11 +3361,11 @@ public class MinamiKotoriParser extends Parser {
 
 	public final Plusplus_operatorContext plusplus_operator() throws RecognitionException {
 		Plusplus_operatorContext _localctx = new Plusplus_operatorContext(_ctx, getState());
-		enterRule(_localctx, 100, RULE_plusplus_operator);
+		enterRule(_localctx, 110, RULE_plusplus_operator);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(424);
+			setState(441);
 			match(T__26);
 			}
 		}
@@ -3194,11 +3402,11 @@ public class MinamiKotoriParser extends Parser {
 
 	public final Minusminus_operatorContext minusminus_operator() throws RecognitionException {
 		Minusminus_operatorContext _localctx = new Minusminus_operatorContext(_ctx, getState());
-		enterRule(_localctx, 102, RULE_minusminus_operator);
+		enterRule(_localctx, 112, RULE_minusminus_operator);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(426);
+			setState(443);
 			match(T__27);
 			}
 		}
@@ -3250,42 +3458,42 @@ public class MinamiKotoriParser extends Parser {
 
 	public final Unary_operatorContext unary_operator() throws RecognitionException {
 		Unary_operatorContext _localctx = new Unary_operatorContext(_ctx, getState());
-		enterRule(_localctx, 104, RULE_unary_operator);
+		enterRule(_localctx, 114, RULE_unary_operator);
 		try {
-			setState(433);
+			setState(450);
 			switch (_input.LA(1)) {
 			case T__28:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(428);
+				setState(445);
 				not_sign_operator();
 				}
 				break;
 			case T__21:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(429);
+				setState(446);
 				minus_operator();
 				}
 				break;
 			case T__26:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(430);
+				setState(447);
 				plusplus_operator();
 				}
 				break;
 			case T__27:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(431);
+				setState(448);
 				minusminus_operator();
 				}
 				break;
 			case T__29:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(432);
+				setState(449);
 				bitwise_not_operator();
 				}
 				break;
@@ -3326,11 +3534,11 @@ public class MinamiKotoriParser extends Parser {
 
 	public final Not_sign_operatorContext not_sign_operator() throws RecognitionException {
 		Not_sign_operatorContext _localctx = new Not_sign_operatorContext(_ctx, getState());
-		enterRule(_localctx, 106, RULE_not_sign_operator);
+		enterRule(_localctx, 116, RULE_not_sign_operator);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(435);
+			setState(452);
 			match(T__28);
 			}
 		}
@@ -3367,11 +3575,11 @@ public class MinamiKotoriParser extends Parser {
 
 	public final Bitwise_not_operatorContext bitwise_not_operator() throws RecognitionException {
 		Bitwise_not_operatorContext _localctx = new Bitwise_not_operatorContext(_ctx, getState());
-		enterRule(_localctx, 108, RULE_bitwise_not_operator);
+		enterRule(_localctx, 118, RULE_bitwise_not_operator);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(437);
+			setState(454);
 			match(T__29);
 			}
 		}
@@ -3414,26 +3622,26 @@ public class MinamiKotoriParser extends Parser {
 
 	public final ExpressionContext expression() throws RecognitionException {
 		ExpressionContext _localctx = new ExpressionContext(_ctx, getState());
-		enterRule(_localctx, 110, RULE_expression);
+		enterRule(_localctx, 120, RULE_expression);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(439);
+			setState(456);
 			assignment_expression();
-			setState(444);
+			setState(461);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==T__30) {
 				{
 				{
-				setState(440);
+				setState(457);
 				match(T__30);
-				setState(441);
+				setState(458);
 				assignment_expression();
 				}
 				}
-				setState(446);
+				setState(463);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -3478,25 +3686,25 @@ public class MinamiKotoriParser extends Parser {
 
 	public final Function_call_expressionContext function_call_expression() throws RecognitionException {
 		Function_call_expressionContext _localctx = new Function_call_expressionContext(_ctx, getState());
-		enterRule(_localctx, 112, RULE_function_call_expression);
+		enterRule(_localctx, 122, RULE_function_call_expression);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(447);
+			setState(464);
 			match(Identifier);
-			setState(448);
+			setState(465);
 			match(Left_bracket);
-			setState(450);
+			setState(467);
 			_la = _input.LA(1);
 			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__21) | (1L << T__26) | (1L << T__27) | (1L << T__28) | (1L << T__29) | (1L << T__31) | (1L << T__32) | (1L << T__33) | (1L << StringLiteral) | (1L << Sign) | (1L << Decimal_constant) | (1L << New) | (1L << Left_bracket) | (1L << Identifier))) != 0)) {
 				{
-				setState(449);
+				setState(466);
 				arguments();
 				}
 			}
 
-			setState(452);
+			setState(469);
 			match(Right_bracket);
 			}
 		}
@@ -3539,26 +3747,26 @@ public class MinamiKotoriParser extends Parser {
 
 	public final ArgumentsContext arguments() throws RecognitionException {
 		ArgumentsContext _localctx = new ArgumentsContext(_ctx, getState());
-		enterRule(_localctx, 114, RULE_arguments);
+		enterRule(_localctx, 124, RULE_arguments);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(454);
+			setState(471);
 			assignment_expression();
-			setState(459);
+			setState(476);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==T__30) {
 				{
 				{
-				setState(455);
+				setState(472);
 				match(T__30);
-				setState(456);
+				setState(473);
 				assignment_expression();
 				}
 				}
-				setState(461);
+				setState(478);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -3604,24 +3812,24 @@ public class MinamiKotoriParser extends Parser {
 
 	public final New_operationContext new_operation() throws RecognitionException {
 		New_operationContext _localctx = new New_operationContext(_ctx, getState());
-		enterRule(_localctx, 116, RULE_new_operation);
+		enterRule(_localctx, 126, RULE_new_operation);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(462);
+			setState(479);
 			match(New);
-			setState(465);
+			setState(482);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,38,_ctx) ) {
 			case 1:
 				{
-				setState(463);
+				setState(480);
 				array_new_type();
 				}
 				break;
 			case 2:
 				{
-				setState(464);
+				setState(481);
 				class_new_type();
 				}
 				break;
@@ -3678,15 +3886,15 @@ public class MinamiKotoriParser extends Parser {
 
 	public final Array_new_typeContext array_new_type() throws RecognitionException {
 		Array_new_typeContext _localctx = new Array_new_typeContext(_ctx, getState());
-		enterRule(_localctx, 118, RULE_array_new_type);
+		enterRule(_localctx, 128, RULE_array_new_type);
 		int _la;
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(467);
+			setState(484);
 			non_array_type();
-			setState(472); 
+			setState(489); 
 			_errHandler.sync(this);
 			_alt = 1;
 			do {
@@ -3694,11 +3902,11 @@ public class MinamiKotoriParser extends Parser {
 				case 1:
 					{
 					{
-					setState(468);
+					setState(485);
 					match(Left_square_bracket);
-					setState(469);
+					setState(486);
 					expression();
-					setState(470);
+					setState(487);
 					match(Right_square_bracket);
 					}
 					}
@@ -3706,23 +3914,23 @@ public class MinamiKotoriParser extends Parser {
 				default:
 					throw new NoViableAltException(this);
 				}
-				setState(474); 
+				setState(491); 
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,39,_ctx);
 			} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
-			setState(480);
+			setState(497);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==Left_square_bracket) {
 				{
 				{
-				setState(476);
+				setState(493);
 				match(Left_square_bracket);
-				setState(477);
+				setState(494);
 				match(Right_square_bracket);
 				}
 				}
-				setState(482);
+				setState(499);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -3762,11 +3970,11 @@ public class MinamiKotoriParser extends Parser {
 
 	public final Class_new_typeContext class_new_type() throws RecognitionException {
 		Class_new_typeContext _localctx = new Class_new_typeContext(_ctx, getState());
-		enterRule(_localctx, 120, RULE_class_new_type);
+		enterRule(_localctx, 130, RULE_class_new_type);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(483);
+			setState(500);
 			match(Identifier);
 			}
 		}
@@ -3803,12 +4011,12 @@ public class MinamiKotoriParser extends Parser {
 
 	public final Builtin_constantContext builtin_constant() throws RecognitionException {
 		Builtin_constantContext _localctx = new Builtin_constantContext(_ctx, getState());
-		enterRule(_localctx, 122, RULE_builtin_constant);
+		enterRule(_localctx, 132, RULE_builtin_constant);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(485);
+			setState(502);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__31) | (1L << T__32) | (1L << T__33))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -3840,17 +4048,11 @@ public class MinamiKotoriParser extends Parser {
 		public Parameter_listContext parameter_list() {
 			return getRuleContext(Parameter_listContext.class,0);
 		}
-		public List<StatementContext> statement() {
-			return getRuleContexts(StatementContext.class);
+		public List<Base_statementContext> base_statement() {
+			return getRuleContexts(Base_statementContext.class);
 		}
-		public StatementContext statement(int i) {
-			return getRuleContext(StatementContext.class,i);
-		}
-		public List<DeclarationContext> declaration() {
-			return getRuleContexts(DeclarationContext.class);
-		}
-		public DeclarationContext declaration(int i) {
-			return getRuleContext(DeclarationContext.class,i);
+		public Base_statementContext base_statement(int i) {
+			return getRuleContext(Base_statementContext.class,i);
 		}
 		public Function_definitionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -3873,58 +4075,106 @@ public class MinamiKotoriParser extends Parser {
 
 	public final Function_definitionContext function_definition() throws RecognitionException {
 		Function_definitionContext _localctx = new Function_definitionContext(_ctx, getState());
-		enterRule(_localctx, 124, RULE_function_definition);
+		enterRule(_localctx, 134, RULE_function_definition);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(487);
+			setState(504);
 			type();
-			setState(488);
+			setState(505);
 			match(Identifier);
-			setState(489);
+			setState(506);
 			match(Left_bracket);
-			setState(491);
+			setState(508);
 			_la = _input.LA(1);
 			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << T__2) | (1L << T__3) | (1L << T__4) | (1L << T__5) | (1L << Identifier))) != 0)) {
 				{
-				setState(490);
+				setState(507);
 				parameter_list();
 				}
 			}
 
-			setState(493);
+			setState(510);
 			match(Right_bracket);
-			setState(494);
+			setState(511);
 			match(Left_brace);
-			setState(499);
+			setState(515);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << T__2) | (1L << T__3) | (1L << T__4) | (1L << T__5) | (1L << T__21) | (1L << T__26) | (1L << T__27) | (1L << T__28) | (1L << T__29) | (1L << T__31) | (1L << T__32) | (1L << T__33) | (1L << StringLiteral) | (1L << Sign) | (1L << Decimal_constant) | (1L << New) | (1L << For) | (1L << While) | (1L << If) | (1L << Return) | (1L << Break) | (1L << Continue) | (1L << Left_bracket) | (1L << Left_brace) | (1L << Identifier))) != 0)) {
 				{
-				setState(497);
-				_errHandler.sync(this);
-				switch ( getInterpreter().adaptivePredict(_input,42,_ctx) ) {
-				case 1:
-					{
-					setState(495);
-					statement();
-					}
-					break;
-				case 2:
-					{
-					setState(496);
-					declaration();
-					}
-					break;
+				{
+				setState(512);
+				base_statement();
 				}
 				}
-				setState(501);
+				setState(517);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(502);
+			setState(518);
 			match(Right_brace);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class Base_statementContext extends ParserRuleContext {
+		public DeclarationContext declaration() {
+			return getRuleContext(DeclarationContext.class,0);
+		}
+		public StatementContext statement() {
+			return getRuleContext(StatementContext.class,0);
+		}
+		public Base_statementContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_base_statement; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof MinamiKotoriListener ) ((MinamiKotoriListener)listener).enterBase_statement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof MinamiKotoriListener ) ((MinamiKotoriListener)listener).exitBase_statement(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MinamiKotoriVisitor ) return ((MinamiKotoriVisitor<? extends T>)visitor).visitBase_statement(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final Base_statementContext base_statement() throws RecognitionException {
+		Base_statementContext _localctx = new Base_statementContext(_ctx, getState());
+		enterRule(_localctx, 136, RULE_base_statement);
+		try {
+			setState(522);
+			_errHandler.sync(this);
+			switch ( getInterpreter().adaptivePredict(_input,43,_ctx) ) {
+			case 1:
+				enterOuterAlt(_localctx, 1);
+				{
+				setState(520);
+				declaration();
+				}
+				break;
+			case 2:
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(521);
+				statement();
+				}
+				break;
 			}
 		}
 		catch (RecognitionException re) {
@@ -3966,26 +4216,26 @@ public class MinamiKotoriParser extends Parser {
 
 	public final Parameter_listContext parameter_list() throws RecognitionException {
 		Parameter_listContext _localctx = new Parameter_listContext(_ctx, getState());
-		enterRule(_localctx, 126, RULE_parameter_list);
+		enterRule(_localctx, 138, RULE_parameter_list);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(504);
+			setState(524);
 			parameter();
-			setState(509);
+			setState(529);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==T__30) {
 				{
 				{
-				setState(505);
+				setState(525);
 				match(T__30);
-				setState(506);
+				setState(526);
 				parameter();
 				}
 				}
-				setState(511);
+				setState(531);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -4030,13 +4280,13 @@ public class MinamiKotoriParser extends Parser {
 
 	public final ParameterContext parameter() throws RecognitionException {
 		ParameterContext _localctx = new ParameterContext(_ctx, getState());
-		enterRule(_localctx, 128, RULE_parameter);
+		enterRule(_localctx, 140, RULE_parameter);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(512);
+			setState(532);
 			type();
-			setState(513);
+			setState(533);
 			declarator();
 			}
 		}
@@ -4088,43 +4338,43 @@ public class MinamiKotoriParser extends Parser {
 
 	public final StatementContext statement() throws RecognitionException {
 		StatementContext _localctx = new StatementContext(_ctx, getState());
-		enterRule(_localctx, 130, RULE_statement);
+		enterRule(_localctx, 142, RULE_statement);
 		try {
-			setState(520);
+			setState(540);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,45,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(515);
+				setState(535);
 				assignment_statement();
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(516);
+				setState(536);
 				compound_statement();
 				}
 				break;
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(517);
+				setState(537);
 				loop_statement();
 				}
 				break;
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(518);
+				setState(538);
 				branch_statement();
 				}
 				break;
 			case 5:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(519);
+				setState(539);
 				declaration();
 				}
 				break;
@@ -4166,13 +4416,13 @@ public class MinamiKotoriParser extends Parser {
 
 	public final Assignment_statementContext assignment_statement() throws RecognitionException {
 		Assignment_statementContext _localctx = new Assignment_statementContext(_ctx, getState());
-		enterRule(_localctx, 132, RULE_assignment_statement);
+		enterRule(_localctx, 144, RULE_assignment_statement);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(522);
+			setState(542);
 			expression();
-			setState(523);
+			setState(543);
 			match(T__0);
 			}
 		}
@@ -4190,17 +4440,11 @@ public class MinamiKotoriParser extends Parser {
 	public static class Compound_statementContext extends ParserRuleContext {
 		public TerminalNode Left_brace() { return getToken(MinamiKotoriParser.Left_brace, 0); }
 		public TerminalNode Right_brace() { return getToken(MinamiKotoriParser.Right_brace, 0); }
-		public List<DeclarationContext> declaration() {
-			return getRuleContexts(DeclarationContext.class);
+		public List<Base_statementContext> base_statement() {
+			return getRuleContexts(Base_statementContext.class);
 		}
-		public DeclarationContext declaration(int i) {
-			return getRuleContext(DeclarationContext.class,i);
-		}
-		public List<StatementContext> statement() {
-			return getRuleContexts(StatementContext.class);
-		}
-		public StatementContext statement(int i) {
-			return getRuleContext(StatementContext.class,i);
+		public Base_statementContext base_statement(int i) {
+			return getRuleContext(Base_statementContext.class,i);
 		}
 		public Compound_statementContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -4223,40 +4467,28 @@ public class MinamiKotoriParser extends Parser {
 
 	public final Compound_statementContext compound_statement() throws RecognitionException {
 		Compound_statementContext _localctx = new Compound_statementContext(_ctx, getState());
-		enterRule(_localctx, 134, RULE_compound_statement);
+		enterRule(_localctx, 146, RULE_compound_statement);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(525);
+			setState(545);
 			match(Left_brace);
-			setState(530);
+			setState(549);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << T__2) | (1L << T__3) | (1L << T__4) | (1L << T__5) | (1L << T__21) | (1L << T__26) | (1L << T__27) | (1L << T__28) | (1L << T__29) | (1L << T__31) | (1L << T__32) | (1L << T__33) | (1L << StringLiteral) | (1L << Sign) | (1L << Decimal_constant) | (1L << New) | (1L << For) | (1L << While) | (1L << If) | (1L << Return) | (1L << Break) | (1L << Continue) | (1L << Left_bracket) | (1L << Left_brace) | (1L << Identifier))) != 0)) {
 				{
-				setState(528);
-				_errHandler.sync(this);
-				switch ( getInterpreter().adaptivePredict(_input,46,_ctx) ) {
-				case 1:
-					{
-					setState(526);
-					declaration();
-					}
-					break;
-				case 2:
-					{
-					setState(527);
-					statement();
-					}
-					break;
+				{
+				setState(546);
+				base_statement();
 				}
 				}
-				setState(532);
+				setState(551);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(533);
+			setState(552);
 			match(Right_brace);
 			}
 		}
@@ -4299,21 +4531,21 @@ public class MinamiKotoriParser extends Parser {
 
 	public final Loop_statementContext loop_statement() throws RecognitionException {
 		Loop_statementContext _localctx = new Loop_statementContext(_ctx, getState());
-		enterRule(_localctx, 136, RULE_loop_statement);
+		enterRule(_localctx, 148, RULE_loop_statement);
 		try {
-			setState(537);
+			setState(556);
 			switch (_input.LA(1)) {
 			case For:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(535);
+				setState(554);
 				for_loop_statement();
 				}
 				break;
 			case While:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(536);
+				setState(555);
 				while_loop_statement();
 				}
 				break;
@@ -4369,49 +4601,49 @@ public class MinamiKotoriParser extends Parser {
 
 	public final For_loop_statementContext for_loop_statement() throws RecognitionException {
 		For_loop_statementContext _localctx = new For_loop_statementContext(_ctx, getState());
-		enterRule(_localctx, 138, RULE_for_loop_statement);
+		enterRule(_localctx, 150, RULE_for_loop_statement);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(539);
+			setState(558);
 			match(For);
-			setState(540);
+			setState(559);
 			match(Left_bracket);
-			setState(542);
+			setState(561);
 			_la = _input.LA(1);
 			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__21) | (1L << T__26) | (1L << T__27) | (1L << T__28) | (1L << T__29) | (1L << T__31) | (1L << T__32) | (1L << T__33) | (1L << StringLiteral) | (1L << Sign) | (1L << Decimal_constant) | (1L << New) | (1L << Left_bracket) | (1L << Identifier))) != 0)) {
 				{
-				setState(541);
+				setState(560);
 				the_first_for_expression();
 				}
 			}
 
-			setState(544);
+			setState(563);
 			match(T__0);
-			setState(546);
+			setState(565);
 			_la = _input.LA(1);
 			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__21) | (1L << T__26) | (1L << T__27) | (1L << T__28) | (1L << T__29) | (1L << T__31) | (1L << T__32) | (1L << T__33) | (1L << StringLiteral) | (1L << Sign) | (1L << Decimal_constant) | (1L << New) | (1L << Left_bracket) | (1L << Identifier))) != 0)) {
 				{
-				setState(545);
+				setState(564);
 				the_second_for_expression();
 				}
 			}
 
-			setState(548);
+			setState(567);
 			match(T__0);
-			setState(550);
+			setState(569);
 			_la = _input.LA(1);
 			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__21) | (1L << T__26) | (1L << T__27) | (1L << T__28) | (1L << T__29) | (1L << T__31) | (1L << T__32) | (1L << T__33) | (1L << StringLiteral) | (1L << Sign) | (1L << Decimal_constant) | (1L << New) | (1L << Left_bracket) | (1L << Identifier))) != 0)) {
 				{
-				setState(549);
+				setState(568);
 				the_third_for_expression();
 				}
 			}
 
-			setState(552);
+			setState(571);
 			match(Right_bracket);
-			setState(553);
+			setState(572);
 			statement();
 			}
 		}
@@ -4451,11 +4683,11 @@ public class MinamiKotoriParser extends Parser {
 
 	public final The_first_for_expressionContext the_first_for_expression() throws RecognitionException {
 		The_first_for_expressionContext _localctx = new The_first_for_expressionContext(_ctx, getState());
-		enterRule(_localctx, 140, RULE_the_first_for_expression);
+		enterRule(_localctx, 152, RULE_the_first_for_expression);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(555);
+			setState(574);
 			expression();
 			}
 		}
@@ -4495,11 +4727,11 @@ public class MinamiKotoriParser extends Parser {
 
 	public final The_second_for_expressionContext the_second_for_expression() throws RecognitionException {
 		The_second_for_expressionContext _localctx = new The_second_for_expressionContext(_ctx, getState());
-		enterRule(_localctx, 142, RULE_the_second_for_expression);
+		enterRule(_localctx, 154, RULE_the_second_for_expression);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(557);
+			setState(576);
 			expression();
 			}
 		}
@@ -4539,11 +4771,11 @@ public class MinamiKotoriParser extends Parser {
 
 	public final The_third_for_expressionContext the_third_for_expression() throws RecognitionException {
 		The_third_for_expressionContext _localctx = new The_third_for_expressionContext(_ctx, getState());
-		enterRule(_localctx, 144, RULE_the_third_for_expression);
+		enterRule(_localctx, 156, RULE_the_third_for_expression);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(559);
+			setState(578);
 			expression();
 			}
 		}
@@ -4589,19 +4821,19 @@ public class MinamiKotoriParser extends Parser {
 
 	public final While_loop_statementContext while_loop_statement() throws RecognitionException {
 		While_loop_statementContext _localctx = new While_loop_statementContext(_ctx, getState());
-		enterRule(_localctx, 146, RULE_while_loop_statement);
+		enterRule(_localctx, 158, RULE_while_loop_statement);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(561);
+			setState(580);
 			match(While);
-			setState(562);
+			setState(581);
 			match(Left_bracket);
-			setState(563);
+			setState(582);
 			expression();
-			setState(564);
+			setState(583);
 			match(Right_bracket);
-			setState(565);
+			setState(584);
 			statement();
 			}
 		}
@@ -4647,51 +4879,51 @@ public class MinamiKotoriParser extends Parser {
 
 	public final Branch_statementContext branch_statement() throws RecognitionException {
 		Branch_statementContext _localctx = new Branch_statementContext(_ctx, getState());
-		enterRule(_localctx, 148, RULE_branch_statement);
+		enterRule(_localctx, 160, RULE_branch_statement);
 		int _la;
 		try {
-			setState(577);
+			setState(596);
 			switch (_input.LA(1)) {
 			case If:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(567);
+				setState(586);
 				if_statement();
 				}
 				break;
 			case Return:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(568);
+				setState(587);
 				match(Return);
-				setState(570);
+				setState(589);
 				_la = _input.LA(1);
 				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__21) | (1L << T__26) | (1L << T__27) | (1L << T__28) | (1L << T__29) | (1L << T__31) | (1L << T__32) | (1L << T__33) | (1L << StringLiteral) | (1L << Sign) | (1L << Decimal_constant) | (1L << New) | (1L << Left_bracket) | (1L << Identifier))) != 0)) {
 					{
-					setState(569);
+					setState(588);
 					expression();
 					}
 				}
 
-				setState(572);
+				setState(591);
 				match(T__0);
 				}
 				break;
 			case Break:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(573);
+				setState(592);
 				match(Break);
-				setState(574);
+				setState(593);
 				match(T__0);
 				}
 				break;
 			case Continue:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(575);
+				setState(594);
 				match(Continue);
-				setState(576);
+				setState(595);
 				match(T__0);
 				}
 				break;
@@ -4745,28 +4977,28 @@ public class MinamiKotoriParser extends Parser {
 
 	public final If_statementContext if_statement() throws RecognitionException {
 		If_statementContext _localctx = new If_statementContext(_ctx, getState());
-		enterRule(_localctx, 150, RULE_if_statement);
+		enterRule(_localctx, 162, RULE_if_statement);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(579);
+			setState(598);
 			match(If);
-			setState(580);
+			setState(599);
 			match(Left_bracket);
-			setState(581);
+			setState(600);
 			expression();
-			setState(582);
+			setState(601);
 			match(Right_bracket);
-			setState(583);
+			setState(602);
 			statement();
-			setState(586);
+			setState(605);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,54,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,53,_ctx) ) {
 			case 1:
 				{
-				setState(584);
+				setState(603);
 				match(Else);
-				setState(585);
+				setState(604);
 				statement();
 				}
 				break;
@@ -4785,7 +5017,7 @@ public class MinamiKotoriParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3:\u024f\4\2\t\2\4"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3:\u0262\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
 		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
 		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31\t\31"+
@@ -4794,204 +5026,209 @@ public class MinamiKotoriParser extends Parser {
 		",\t,\4-\t-\4.\t.\4/\t/\4\60\t\60\4\61\t\61\4\62\t\62\4\63\t\63\4\64\t"+
 		"\64\4\65\t\65\4\66\t\66\4\67\t\67\48\t8\49\t9\4:\t:\4;\t;\4<\t<\4=\t="+
 		"\4>\t>\4?\t?\4@\t@\4A\tA\4B\tB\4C\tC\4D\tD\4E\tE\4F\tF\4G\tG\4H\tH\4I"+
-		"\tI\4J\tJ\4K\tK\4L\tL\4M\tM\3\2\3\2\7\2\u009d\n\2\f\2\16\2\u00a0\13\2"+
-		"\3\2\3\2\3\2\7\2\u00a5\n\2\f\2\16\2\u00a8\13\2\3\3\3\3\5\3\u00ac\n\3\3"+
-		"\4\3\4\3\4\3\4\3\5\3\5\5\5\u00b4\n\5\3\6\3\6\5\6\u00b8\n\6\3\7\3\7\5\7"+
-		"\u00bc\n\7\3\b\3\b\3\b\3\b\3\b\3\b\3\b\7\b\u00c5\n\b\f\b\16\b\u00c8\13"+
-		"\b\3\b\3\b\3\t\3\t\3\t\6\t\u00cf\n\t\r\t\16\t\u00d0\3\n\3\n\3\n\5\n\u00d6"+
-		"\n\n\3\13\3\13\3\f\3\f\3\r\3\r\3\r\7\r\u00df\n\r\f\r\16\r\u00e2\13\r\3"+
-		"\r\3\r\3\16\3\16\3\17\3\17\3\20\3\20\3\20\3\20\7\20\u00ee\n\20\f\20\16"+
-		"\20\u00f1\13\20\3\21\3\21\3\22\3\22\3\22\3\22\7\22\u00f9\n\22\f\22\16"+
-		"\22\u00fc\13\22\3\23\3\23\3\24\3\24\3\24\3\24\7\24\u0104\n\24\f\24\16"+
-		"\24\u0107\13\24\3\25\3\25\3\26\3\26\3\26\3\26\7\26\u010f\n\26\f\26\16"+
-		"\26\u0112\13\26\3\27\3\27\3\30\3\30\3\30\3\30\7\30\u011a\n\30\f\30\16"+
-		"\30\u011d\13\30\3\31\3\31\3\32\3\32\3\32\5\32\u0124\n\32\3\32\3\32\7\32"+
-		"\u0128\n\32\f\32\16\32\u012b\13\32\3\33\3\33\3\34\3\34\3\35\3\35\3\35"+
-		"\3\35\3\35\5\35\u0136\n\35\3\35\3\35\5\35\u013a\n\35\3\36\3\36\3\37\3"+
-		"\37\3 \3 \3!\3!\3\"\3\"\3\"\5\"\u0147\n\"\3\"\3\"\7\"\u014b\n\"\f\"\16"+
-		"\"\u014e\13\"\3#\3#\3$\3$\3%\3%\3%\5%\u0157\n%\3%\3%\7%\u015b\n%\f%\16"+
-		"%\u015e\13%\3&\3&\3\'\3\'\3(\3(\3(\3(\5(\u0168\n(\3(\3(\7(\u016c\n(\f"+
-		"(\16(\u016f\13(\3)\3)\3*\3*\3+\3+\3,\3,\3,\3,\3,\3,\3,\3,\5,\u017f\n,"+
-		"\3-\3-\7-\u0183\n-\f-\16-\u0186\13-\3.\3.\3.\3.\3.\3.\3.\5.\u018f\n.\3"+
-		"/\3/\5/\u0193\n/\3\60\5\60\u0196\n\60\3\60\3\60\3\61\3\61\3\62\3\62\3"+
-		"\62\3\62\3\62\3\62\3\62\5\62\u01a3\n\62\3\62\3\62\5\62\u01a7\n\62\3\63"+
-		"\3\63\3\64\3\64\3\65\3\65\3\66\3\66\3\66\3\66\3\66\5\66\u01b4\n\66\3\67"+
-		"\3\67\38\38\39\39\39\79\u01bd\n9\f9\169\u01c0\139\3:\3:\3:\5:\u01c5\n"+
-		":\3:\3:\3;\3;\3;\7;\u01cc\n;\f;\16;\u01cf\13;\3<\3<\3<\5<\u01d4\n<\3="+
-		"\3=\3=\3=\3=\6=\u01db\n=\r=\16=\u01dc\3=\3=\7=\u01e1\n=\f=\16=\u01e4\13"+
-		"=\3>\3>\3?\3?\3@\3@\3@\3@\5@\u01ee\n@\3@\3@\3@\3@\7@\u01f4\n@\f@\16@\u01f7"+
-		"\13@\3@\3@\3A\3A\3A\7A\u01fe\nA\fA\16A\u0201\13A\3B\3B\3B\3C\3C\3C\3C"+
-		"\3C\5C\u020b\nC\3D\3D\3D\3E\3E\3E\7E\u0213\nE\fE\16E\u0216\13E\3E\3E\3"+
-		"F\3F\5F\u021c\nF\3G\3G\3G\5G\u0221\nG\3G\3G\5G\u0225\nG\3G\3G\5G\u0229"+
-		"\nG\3G\3G\3G\3H\3H\3I\3I\3J\3J\3K\3K\3K\3K\3K\3K\3L\3L\3L\5L\u023d\nL"+
-		"\3L\3L\3L\3L\3L\5L\u0244\nL\3M\3M\3M\3M\3M\3M\3M\5M\u024d\nM\3M\2\2N\2"+
-		"\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&(*,.\60\62\64\668:<>@BDFHJL"+
-		"NPRTVXZ\\^`bdfhjlnprtvxz|~\u0080\u0082\u0084\u0086\u0088\u008a\u008c\u008e"+
-		"\u0090\u0092\u0094\u0096\u0098\2\4\3\2\4\7\3\2\"$\u024c\2\u009e\3\2\2"+
-		"\2\4\u00ab\3\2\2\2\6\u00ad\3\2\2\2\b\u00b3\3\2\2\2\n\u00b7\3\2\2\2\f\u00bb"+
-		"\3\2\2\2\16\u00bd\3\2\2\2\20\u00cb\3\2\2\2\22\u00d2\3\2\2\2\24\u00d7\3"+
-		"\2\2\2\26\u00d9\3\2\2\2\30\u00e0\3\2\2\2\32\u00e5\3\2\2\2\34\u00e7\3\2"+
-		"\2\2\36\u00e9\3\2\2\2 \u00f2\3\2\2\2\"\u00f4\3\2\2\2$\u00fd\3\2\2\2&\u00ff"+
-		"\3\2\2\2(\u0108\3\2\2\2*\u010a\3\2\2\2,\u0113\3\2\2\2.\u0115\3\2\2\2\60"+
-		"\u011e\3\2\2\2\62\u0120\3\2\2\2\64\u012c\3\2\2\2\66\u012e\3\2\2\28\u0130"+
-		"\3\2\2\2:\u013b\3\2\2\2<\u013d\3\2\2\2>\u013f\3\2\2\2@\u0141\3\2\2\2B"+
-		"\u0143\3\2\2\2D\u014f\3\2\2\2F\u0151\3\2\2\2H\u0153\3\2\2\2J\u015f\3\2"+
-		"\2\2L\u0161\3\2\2\2N\u0163\3\2\2\2P\u0170\3\2\2\2R\u0172\3\2\2\2T\u0174"+
-		"\3\2\2\2V\u017e\3\2\2\2X\u0180\3\2\2\2Z\u018e\3\2\2\2\\\u0192\3\2\2\2"+
-		"^\u0195\3\2\2\2`\u0199\3\2\2\2b\u01a6\3\2\2\2d\u01a8\3\2\2\2f\u01aa\3"+
-		"\2\2\2h\u01ac\3\2\2\2j\u01b3\3\2\2\2l\u01b5\3\2\2\2n\u01b7\3\2\2\2p\u01b9"+
-		"\3\2\2\2r\u01c1\3\2\2\2t\u01c8\3\2\2\2v\u01d0\3\2\2\2x\u01d5\3\2\2\2z"+
-		"\u01e5\3\2\2\2|\u01e7\3\2\2\2~\u01e9\3\2\2\2\u0080\u01fa\3\2\2\2\u0082"+
-		"\u0202\3\2\2\2\u0084\u020a\3\2\2\2\u0086\u020c\3\2\2\2\u0088\u020f\3\2"+
-		"\2\2\u008a\u021b\3\2\2\2\u008c\u021d\3\2\2\2\u008e\u022d\3\2\2\2\u0090"+
-		"\u022f\3\2\2\2\u0092\u0231\3\2\2\2\u0094\u0233\3\2\2\2\u0096\u0243\3\2"+
-		"\2\2\u0098\u0245\3\2\2\2\u009a\u009d\5~@\2\u009b\u009d\5\4\3\2\u009c\u009a"+
-		"\3\2\2\2\u009c\u009b\3\2\2\2\u009d\u00a0\3\2\2\2\u009e\u009c\3\2\2\2\u009e"+
-		"\u009f\3\2\2\2\u009f\u00a1\3\2\2\2\u00a0\u009e\3\2\2\2\u00a1\u00a6\5~"+
-		"@\2\u00a2\u00a5\5~@\2\u00a3\u00a5\5\4\3\2\u00a4\u00a2\3\2\2\2\u00a4\u00a3"+
-		"\3\2\2\2\u00a5\u00a8\3\2\2\2\u00a6\u00a4\3\2\2\2\u00a6\u00a7\3\2\2\2\u00a7"+
-		"\3\3\2\2\2\u00a8\u00a6\3\2\2\2\u00a9\u00ac\5\6\4\2\u00aa\u00ac\5\16\b"+
-		"\2\u00ab\u00a9\3\2\2\2\u00ab\u00aa\3\2\2\2\u00ac\5\3\2\2\2\u00ad\u00ae"+
-		"\5\b\5\2\u00ae\u00af\5\22\n\2\u00af\u00b0\7\3\2\2\u00b0\7\3\2\2\2\u00b1"+
-		"\u00b4\5\n\6\2\u00b2\u00b4\5\20\t\2\u00b3\u00b1\3\2\2\2\u00b3\u00b2\3"+
-		"\2\2\2\u00b4\t\3\2\2\2\u00b5\u00b8\5\f\7\2\u00b6\u00b8\5\16\b\2\u00b7"+
-		"\u00b5\3\2\2\2\u00b7\u00b6\3\2\2\2\u00b8\13\3\2\2\2\u00b9\u00bc\t\2\2"+
-		"\2\u00ba\u00bc\7\67\2\2\u00bb\u00b9\3\2\2\2\u00bb\u00ba\3\2\2\2\u00bc"+
-		"\r\3\2\2\2\u00bd\u00be\7\b\2\2\u00be\u00bf\7\67\2\2\u00bf\u00c6\7\64\2"+
-		"\2\u00c0\u00c1\5\b\5\2\u00c1\u00c2\5\24\13\2\u00c2\u00c3\7\3\2\2\u00c3"+
-		"\u00c5\3\2\2\2\u00c4\u00c0\3\2\2\2\u00c5\u00c8\3\2\2\2\u00c6\u00c4\3\2"+
-		"\2\2\u00c6\u00c7\3\2\2\2\u00c7\u00c9\3\2\2\2\u00c8\u00c6\3\2\2\2\u00c9"+
-		"\u00ca\7\65\2\2\u00ca\17\3\2\2\2\u00cb\u00ce\5\n\6\2\u00cc\u00cd\7\62"+
-		"\2\2\u00cd\u00cf\7\63\2\2\u00ce\u00cc\3\2\2\2\u00cf\u00d0\3\2\2\2\u00d0"+
-		"\u00ce\3\2\2\2\u00d0\u00d1\3\2\2\2\u00d1\21\3\2\2\2\u00d2\u00d5\5\24\13"+
-		"\2\u00d3\u00d4\7\t\2\2\u00d4\u00d6\5\26\f\2\u00d5\u00d3\3\2\2\2\u00d5"+
-		"\u00d6\3\2\2\2\u00d6\23\3\2\2\2\u00d7\u00d8\7\67\2\2\u00d8\25\3\2\2\2"+
-		"\u00d9\u00da\5\30\r\2\u00da\27\3\2\2\2\u00db\u00dc\5V,\2\u00dc\u00dd\5"+
-		"\32\16\2\u00dd\u00df\3\2\2\2\u00de\u00db\3\2\2\2\u00df\u00e2\3\2\2\2\u00e0"+
-		"\u00de\3\2\2\2\u00e0\u00e1\3\2\2\2\u00e1\u00e3\3\2\2\2\u00e2\u00e0\3\2"+
-		"\2\2\u00e3\u00e4\5\34\17\2\u00e4\31\3\2\2\2\u00e5\u00e6\7\t\2\2\u00e6"+
-		"\33\3\2\2\2\u00e7\u00e8\5\36\20\2\u00e8\35\3\2\2\2\u00e9\u00ef\5\"\22"+
-		"\2\u00ea\u00eb\5 \21\2\u00eb\u00ec\5\"\22\2\u00ec\u00ee\3\2\2\2\u00ed"+
-		"\u00ea\3\2\2\2\u00ee\u00f1\3\2\2\2\u00ef\u00ed\3\2\2\2\u00ef\u00f0\3\2"+
-		"\2\2\u00f0\37\3\2\2\2\u00f1\u00ef\3\2\2\2\u00f2\u00f3\7\n\2\2\u00f3!\3"+
-		"\2\2\2\u00f4\u00fa\5&\24\2\u00f5\u00f6\5$\23\2\u00f6\u00f7\5&\24\2\u00f7"+
-		"\u00f9\3\2\2\2\u00f8\u00f5\3\2\2\2\u00f9\u00fc\3\2\2\2\u00fa\u00f8\3\2"+
-		"\2\2\u00fa\u00fb\3\2\2\2\u00fb#\3\2\2\2\u00fc\u00fa\3\2\2\2\u00fd\u00fe"+
-		"\7\13\2\2\u00fe%\3\2\2\2\u00ff\u0105\5*\26\2\u0100\u0101\5(\25\2\u0101"+
-		"\u0102\5*\26\2\u0102\u0104\3\2\2\2\u0103\u0100\3\2\2\2\u0104\u0107\3\2"+
-		"\2\2\u0105\u0103\3\2\2\2\u0105\u0106\3\2\2\2\u0106\'\3\2\2\2\u0107\u0105"+
-		"\3\2\2\2\u0108\u0109\7\f\2\2\u0109)\3\2\2\2\u010a\u0110\5.\30\2\u010b"+
-		"\u010c\5,\27\2\u010c\u010d\5.\30\2\u010d\u010f\3\2\2\2\u010e\u010b\3\2"+
-		"\2\2\u010f\u0112\3\2\2\2\u0110\u010e\3\2\2\2\u0110\u0111\3\2\2\2\u0111"+
-		"+\3\2\2\2\u0112\u0110\3\2\2\2\u0113\u0114\7\r\2\2\u0114-\3\2\2\2\u0115"+
-		"\u011b\5\62\32\2\u0116\u0117\5\60\31\2\u0117\u0118\5\62\32\2\u0118\u011a"+
-		"\3\2\2\2\u0119\u0116\3\2\2\2\u011a\u011d\3\2\2\2\u011b\u0119\3\2\2\2\u011b"+
-		"\u011c\3\2\2\2\u011c/\3\2\2\2\u011d\u011b\3\2\2\2\u011e\u011f\7\16\2\2"+
-		"\u011f\61\3\2\2\2\u0120\u0129\58\35\2\u0121\u0124\5\64\33\2\u0122\u0124"+
-		"\5\66\34\2\u0123\u0121\3\2\2\2\u0123\u0122\3\2\2\2\u0124\u0125\3\2\2\2"+
-		"\u0125\u0126\58\35\2\u0126\u0128\3\2\2\2\u0127\u0123\3\2\2\2\u0128\u012b"+
-		"\3\2\2\2\u0129\u0127\3\2\2\2\u0129\u012a\3\2\2\2\u012a\63\3\2\2\2\u012b"+
-		"\u0129\3\2\2\2\u012c\u012d\7\17\2\2\u012d\65\3\2\2\2\u012e\u012f\7\20"+
-		"\2\2\u012f\67\3\2\2\2\u0130\u0139\5B\"\2\u0131\u0136\5:\36\2\u0132\u0136"+
-		"\5<\37\2\u0133\u0136\5> \2\u0134\u0136\5@!\2\u0135\u0131\3\2\2\2\u0135"+
-		"\u0132\3\2\2\2\u0135\u0133\3\2\2\2\u0135\u0134\3\2\2\2\u0136\u0137\3\2"+
-		"\2\2\u0137\u0138\5B\"\2\u0138\u013a\3\2\2\2\u0139\u0135\3\2\2\2\u0139"+
-		"\u013a\3\2\2\2\u013a9\3\2\2\2\u013b\u013c\7\21\2\2\u013c;\3\2\2\2\u013d"+
-		"\u013e\7\22\2\2\u013e=\3\2\2\2\u013f\u0140\7\23\2\2\u0140?\3\2\2\2\u0141"+
-		"\u0142\7\24\2\2\u0142A\3\2\2\2\u0143\u014c\5H%\2\u0144\u0147\5D#\2\u0145"+
-		"\u0147\5F$\2\u0146\u0144\3\2\2\2\u0146\u0145\3\2\2\2\u0147\u0148\3\2\2"+
-		"\2\u0148\u0149\5H%\2\u0149\u014b\3\2\2\2\u014a\u0146\3\2\2\2\u014b\u014e"+
-		"\3\2\2\2\u014c\u014a\3\2\2\2\u014c\u014d\3\2\2\2\u014dC\3\2\2\2\u014e"+
-		"\u014c\3\2\2\2\u014f\u0150\7\25\2\2\u0150E\3\2\2\2\u0151\u0152\7\26\2"+
-		"\2\u0152G\3\2\2\2\u0153\u015c\5N(\2\u0154\u0157\5J&\2\u0155\u0157\5L\'"+
-		"\2\u0156\u0154\3\2\2\2\u0156\u0155\3\2\2\2\u0157\u0158\3\2\2\2\u0158\u0159"+
-		"\5N(\2\u0159\u015b\3\2\2\2\u015a\u0156\3\2\2\2\u015b\u015e\3\2\2\2\u015c"+
-		"\u015a\3\2\2\2\u015c\u015d\3\2\2\2\u015dI\3\2\2\2\u015e\u015c\3\2\2\2"+
-		"\u015f\u0160\7\27\2\2\u0160K\3\2\2\2\u0161\u0162\7\30\2\2\u0162M\3\2\2"+
-		"\2\u0163\u016d\5V,\2\u0164\u0168\5P)\2\u0165\u0168\5R*\2\u0166\u0168\5"+
-		"T+\2\u0167\u0164\3\2\2\2\u0167\u0165\3\2\2\2\u0167\u0166\3\2\2\2\u0168"+
-		"\u0169\3\2\2\2\u0169\u016a\5V,\2\u016a\u016c\3\2\2\2\u016b\u0167\3\2\2"+
-		"\2\u016c\u016f\3\2\2\2\u016d\u016b\3\2\2\2\u016d\u016e\3\2\2\2\u016eO"+
-		"\3\2\2\2\u016f\u016d\3\2\2\2\u0170\u0171\7\31\2\2\u0171Q\3\2\2\2\u0172"+
-		"\u0173\7\32\2\2\u0173S\3\2\2\2\u0174\u0175\7\33\2\2\u0175U\3\2\2\2\u0176"+
-		"\u017f\5X-\2\u0177\u0178\5j\66\2\u0178\u0179\5V,\2\u0179\u017f\3\2\2\2"+
-		"\u017a\u017f\5r:\2\u017b\u017f\5v<\2\u017c\u017f\5|?\2\u017d\u017f\5^"+
-		"\60\2\u017e\u0176\3\2\2\2\u017e\u0177\3\2\2\2\u017e\u017a\3\2\2\2\u017e"+
-		"\u017b\3\2\2\2\u017e\u017c\3\2\2\2\u017e\u017d\3\2\2\2\u017fW\3\2\2\2"+
-		"\u0180\u0184\5Z.\2\u0181\u0183\5b\62\2\u0182\u0181\3\2\2\2\u0183\u0186"+
-		"\3\2\2\2\u0184\u0182\3\2\2\2\u0184\u0185\3\2\2\2\u0185Y\3\2\2\2\u0186"+
-		"\u0184\3\2\2\2\u0187\u018f\7\67\2\2\u0188\u018f\5\\/\2\u0189\u018a\7\60"+
-		"\2\2\u018a\u018b\5p9\2\u018b\u018c\7\61\2\2\u018c\u018f\3\2\2\2\u018d"+
-		"\u018f\5r:\2\u018e\u0187\3\2\2\2\u018e\u0188\3\2\2\2\u018e\u0189\3\2\2"+
-		"\2\u018e\u018d\3\2\2\2\u018f[\3\2\2\2\u0190\u0193\5^\60\2\u0191\u0193"+
-		"\5`\61\2\u0192\u0190\3\2\2\2\u0192\u0191\3\2\2\2\u0193]\3\2\2\2\u0194"+
-		"\u0196\7&\2\2\u0195\u0194\3\2\2\2\u0195\u0196\3\2\2\2\u0196\u0197\3\2"+
-		"\2\2\u0197\u0198\7\'\2\2\u0198_\3\2\2\2\u0199\u019a\7%\2\2\u019aa\3\2"+
-		"\2\2\u019b\u019c\7\62\2\2\u019c\u019d\5p9\2\u019d\u019e\7\63\2\2\u019e"+
-		"\u01a7\3\2\2\2\u019f\u01a2\5d\63\2\u01a0\u01a3\7\67\2\2\u01a1\u01a3\5"+
-		"r:\2\u01a2\u01a0\3\2\2\2\u01a2\u01a1\3\2\2\2\u01a3\u01a7\3\2\2\2\u01a4"+
-		"\u01a7\5f\64\2\u01a5\u01a7\5h\65\2\u01a6\u019b\3\2\2\2\u01a6\u019f\3\2"+
-		"\2\2\u01a6\u01a4\3\2\2\2\u01a6\u01a5\3\2\2\2\u01a7c\3\2\2\2\u01a8\u01a9"+
-		"\7\34\2\2\u01a9e\3\2\2\2\u01aa\u01ab\7\35\2\2\u01abg\3\2\2\2\u01ac\u01ad"+
-		"\7\36\2\2\u01adi\3\2\2\2\u01ae\u01b4\5l\67\2\u01af\u01b4\5L\'\2\u01b0"+
-		"\u01b4\5f\64\2\u01b1\u01b4\5h\65\2\u01b2\u01b4\5n8\2\u01b3\u01ae\3\2\2"+
-		"\2\u01b3\u01af\3\2\2\2\u01b3\u01b0\3\2\2\2\u01b3\u01b1\3\2\2\2\u01b3\u01b2"+
-		"\3\2\2\2\u01b4k\3\2\2\2\u01b5\u01b6\7\37\2\2\u01b6m\3\2\2\2\u01b7\u01b8"+
-		"\7 \2\2\u01b8o\3\2\2\2\u01b9\u01be\5\30\r\2\u01ba\u01bb\7!\2\2\u01bb\u01bd"+
-		"\5\30\r\2\u01bc\u01ba\3\2\2\2\u01bd\u01c0\3\2\2\2\u01be\u01bc\3\2\2\2"+
-		"\u01be\u01bf\3\2\2\2\u01bfq\3\2\2\2\u01c0\u01be\3\2\2\2\u01c1\u01c2\7"+
-		"\67\2\2\u01c2\u01c4\7\60\2\2\u01c3\u01c5\5t;\2\u01c4\u01c3\3\2\2\2\u01c4"+
-		"\u01c5\3\2\2\2\u01c5\u01c6\3\2\2\2\u01c6\u01c7\7\61\2\2\u01c7s\3\2\2\2"+
-		"\u01c8\u01cd\5\30\r\2\u01c9\u01ca\7!\2\2\u01ca\u01cc\5\30\r\2\u01cb\u01c9"+
-		"\3\2\2\2\u01cc\u01cf\3\2\2\2\u01cd\u01cb\3\2\2\2\u01cd\u01ce\3\2\2\2\u01ce"+
-		"u\3\2\2\2\u01cf\u01cd\3\2\2\2\u01d0\u01d3\7(\2\2\u01d1\u01d4\5x=\2\u01d2"+
-		"\u01d4\5z>\2\u01d3\u01d1\3\2\2\2\u01d3\u01d2\3\2\2\2\u01d4w\3\2\2\2\u01d5"+
-		"\u01da\5\n\6\2\u01d6\u01d7\7\62\2\2\u01d7\u01d8\5p9\2\u01d8\u01d9\7\63"+
-		"\2\2\u01d9\u01db\3\2\2\2\u01da\u01d6\3\2\2\2\u01db\u01dc\3\2\2\2\u01dc"+
-		"\u01da\3\2\2\2\u01dc\u01dd\3\2\2\2\u01dd\u01e2\3\2\2\2\u01de\u01df\7\62"+
-		"\2\2\u01df\u01e1\7\63\2\2\u01e0\u01de\3\2\2\2\u01e1\u01e4\3\2\2\2\u01e2"+
-		"\u01e0\3\2\2\2\u01e2\u01e3\3\2\2\2\u01e3y\3\2\2\2\u01e4\u01e2\3\2\2\2"+
-		"\u01e5\u01e6\7\67\2\2\u01e6{\3\2\2\2\u01e7\u01e8\t\3\2\2\u01e8}\3\2\2"+
-		"\2\u01e9\u01ea\5\b\5\2\u01ea\u01eb\7\67\2\2\u01eb\u01ed\7\60\2\2\u01ec"+
-		"\u01ee\5\u0080A\2\u01ed\u01ec\3\2\2\2\u01ed\u01ee\3\2\2\2\u01ee\u01ef"+
-		"\3\2\2\2\u01ef\u01f0\7\61\2\2\u01f0\u01f5\7\64\2\2\u01f1\u01f4\5\u0084"+
-		"C\2\u01f2\u01f4\5\4\3\2\u01f3\u01f1\3\2\2\2\u01f3\u01f2\3\2\2\2\u01f4"+
-		"\u01f7\3\2\2\2\u01f5\u01f3\3\2\2\2\u01f5\u01f6\3\2\2\2\u01f6\u01f8\3\2"+
-		"\2\2\u01f7\u01f5\3\2\2\2\u01f8\u01f9\7\65\2\2\u01f9\177\3\2\2\2\u01fa"+
-		"\u01ff\5\u0082B\2\u01fb\u01fc\7!\2\2\u01fc\u01fe\5\u0082B\2\u01fd\u01fb"+
-		"\3\2\2\2\u01fe\u0201\3\2\2\2\u01ff\u01fd\3\2\2\2\u01ff\u0200\3\2\2\2\u0200"+
-		"\u0081\3\2\2\2\u0201\u01ff\3\2\2\2\u0202\u0203\5\b\5\2\u0203\u0204\5\24"+
-		"\13\2\u0204\u0083\3\2\2\2\u0205\u020b\5\u0086D\2\u0206\u020b\5\u0088E"+
-		"\2\u0207\u020b\5\u008aF\2\u0208\u020b\5\u0096L\2\u0209\u020b\5\4\3\2\u020a"+
-		"\u0205\3\2\2\2\u020a\u0206\3\2\2\2\u020a\u0207\3\2\2\2\u020a\u0208\3\2"+
-		"\2\2\u020a\u0209\3\2\2\2\u020b\u0085\3\2\2\2\u020c\u020d\5p9\2\u020d\u020e"+
-		"\7\3\2\2\u020e\u0087\3\2\2\2\u020f\u0214\7\64\2\2\u0210\u0213\5\4\3\2"+
-		"\u0211\u0213\5\u0084C\2\u0212\u0210\3\2\2\2\u0212\u0211\3\2\2\2\u0213"+
-		"\u0216\3\2\2\2\u0214\u0212\3\2\2\2\u0214\u0215\3\2\2\2\u0215\u0217\3\2"+
-		"\2\2\u0216\u0214\3\2\2\2\u0217\u0218\7\65\2\2\u0218\u0089\3\2\2\2\u0219"+
-		"\u021c\5\u008cG\2\u021a\u021c\5\u0094K\2\u021b\u0219\3\2\2\2\u021b\u021a"+
-		"\3\2\2\2\u021c\u008b\3\2\2\2\u021d\u021e\7)\2\2\u021e\u0220\7\60\2\2\u021f"+
-		"\u0221\5\u008eH\2\u0220\u021f\3\2\2\2\u0220\u0221\3\2\2\2\u0221\u0222"+
-		"\3\2\2\2\u0222\u0224\7\3\2\2\u0223\u0225\5\u0090I\2\u0224\u0223\3\2\2"+
-		"\2\u0224\u0225\3\2\2\2\u0225\u0226\3\2\2\2\u0226\u0228\7\3\2\2\u0227\u0229"+
-		"\5\u0092J\2\u0228\u0227\3\2\2\2\u0228\u0229\3\2\2\2\u0229\u022a\3\2\2"+
-		"\2\u022a\u022b\7\61\2\2\u022b\u022c\5\u0084C\2\u022c\u008d\3\2\2\2\u022d"+
-		"\u022e\5p9\2\u022e\u008f\3\2\2\2\u022f\u0230\5p9\2\u0230\u0091\3\2\2\2"+
-		"\u0231\u0232\5p9\2\u0232\u0093\3\2\2\2\u0233\u0234\7*\2\2\u0234\u0235"+
-		"\7\60\2\2\u0235\u0236\5p9\2\u0236\u0237\7\61\2\2\u0237\u0238\5\u0084C"+
-		"\2\u0238\u0095\3\2\2\2\u0239\u0244\5\u0098M\2\u023a\u023c\7-\2\2\u023b"+
-		"\u023d\5p9\2\u023c\u023b\3\2\2\2\u023c\u023d\3\2\2\2\u023d\u023e\3\2\2"+
-		"\2\u023e\u0244\7\3\2\2\u023f\u0240\7.\2\2\u0240\u0244\7\3\2\2\u0241\u0242"+
-		"\7/\2\2\u0242\u0244\7\3\2\2\u0243\u0239\3\2\2\2\u0243\u023a\3\2\2\2\u0243"+
-		"\u023f\3\2\2\2\u0243\u0241\3\2\2\2\u0244\u0097\3\2\2\2\u0245\u0246\7+"+
-		"\2\2\u0246\u0247\7\60\2\2\u0247\u0248\5p9\2\u0248\u0249\7\61\2\2\u0249"+
-		"\u024c\5\u0084C\2\u024a\u024b\7,\2\2\u024b\u024d\5\u0084C\2\u024c\u024a"+
-		"\3\2\2\2\u024c\u024d\3\2\2\2\u024d\u0099\3\2\2\29\u009c\u009e\u00a4\u00a6"+
-		"\u00ab\u00b3\u00b7\u00bb\u00c6\u00d0\u00d5\u00e0\u00ef\u00fa\u0105\u0110"+
-		"\u011b\u0123\u0129\u0135\u0139\u0146\u014c\u0156\u015c\u0167\u016d\u017e"+
-		"\u0184\u018e\u0192\u0195\u01a2\u01a6\u01b3\u01be\u01c4\u01cd\u01d3\u01dc"+
-		"\u01e2\u01ed\u01f3\u01f5\u01ff\u020a\u0212\u0214\u021b\u0220\u0224\u0228"+
-		"\u023c\u0243\u024c";
+		"\tI\4J\tJ\4K\tK\4L\tL\4M\tM\4N\tN\4O\tO\4P\tP\4Q\tQ\4R\tR\4S\tS\3\2\3"+
+		"\2\7\2\u00a9\n\2\f\2\16\2\u00ac\13\2\3\2\3\2\3\2\7\2\u00b1\n\2\f\2\16"+
+		"\2\u00b4\13\2\3\3\3\3\5\3\u00b8\n\3\3\4\3\4\3\4\3\4\3\5\3\5\5\5\u00c0"+
+		"\n\5\3\6\3\6\5\6\u00c4\n\6\3\7\3\7\5\7\u00c8\n\7\3\b\3\b\3\b\3\b\3\b\3"+
+		"\b\3\b\7\b\u00d1\n\b\f\b\16\b\u00d4\13\b\3\b\3\b\3\t\3\t\3\t\6\t\u00db"+
+		"\n\t\r\t\16\t\u00dc\3\n\3\n\3\n\5\n\u00e2\n\n\3\13\3\13\3\f\3\f\3\r\3"+
+		"\r\3\r\7\r\u00eb\n\r\f\r\16\r\u00ee\13\r\3\r\3\r\3\16\3\16\3\17\3\17\3"+
+		"\20\3\20\3\20\3\20\7\20\u00fa\n\20\f\20\16\20\u00fd\13\20\3\21\3\21\3"+
+		"\22\3\22\3\22\3\22\7\22\u0105\n\22\f\22\16\22\u0108\13\22\3\23\3\23\3"+
+		"\24\3\24\3\24\3\24\7\24\u0110\n\24\f\24\16\24\u0113\13\24\3\25\3\25\3"+
+		"\26\3\26\3\26\3\26\7\26\u011b\n\26\f\26\16\26\u011e\13\26\3\27\3\27\3"+
+		"\30\3\30\3\30\3\30\7\30\u0126\n\30\f\30\16\30\u0129\13\30\3\31\3\31\3"+
+		"\32\3\32\3\32\3\32\7\32\u0131\n\32\f\32\16\32\u0134\13\32\3\33\3\33\5"+
+		"\33\u0138\n\33\3\34\3\34\3\35\3\35\3\36\3\36\3\36\3\36\5\36\u0142\n\36"+
+		"\3\37\3\37\3\37\3\37\5\37\u0148\n\37\3 \3 \3!\3!\3\"\3\"\3#\3#\3$\3$\3"+
+		"$\3$\7$\u0156\n$\f$\16$\u0159\13$\3%\3%\5%\u015d\n%\3&\3&\3\'\3\'\3(\3"+
+		"(\3(\3(\7(\u0167\n(\f(\16(\u016a\13(\3)\3)\5)\u016e\n)\3*\3*\3+\3+\3,"+
+		"\3,\3,\3,\7,\u0178\n,\f,\16,\u017b\13,\3-\3-\3-\5-\u0180\n-\3.\3.\3/\3"+
+		"/\3\60\3\60\3\61\3\61\3\61\3\61\3\61\3\61\3\61\3\61\5\61\u0190\n\61\3"+
+		"\62\3\62\7\62\u0194\n\62\f\62\16\62\u0197\13\62\3\63\3\63\3\63\3\63\3"+
+		"\63\3\63\3\63\5\63\u01a0\n\63\3\64\3\64\5\64\u01a4\n\64\3\65\5\65\u01a7"+
+		"\n\65\3\65\3\65\3\66\3\66\3\67\3\67\3\67\3\67\3\67\3\67\3\67\5\67\u01b4"+
+		"\n\67\3\67\3\67\5\67\u01b8\n\67\38\38\39\39\3:\3:\3;\3;\3;\3;\3;\5;\u01c5"+
+		"\n;\3<\3<\3=\3=\3>\3>\3>\7>\u01ce\n>\f>\16>\u01d1\13>\3?\3?\3?\5?\u01d6"+
+		"\n?\3?\3?\3@\3@\3@\7@\u01dd\n@\f@\16@\u01e0\13@\3A\3A\3A\5A\u01e5\nA\3"+
+		"B\3B\3B\3B\3B\6B\u01ec\nB\rB\16B\u01ed\3B\3B\7B\u01f2\nB\fB\16B\u01f5"+
+		"\13B\3C\3C\3D\3D\3E\3E\3E\3E\5E\u01ff\nE\3E\3E\3E\7E\u0204\nE\fE\16E\u0207"+
+		"\13E\3E\3E\3F\3F\5F\u020d\nF\3G\3G\3G\7G\u0212\nG\fG\16G\u0215\13G\3H"+
+		"\3H\3H\3I\3I\3I\3I\3I\5I\u021f\nI\3J\3J\3J\3K\3K\7K\u0226\nK\fK\16K\u0229"+
+		"\13K\3K\3K\3L\3L\5L\u022f\nL\3M\3M\3M\5M\u0234\nM\3M\3M\5M\u0238\nM\3"+
+		"M\3M\5M\u023c\nM\3M\3M\3M\3N\3N\3O\3O\3P\3P\3Q\3Q\3Q\3Q\3Q\3Q\3R\3R\3"+
+		"R\5R\u0250\nR\3R\3R\3R\3R\3R\5R\u0257\nR\3S\3S\3S\3S\3S\3S\3S\5S\u0260"+
+		"\nS\3S\2\2T\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&(*,.\60\62\64\66"+
+		"8:<>@BDFHJLNPRTVXZ\\^`bdfhjlnprtvxz|~\u0080\u0082\u0084\u0086\u0088\u008a"+
+		"\u008c\u008e\u0090\u0092\u0094\u0096\u0098\u009a\u009c\u009e\u00a0\u00a2"+
+		"\u00a4\2\4\3\2\4\7\3\2\"$\u0258\2\u00aa\3\2\2\2\4\u00b7\3\2\2\2\6\u00b9"+
+		"\3\2\2\2\b\u00bf\3\2\2\2\n\u00c3\3\2\2\2\f\u00c7\3\2\2\2\16\u00c9\3\2"+
+		"\2\2\20\u00d7\3\2\2\2\22\u00de\3\2\2\2\24\u00e3\3\2\2\2\26\u00e5\3\2\2"+
+		"\2\30\u00ec\3\2\2\2\32\u00f1\3\2\2\2\34\u00f3\3\2\2\2\36\u00f5\3\2\2\2"+
+		" \u00fe\3\2\2\2\"\u0100\3\2\2\2$\u0109\3\2\2\2&\u010b\3\2\2\2(\u0114\3"+
+		"\2\2\2*\u0116\3\2\2\2,\u011f\3\2\2\2.\u0121\3\2\2\2\60\u012a\3\2\2\2\62"+
+		"\u012c\3\2\2\2\64\u0137\3\2\2\2\66\u0139\3\2\2\28\u013b\3\2\2\2:\u013d"+
+		"\3\2\2\2<\u0147\3\2\2\2>\u0149\3\2\2\2@\u014b\3\2\2\2B\u014d\3\2\2\2D"+
+		"\u014f\3\2\2\2F\u0151\3\2\2\2H\u015c\3\2\2\2J\u015e\3\2\2\2L\u0160\3\2"+
+		"\2\2N\u0162\3\2\2\2P\u016d\3\2\2\2R\u016f\3\2\2\2T\u0171\3\2\2\2V\u0173"+
+		"\3\2\2\2X\u017f\3\2\2\2Z\u0181\3\2\2\2\\\u0183\3\2\2\2^\u0185\3\2\2\2"+
+		"`\u018f\3\2\2\2b\u0191\3\2\2\2d\u019f\3\2\2\2f\u01a3\3\2\2\2h\u01a6\3"+
+		"\2\2\2j\u01aa\3\2\2\2l\u01b7\3\2\2\2n\u01b9\3\2\2\2p\u01bb\3\2\2\2r\u01bd"+
+		"\3\2\2\2t\u01c4\3\2\2\2v\u01c6\3\2\2\2x\u01c8\3\2\2\2z\u01ca\3\2\2\2|"+
+		"\u01d2\3\2\2\2~\u01d9\3\2\2\2\u0080\u01e1\3\2\2\2\u0082\u01e6\3\2\2\2"+
+		"\u0084\u01f6\3\2\2\2\u0086\u01f8\3\2\2\2\u0088\u01fa\3\2\2\2\u008a\u020c"+
+		"\3\2\2\2\u008c\u020e\3\2\2\2\u008e\u0216\3\2\2\2\u0090\u021e\3\2\2\2\u0092"+
+		"\u0220\3\2\2\2\u0094\u0223\3\2\2\2\u0096\u022e\3\2\2\2\u0098\u0230\3\2"+
+		"\2\2\u009a\u0240\3\2\2\2\u009c\u0242\3\2\2\2\u009e\u0244\3\2\2\2\u00a0"+
+		"\u0246\3\2\2\2\u00a2\u0256\3\2\2\2\u00a4\u0258\3\2\2\2\u00a6\u00a9\5\u0088"+
+		"E\2\u00a7\u00a9\5\4\3\2\u00a8\u00a6\3\2\2\2\u00a8\u00a7\3\2\2\2\u00a9"+
+		"\u00ac\3\2\2\2\u00aa\u00a8\3\2\2\2\u00aa\u00ab\3\2\2\2\u00ab\u00ad\3\2"+
+		"\2\2\u00ac\u00aa\3\2\2\2\u00ad\u00b2\5\u0088E\2\u00ae\u00b1\5\u0088E\2"+
+		"\u00af\u00b1\5\4\3\2\u00b0\u00ae\3\2\2\2\u00b0\u00af\3\2\2\2\u00b1\u00b4"+
+		"\3\2\2\2\u00b2\u00b0\3\2\2\2\u00b2\u00b3\3\2\2\2\u00b3\3\3\2\2\2\u00b4"+
+		"\u00b2\3\2\2\2\u00b5\u00b8\5\6\4\2\u00b6\u00b8\5\16\b\2\u00b7\u00b5\3"+
+		"\2\2\2\u00b7\u00b6\3\2\2\2\u00b8\5\3\2\2\2\u00b9\u00ba\5\b\5\2\u00ba\u00bb"+
+		"\5\22\n\2\u00bb\u00bc\7\3\2\2\u00bc\7\3\2\2\2\u00bd\u00c0\5\n\6\2\u00be"+
+		"\u00c0\5\20\t\2\u00bf\u00bd\3\2\2\2\u00bf\u00be\3\2\2\2\u00c0\t\3\2\2"+
+		"\2\u00c1\u00c4\5\f\7\2\u00c2\u00c4\5\16\b\2\u00c3\u00c1\3\2\2\2\u00c3"+
+		"\u00c2\3\2\2\2\u00c4\13\3\2\2\2\u00c5\u00c8\t\2\2\2\u00c6\u00c8\7\67\2"+
+		"\2\u00c7\u00c5\3\2\2\2\u00c7\u00c6\3\2\2\2\u00c8\r\3\2\2\2\u00c9\u00ca"+
+		"\7\b\2\2\u00ca\u00cb\7\67\2\2\u00cb\u00d2\7\64\2\2\u00cc\u00cd\5\b\5\2"+
+		"\u00cd\u00ce\5\24\13\2\u00ce\u00cf\7\3\2\2\u00cf\u00d1\3\2\2\2\u00d0\u00cc"+
+		"\3\2\2\2\u00d1\u00d4\3\2\2\2\u00d2\u00d0\3\2\2\2\u00d2\u00d3\3\2\2\2\u00d3"+
+		"\u00d5\3\2\2\2\u00d4\u00d2\3\2\2\2\u00d5\u00d6\7\65\2\2\u00d6\17\3\2\2"+
+		"\2\u00d7\u00da\5\n\6\2\u00d8\u00d9\7\62\2\2\u00d9\u00db\7\63\2\2\u00da"+
+		"\u00d8\3\2\2\2\u00db\u00dc\3\2\2\2\u00dc\u00da\3\2\2\2\u00dc\u00dd\3\2"+
+		"\2\2\u00dd\21\3\2\2\2\u00de\u00e1\5\24\13\2\u00df\u00e0\7\t\2\2\u00e0"+
+		"\u00e2\5\26\f\2\u00e1\u00df\3\2\2\2\u00e1\u00e2\3\2\2\2\u00e2\23\3\2\2"+
+		"\2\u00e3\u00e4\7\67\2\2\u00e4\25\3\2\2\2\u00e5\u00e6\5\30\r\2\u00e6\27"+
+		"\3\2\2\2\u00e7\u00e8\5`\61\2\u00e8\u00e9\5\32\16\2\u00e9\u00eb\3\2\2\2"+
+		"\u00ea\u00e7\3\2\2\2\u00eb\u00ee\3\2\2\2\u00ec\u00ea\3\2\2\2\u00ec\u00ed"+
+		"\3\2\2\2\u00ed\u00ef\3\2\2\2\u00ee\u00ec\3\2\2\2\u00ef\u00f0\5\34\17\2"+
+		"\u00f0\31\3\2\2\2\u00f1\u00f2\7\t\2\2\u00f2\33\3\2\2\2\u00f3\u00f4\5\36"+
+		"\20\2\u00f4\35\3\2\2\2\u00f5\u00fb\5\"\22\2\u00f6\u00f7\5 \21\2\u00f7"+
+		"\u00f8\5\"\22\2\u00f8\u00fa\3\2\2\2\u00f9\u00f6\3\2\2\2\u00fa\u00fd\3"+
+		"\2\2\2\u00fb\u00f9\3\2\2\2\u00fb\u00fc\3\2\2\2\u00fc\37\3\2\2\2\u00fd"+
+		"\u00fb\3\2\2\2\u00fe\u00ff\7\n\2\2\u00ff!\3\2\2\2\u0100\u0106\5&\24\2"+
+		"\u0101\u0102\5$\23\2\u0102\u0103\5&\24\2\u0103\u0105\3\2\2\2\u0104\u0101"+
+		"\3\2\2\2\u0105\u0108\3\2\2\2\u0106\u0104\3\2\2\2\u0106\u0107\3\2\2\2\u0107"+
+		"#\3\2\2\2\u0108\u0106\3\2\2\2\u0109\u010a\7\13\2\2\u010a%\3\2\2\2\u010b"+
+		"\u0111\5*\26\2\u010c\u010d\5(\25\2\u010d\u010e\5*\26\2\u010e\u0110\3\2"+
+		"\2\2\u010f\u010c\3\2\2\2\u0110\u0113\3\2\2\2\u0111\u010f\3\2\2\2\u0111"+
+		"\u0112\3\2\2\2\u0112\'\3\2\2\2\u0113\u0111\3\2\2\2\u0114\u0115\7\f\2\2"+
+		"\u0115)\3\2\2\2\u0116\u011c\5.\30\2\u0117\u0118\5,\27\2\u0118\u0119\5"+
+		".\30\2\u0119\u011b\3\2\2\2\u011a\u0117\3\2\2\2\u011b\u011e\3\2\2\2\u011c"+
+		"\u011a\3\2\2\2\u011c\u011d\3\2\2\2\u011d+\3\2\2\2\u011e\u011c\3\2\2\2"+
+		"\u011f\u0120\7\r\2\2\u0120-\3\2\2\2\u0121\u0127\5\62\32\2\u0122\u0123"+
+		"\5\60\31\2\u0123\u0124\5\62\32\2\u0124\u0126\3\2\2\2\u0125\u0122\3\2\2"+
+		"\2\u0126\u0129\3\2\2\2\u0127\u0125\3\2\2\2\u0127\u0128\3\2\2\2\u0128/"+
+		"\3\2\2\2\u0129\u0127\3\2\2\2\u012a\u012b\7\16\2\2\u012b\61\3\2\2\2\u012c"+
+		"\u0132\5:\36\2\u012d\u012e\5\64\33\2\u012e\u012f\5:\36\2\u012f\u0131\3"+
+		"\2\2\2\u0130\u012d\3\2\2\2\u0131\u0134\3\2\2\2\u0132\u0130\3\2\2\2\u0132"+
+		"\u0133\3\2\2\2\u0133\63\3\2\2\2\u0134\u0132\3\2\2\2\u0135\u0138\5\66\34"+
+		"\2\u0136\u0138\58\35\2\u0137\u0135\3\2\2\2\u0137\u0136\3\2\2\2\u0138\65"+
+		"\3\2\2\2\u0139\u013a\7\17\2\2\u013a\67\3\2\2\2\u013b\u013c\7\20\2\2\u013c"+
+		"9\3\2\2\2\u013d\u0141\5F$\2\u013e\u013f\5<\37\2\u013f\u0140\5F$\2\u0140"+
+		"\u0142\3\2\2\2\u0141\u013e\3\2\2\2\u0141\u0142\3\2\2\2\u0142;\3\2\2\2"+
+		"\u0143\u0148\5> \2\u0144\u0148\5@!\2\u0145\u0148\5B\"\2\u0146\u0148\5"+
+		"D#\2\u0147\u0143\3\2\2\2\u0147\u0144\3\2\2\2\u0147\u0145\3\2\2\2\u0147"+
+		"\u0146\3\2\2\2\u0148=\3\2\2\2\u0149\u014a\7\21\2\2\u014a?\3\2\2\2\u014b"+
+		"\u014c\7\22\2\2\u014cA\3\2\2\2\u014d\u014e\7\23\2\2\u014eC\3\2\2\2\u014f"+
+		"\u0150\7\24\2\2\u0150E\3\2\2\2\u0151\u0157\5N(\2\u0152\u0153\5H%\2\u0153"+
+		"\u0154\5N(\2\u0154\u0156\3\2\2\2\u0155\u0152\3\2\2\2\u0156\u0159\3\2\2"+
+		"\2\u0157\u0155\3\2\2\2\u0157\u0158\3\2\2\2\u0158G\3\2\2\2\u0159\u0157"+
+		"\3\2\2\2\u015a\u015d\5J&\2\u015b\u015d\5L\'\2\u015c\u015a\3\2\2\2\u015c"+
+		"\u015b\3\2\2\2\u015dI\3\2\2\2\u015e\u015f\7\25\2\2\u015fK\3\2\2\2\u0160"+
+		"\u0161\7\26\2\2\u0161M\3\2\2\2\u0162\u0168\5V,\2\u0163\u0164\5P)\2\u0164"+
+		"\u0165\5V,\2\u0165\u0167\3\2\2\2\u0166\u0163\3\2\2\2\u0167\u016a\3\2\2"+
+		"\2\u0168\u0166\3\2\2\2\u0168\u0169\3\2\2\2\u0169O\3\2\2\2\u016a\u0168"+
+		"\3\2\2\2\u016b\u016e\5R*\2\u016c\u016e\5T+\2\u016d\u016b\3\2\2\2\u016d"+
+		"\u016c\3\2\2\2\u016eQ\3\2\2\2\u016f\u0170\7\27\2\2\u0170S\3\2\2\2\u0171"+
+		"\u0172\7\30\2\2\u0172U\3\2\2\2\u0173\u0179\5`\61\2\u0174\u0175\5X-\2\u0175"+
+		"\u0176\5`\61\2\u0176\u0178\3\2\2\2\u0177\u0174\3\2\2\2\u0178\u017b\3\2"+
+		"\2\2\u0179\u0177\3\2\2\2\u0179\u017a\3\2\2\2\u017aW\3\2\2\2\u017b\u0179"+
+		"\3\2\2\2\u017c\u0180\5Z.\2\u017d\u0180\5\\/\2\u017e\u0180\5^\60\2\u017f"+
+		"\u017c\3\2\2\2\u017f\u017d\3\2\2\2\u017f\u017e\3\2\2\2\u0180Y\3\2\2\2"+
+		"\u0181\u0182\7\31\2\2\u0182[\3\2\2\2\u0183\u0184\7\32\2\2\u0184]\3\2\2"+
+		"\2\u0185\u0186\7\33\2\2\u0186_\3\2\2\2\u0187\u0190\5b\62\2\u0188\u0189"+
+		"\5t;\2\u0189\u018a\5`\61\2\u018a\u0190\3\2\2\2\u018b\u0190\5|?\2\u018c"+
+		"\u0190\5\u0080A\2\u018d\u0190\5\u0086D\2\u018e\u0190\5h\65\2\u018f\u0187"+
+		"\3\2\2\2\u018f\u0188\3\2\2\2\u018f\u018b\3\2\2\2\u018f\u018c\3\2\2\2\u018f"+
+		"\u018d\3\2\2\2\u018f\u018e\3\2\2\2\u0190a\3\2\2\2\u0191\u0195\5d\63\2"+
+		"\u0192\u0194\5l\67\2\u0193\u0192\3\2\2\2\u0194\u0197\3\2\2\2\u0195\u0193"+
+		"\3\2\2\2\u0195\u0196\3\2\2\2\u0196c\3\2\2\2\u0197\u0195\3\2\2\2\u0198"+
+		"\u01a0\7\67\2\2\u0199\u01a0\5f\64\2\u019a\u019b\7\60\2\2\u019b\u019c\5"+
+		"z>\2\u019c\u019d\7\61\2\2\u019d\u01a0\3\2\2\2\u019e\u01a0\5|?\2\u019f"+
+		"\u0198\3\2\2\2\u019f\u0199\3\2\2\2\u019f\u019a\3\2\2\2\u019f\u019e\3\2"+
+		"\2\2\u01a0e\3\2\2\2\u01a1\u01a4\5h\65\2\u01a2\u01a4\5j\66\2\u01a3\u01a1"+
+		"\3\2\2\2\u01a3\u01a2\3\2\2\2\u01a4g\3\2\2\2\u01a5\u01a7\7&\2\2\u01a6\u01a5"+
+		"\3\2\2\2\u01a6\u01a7\3\2\2\2\u01a7\u01a8\3\2\2\2\u01a8\u01a9\7\'\2\2\u01a9"+
+		"i\3\2\2\2\u01aa\u01ab\7%\2\2\u01abk\3\2\2\2\u01ac\u01ad\7\62\2\2\u01ad"+
+		"\u01ae\5z>\2\u01ae\u01af\7\63\2\2\u01af\u01b8\3\2\2\2\u01b0\u01b3\5n8"+
+		"\2\u01b1\u01b4\7\67\2\2\u01b2\u01b4\5|?\2\u01b3\u01b1\3\2\2\2\u01b3\u01b2"+
+		"\3\2\2\2\u01b4\u01b8\3\2\2\2\u01b5\u01b8\5p9\2\u01b6\u01b8\5r:\2\u01b7"+
+		"\u01ac\3\2\2\2\u01b7\u01b0\3\2\2\2\u01b7\u01b5\3\2\2\2\u01b7\u01b6\3\2"+
+		"\2\2\u01b8m\3\2\2\2\u01b9\u01ba\7\34\2\2\u01bao\3\2\2\2\u01bb\u01bc\7"+
+		"\35\2\2\u01bcq\3\2\2\2\u01bd\u01be\7\36\2\2\u01bes\3\2\2\2\u01bf\u01c5"+
+		"\5v<\2\u01c0\u01c5\5T+\2\u01c1\u01c5\5p9\2\u01c2\u01c5\5r:\2\u01c3\u01c5"+
+		"\5x=\2\u01c4\u01bf\3\2\2\2\u01c4\u01c0\3\2\2\2\u01c4\u01c1\3\2\2\2\u01c4"+
+		"\u01c2\3\2\2\2\u01c4\u01c3\3\2\2\2\u01c5u\3\2\2\2\u01c6\u01c7\7\37\2\2"+
+		"\u01c7w\3\2\2\2\u01c8\u01c9\7 \2\2\u01c9y\3\2\2\2\u01ca\u01cf\5\30\r\2"+
+		"\u01cb\u01cc\7!\2\2\u01cc\u01ce\5\30\r\2\u01cd\u01cb\3\2\2\2\u01ce\u01d1"+
+		"\3\2\2\2\u01cf\u01cd\3\2\2\2\u01cf\u01d0\3\2\2\2\u01d0{\3\2\2\2\u01d1"+
+		"\u01cf\3\2\2\2\u01d2\u01d3\7\67\2\2\u01d3\u01d5\7\60\2\2\u01d4\u01d6\5"+
+		"~@\2\u01d5\u01d4\3\2\2\2\u01d5\u01d6\3\2\2\2\u01d6\u01d7\3\2\2\2\u01d7"+
+		"\u01d8\7\61\2\2\u01d8}\3\2\2\2\u01d9\u01de\5\30\r\2\u01da\u01db\7!\2\2"+
+		"\u01db\u01dd\5\30\r\2\u01dc\u01da\3\2\2\2\u01dd\u01e0\3\2\2\2\u01de\u01dc"+
+		"\3\2\2\2\u01de\u01df\3\2\2\2\u01df\177\3\2\2\2\u01e0\u01de\3\2\2\2\u01e1"+
+		"\u01e4\7(\2\2\u01e2\u01e5\5\u0082B\2\u01e3\u01e5\5\u0084C\2\u01e4\u01e2"+
+		"\3\2\2\2\u01e4\u01e3\3\2\2\2\u01e5\u0081\3\2\2\2\u01e6\u01eb\5\n\6\2\u01e7"+
+		"\u01e8\7\62\2\2\u01e8\u01e9\5z>\2\u01e9\u01ea\7\63\2\2\u01ea\u01ec\3\2"+
+		"\2\2\u01eb\u01e7\3\2\2\2\u01ec\u01ed\3\2\2\2\u01ed\u01eb\3\2\2\2\u01ed"+
+		"\u01ee\3\2\2\2\u01ee\u01f3\3\2\2\2\u01ef\u01f0\7\62\2\2\u01f0\u01f2\7"+
+		"\63\2\2\u01f1\u01ef\3\2\2\2\u01f2\u01f5\3\2\2\2\u01f3\u01f1\3\2\2\2\u01f3"+
+		"\u01f4\3\2\2\2\u01f4\u0083\3\2\2\2\u01f5\u01f3\3\2\2\2\u01f6\u01f7\7\67"+
+		"\2\2\u01f7\u0085\3\2\2\2\u01f8\u01f9\t\3\2\2\u01f9\u0087\3\2\2\2\u01fa"+
+		"\u01fb\5\b\5\2\u01fb\u01fc\7\67\2\2\u01fc\u01fe\7\60\2\2\u01fd\u01ff\5"+
+		"\u008cG\2\u01fe\u01fd\3\2\2\2\u01fe\u01ff\3\2\2\2\u01ff\u0200\3\2\2\2"+
+		"\u0200\u0201\7\61\2\2\u0201\u0205\7\64\2\2\u0202\u0204\5\u008aF\2\u0203"+
+		"\u0202\3\2\2\2\u0204\u0207\3\2\2\2\u0205\u0203\3\2\2\2\u0205\u0206\3\2"+
+		"\2\2\u0206\u0208\3\2\2\2\u0207\u0205\3\2\2\2\u0208\u0209\7\65\2\2\u0209"+
+		"\u0089\3\2\2\2\u020a\u020d\5\4\3\2\u020b\u020d\5\u0090I\2\u020c\u020a"+
+		"\3\2\2\2\u020c\u020b\3\2\2\2\u020d\u008b\3\2\2\2\u020e\u0213\5\u008eH"+
+		"\2\u020f\u0210\7!\2\2\u0210\u0212\5\u008eH\2\u0211\u020f\3\2\2\2\u0212"+
+		"\u0215\3\2\2\2\u0213\u0211\3\2\2\2\u0213\u0214\3\2\2\2\u0214\u008d\3\2"+
+		"\2\2\u0215\u0213\3\2\2\2\u0216\u0217\5\b\5\2\u0217\u0218\5\24\13\2\u0218"+
+		"\u008f\3\2\2\2\u0219\u021f\5\u0092J\2\u021a\u021f\5\u0094K\2\u021b\u021f"+
+		"\5\u0096L\2\u021c\u021f\5\u00a2R\2\u021d\u021f\5\4\3\2\u021e\u0219\3\2"+
+		"\2\2\u021e\u021a\3\2\2\2\u021e\u021b\3\2\2\2\u021e\u021c\3\2\2\2\u021e"+
+		"\u021d\3\2\2\2\u021f\u0091\3\2\2\2\u0220\u0221\5z>\2\u0221\u0222\7\3\2"+
+		"\2\u0222\u0093\3\2\2\2\u0223\u0227\7\64\2\2\u0224\u0226\5\u008aF\2\u0225"+
+		"\u0224\3\2\2\2\u0226\u0229\3\2\2\2\u0227\u0225\3\2\2\2\u0227\u0228\3\2"+
+		"\2\2\u0228\u022a\3\2\2\2\u0229\u0227\3\2\2\2\u022a\u022b\7\65\2\2\u022b"+
+		"\u0095\3\2\2\2\u022c\u022f\5\u0098M\2\u022d\u022f\5\u00a0Q\2\u022e\u022c"+
+		"\3\2\2\2\u022e\u022d\3\2\2\2\u022f\u0097\3\2\2\2\u0230\u0231\7)\2\2\u0231"+
+		"\u0233\7\60\2\2\u0232\u0234\5\u009aN\2\u0233\u0232\3\2\2\2\u0233\u0234"+
+		"\3\2\2\2\u0234\u0235\3\2\2\2\u0235\u0237\7\3\2\2\u0236\u0238\5\u009cO"+
+		"\2\u0237\u0236\3\2\2\2\u0237\u0238\3\2\2\2\u0238\u0239\3\2\2\2\u0239\u023b"+
+		"\7\3\2\2\u023a\u023c\5\u009eP\2\u023b\u023a\3\2\2\2\u023b\u023c\3\2\2"+
+		"\2\u023c\u023d\3\2\2\2\u023d\u023e\7\61\2\2\u023e\u023f\5\u0090I\2\u023f"+
+		"\u0099\3\2\2\2\u0240\u0241\5z>\2\u0241\u009b\3\2\2\2\u0242\u0243\5z>\2"+
+		"\u0243\u009d\3\2\2\2\u0244\u0245\5z>\2\u0245\u009f\3\2\2\2\u0246\u0247"+
+		"\7*\2\2\u0247\u0248\7\60\2\2\u0248\u0249\5z>\2\u0249\u024a\7\61\2\2\u024a"+
+		"\u024b\5\u0090I\2\u024b\u00a1\3\2\2\2\u024c\u0257\5\u00a4S\2\u024d\u024f"+
+		"\7-\2\2\u024e\u0250\5z>\2\u024f\u024e\3\2\2\2\u024f\u0250\3\2\2\2\u0250"+
+		"\u0251\3\2\2\2\u0251\u0257\7\3\2\2\u0252\u0253\7.\2\2\u0253\u0257\7\3"+
+		"\2\2\u0254\u0255\7/\2\2\u0255\u0257\7\3\2\2\u0256\u024c\3\2\2\2\u0256"+
+		"\u024d\3\2\2\2\u0256\u0252\3\2\2\2\u0256\u0254\3\2\2\2\u0257\u00a3\3\2"+
+		"\2\2\u0258\u0259\7+\2\2\u0259\u025a\7\60\2\2\u025a\u025b\5z>\2\u025b\u025c"+
+		"\7\61\2\2\u025c\u025f\5\u0090I\2\u025d\u025e\7,\2\2\u025e\u0260\5\u0090"+
+		"I\2\u025f\u025d\3\2\2\2\u025f\u0260\3\2\2\2\u0260\u00a5\3\2\2\28\u00a8"+
+		"\u00aa\u00b0\u00b2\u00b7\u00bf\u00c3\u00c7\u00d2\u00dc\u00e1\u00ec\u00fb"+
+		"\u0106\u0111\u011c\u0127\u0132\u0137\u0141\u0147\u0157\u015c\u0168\u016d"+
+		"\u0179\u017f\u018f\u0195\u019f\u01a3\u01a6\u01b3\u01b7\u01c4\u01cf\u01d5"+
+		"\u01de\u01e4\u01ed\u01f3\u01fe\u0205\u020c\u0213\u021e\u0227\u022e\u0233"+
+		"\u0237\u023b\u024f\u0256\u025f";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
