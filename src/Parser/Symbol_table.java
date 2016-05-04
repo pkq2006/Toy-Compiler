@@ -137,7 +137,6 @@ public class Symbol_table
 
 	public void put(Name id, Type type)
 	{
-		int scpoe = find(id);
 		table.get(current_scope).put(id, type);
 	}
 

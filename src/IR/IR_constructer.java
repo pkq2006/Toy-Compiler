@@ -29,6 +29,8 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 	ArrayList <Pair <String, Integer>> break_list;
 	ArrayList <Instruction> global_variable;
 	String variable_prefix;
+	boolean is_global;
+	HashMap <String, String> builtin_function;
 
 	/**
 	 * {@inheritDoc}
@@ -36,24 +38,37 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	String get_function_name(String function_name)
+	{
+		if (builtin_function.get(function_name) != null)
+			return builtin_function.get(function_name);
+		return function_name;
+	}
+
 	@Override public Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> visitProgram(MinamiKotoriParser.ProgramContext ctx)
 	{
-		//init(global, builtin)
 		break_list = new ArrayList<>();
+		builtin_function = new HashMap<>();
+		builtin_function.put("print", "func_print");
+		builtin_function.put("println", "func_println");
+		builtin_function.put("getString", "func_getString");
+		builtin_function.put("getInt", "func_getInt");
+		builtin_function.put("toString", "func_toString");
 		Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> return_list = new Pair<>("", new Pair<>(new ArrayList<>(), new ArrayList<>()));
 		global_variable = new ArrayList<>();
-		variable_prefix = "$g_";
+		variable_prefix = "$t_main_";
+		is_global = true;
 		for (int i = 0; i < ctx.declaration().size(); i ++)
 		{
 			Pair <String, Pair<ArrayList<Instruction>, ArrayList<Instruction>>> tmp = visit(ctx.declaration(i));
 			global_variable.addAll(tmp.b.a);
 			global_variable.addAll(tmp.b.b);
 		}
+		is_global = false;
 		for (int i = 0; i < ctx.function_definition().size(); i ++)
 			if (ctx.function_definition(i).Identifier().getText().equals("main"))
 			{
 				variable_prefix = "$t_" + ctx.function_definition(i).Identifier().getText() + "_";
-				temporary_variable_counter = 0;
 				Pair <String, Pair<ArrayList<Instruction>, ArrayList<Instruction>>> tmp = visit(ctx.function_definition(i));
 				return_list.b.a.addAll(tmp.b.a);
 				return_list.b.a.addAll(tmp.b.b);
@@ -91,8 +106,8 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 			tmp = new Pair<>("", new Pair<>(new ArrayList<>(), new ArrayList<>()));
 		Type variable = new Type();
 		variable.type_name = checker.visit(ctx.type()).get(0).a;
-		if (variable_prefix.equals("$g_"))
-			variable.register_id = variable_prefix + (global_variable_counter ++).toString();
+		if (is_global)
+			variable.register_id = "$g_" + (global_variable_counter ++).toString();
 		else
 			variable.register_id = variable_prefix + (temporary_variable_counter ++).toString();
 		variable.name = Name.getSymbolName(ctx.init_declarator().declarator().getText());
@@ -238,6 +253,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 		}
 		return_list.b.a.add(new Instruction("label", prefix + "_false"));
 		return_list.b.a.add(new Instruction("store", 4, return_list.a, 0));
+		return_list.b.a.add(new Instruction("jump", prefix + "_end"));
 		return_list.b.a.add(new Instruction("label", prefix + "_end"));
 		return return_list;
 	}
@@ -278,6 +294,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 		}
 		return_list.b.a.add(new Instruction("label", prefix + "_true"));
 		return_list.b.a.add(new Instruction("store", 4, return_list.a, 1));
+		return_list.b.a.add(new Instruction("jump", prefix + "_end"));
 		return_list.b.a.add(new Instruction("label", prefix + "_end"));
 		return return_list;
 	}
@@ -1106,6 +1123,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 			}
 		}
 		String function_name = ctx.Identifier().getText();
+		function_name = get_function_name(function_name);
 		return_list.b.a.add(new Instruction("call", function_name, parameters, "$v0"));
 		return_list.b.a.add(new Instruction("store", 4, return_list.a, "$v0"));
 		return return_list;
@@ -1461,16 +1479,16 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 		return_list.b.a.addAll(tmp.b.b);
 		return_list.b.a.add(new Instruction("jump", "if_end_" + if_id.toString()));
 		symbol_table.end_scope();
+		return_list.b.a.add(new Instruction("label", "if_false_" + if_id.toString()));
 		if (ctx.Else() != null)
 		{
-			return_list.b.a.add(new Instruction("label", "if_false_" + if_id.toString()));
 			symbol_table.begin_scope();
 			tmp = visit(ctx.statement(1));
 			return_list.b.a.addAll(tmp.b.a);
 			return_list.b.a.addAll(tmp.b.b);
-			return_list.b.a.add(new Instruction("jump", "if_end_" + if_id.toString()));
 			symbol_table.end_scope();
 		}
+		return_list.b.a.add(new Instruction("jump", "if_end_" + if_id.toString()));
 		return_list.b.a.add(new Instruction("label", "if_end_" + if_id.toString()));
 		return return_list;
 	}
