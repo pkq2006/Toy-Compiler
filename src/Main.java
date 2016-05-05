@@ -8,12 +8,34 @@ import org.antlr.v4.runtime.tree.ParseTree;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main
 {
 	static Symbol_table symbol_table;
+	static ArrayList <String> builtin_MIPS;
 
-	public static void compile_start(InputStream src) throws IOException
+	static void get_builtin_MIPS_data() throws IOException
+	{
+		File input_file = new File("src/build_in_functions_data.s");
+		InputStream inputstream = new FileInputStream(input_file);
+		Scanner in = new Scanner(inputstream);
+		builtin_MIPS.clear();
+		while (in.hasNextLine())
+			builtin_MIPS.add(in.nextLine());
+	}
+
+	static void get_builtin_MIPS_text() throws IOException
+	{
+		File input_file = new File("src/build_in_functions_text.s");
+		InputStream inputstream = new FileInputStream(input_file);
+		Scanner in = new Scanner(inputstream);
+		builtin_MIPS.clear();
+		while (in.hasNextLine())
+			builtin_MIPS.add(in.nextLine());
+	}
+
+	static void compile_start(InputStream src) throws IOException
 	{
 		InputStreamReader source = new InputStreamReader(src);
 		ANTLRInputStream input = new ANTLRInputStream(source);
@@ -45,6 +67,31 @@ public class Main
 		Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> IR_list = constructer.visit(parse_tree);
 		for (int i = 0; i < IR_list.b.a.size(); i ++)
 			IR_list.b.a.get(i).print();
+		ArrayList <String> MIPS = new ArrayList<>();
+		get_builtin_MIPS_data();
+		MIPS.addAll(builtin_MIPS);
+		for (int i = 0; i < IR_list.b.a.size(); i ++)
+		{
+			if (IR_list.b.a.get(i).instruction_type.equals("func"))
+			{
+				ArrayList <Instruction> tmp = new ArrayList<>();
+				for (int j = i; j < IR_list.b.a.size(); j ++)
+				{
+					tmp.add(IR_list.b.a.get(j));
+					if (IR_list.b.a.get(j).instruction_type.equals("func") && IR_list.b.a.get(j).function_name == null)
+					{
+						i = j;
+						break;
+					}
+				}
+				Translate this_function = new Translate(tmp);
+				MIPS.addAll(this_function.translate());
+			}
+		}
+		get_builtin_MIPS_text();
+		MIPS.addAll(builtin_MIPS);
+		for (int i = 0; i < MIPS.size(); i ++)
+			System.out.println(MIPS.get(i));
 	}
 
 	public static void main(String args[]) throws Exception

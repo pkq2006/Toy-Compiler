@@ -5,11 +5,9 @@ import Parser.MinamiKotoriVisitor;
 import Parser.Symbol_table;
 import Parser.Type;
 import Parser.Name;
-import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.misc.Pair;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 /**
@@ -23,14 +21,14 @@ import java.util.*;
 public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>>> implements MinamiKotoriVisitor<Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>>> {
 	public Symbol_table symbol_table;
 	public Parser.Checker checker;
-	Integer temporary_variable_counter = 0, global_variable_counter = 0;
-	Integer or_expression_counter = 0, and_expression_counter = 0;
-	int for_counter = 0, while_counter = 0, if_counter = 0;
-	ArrayList <Pair <String, Integer>> break_list;
-	ArrayList <Instruction> global_variable;
-	String variable_prefix;
-	boolean is_global;
-	HashMap <String, String> builtin_function;
+	private Integer temporary_variable_counter = 0, global_variable_counter = 0;
+	private Integer or_expression_counter = 0, and_expression_counter = 0;
+	private int for_counter = 0, while_counter = 0, if_counter = 0;
+	private ArrayList <Pair <String, Integer>> break_list;
+	private ArrayList <Instruction> global_variable;
+	private String variable_prefix;
+	private boolean is_global;
+	private HashMap <String, String> builtin_function;
 
 	/**
 	 * {@inheritDoc}
@@ -38,7 +36,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	String get_function_name(String function_name)
+	private String get_function_name(String function_name)
 	{
 		if (builtin_function.get(function_name) != null)
 			return builtin_function.get(function_name);
@@ -49,11 +47,11 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 	{
 		break_list = new ArrayList<>();
 		builtin_function = new HashMap<>();
-		builtin_function.put("print", "func_print");
-		builtin_function.put("println", "func_println");
-		builtin_function.put("getString", "func_getString");
-		builtin_function.put("getInt", "func_getInt");
-		builtin_function.put("toString", "func_toString");
+		builtin_function.put("print", "func__print");
+		builtin_function.put("println", "func__println");
+		builtin_function.put("getString", "func__getString");
+		builtin_function.put("getInt", "func__getInt");
+		builtin_function.put("toString", "func__toString");
 		Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> return_list = new Pair<>("", new Pair<>(new ArrayList<>(), new ArrayList<>()));
 		global_variable = new ArrayList<>();
 		variable_prefix = "$t_main_";
@@ -77,7 +75,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 			if (!ctx.function_definition(i).Identifier().getText().equals("main"))
 			{
 				variable_prefix = "$t_" + ctx.function_definition(i).Identifier().getText() + "_";
-				temporary_variable_counter = 0;
+				temporary_variable_counter = 2;
 				Pair <String, Pair<ArrayList<Instruction>, ArrayList<Instruction>>> tmp = visit(ctx.function_definition(i));
 				return_list.b.a.addAll(tmp.b.a);
 				return_list.b.a.addAll(tmp.b.b);
@@ -198,7 +196,6 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 		if (ctx.assignment_operator().size() == 0)
 			return visit(ctx.calculation_expression());
 		Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> return_list = visit(ctx.calculation_expression());
-		Type return_type = checker.visit(ctx.calculation_expression()).get(0).a;
 		for (int i = ctx.unary_expression().size() - 1; i >= 0; i --)
 		{
 			Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> tmp = visit(ctx.unary_expression(i));
@@ -452,7 +449,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 			ArrayList <String> parameters = new ArrayList<>();
 			parameters.add("$a0");
 			parameters.add("$a1");
-			return_list.b.a.add(new Instruction("call", "stringIsEqual", parameters, "$v0"));
+			return_list.b.a.add(new Instruction("call", "func__stringIsEqual", parameters, "$v0"));
 			return_list.b.a.add(new Instruction(instruction_type, "$v0", 1, "$s2"));
 		}
 		for (int i = 2; i < value_list.size(); i ++)
@@ -523,34 +520,32 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 			return_list.b.a.add(new Instruction("load", 4, value_list.get(0), "$s0"));
 			return_list.b.a.add(new Instruction("load", 4, value_list.get(1), "$s1"));
 			return_list.b.a.add(new Instruction(instruction_type, "$s0", "$s1", "$s2"));
+			return_list.b.a.add(new Instruction("store", 4, return_list.a, "$s2"));
 		}
 		else
 		{
 			return_list.b.a.add(new Instruction("load", 4, value_list.get(0), "$a0"));
 			return_list.b.a.add(new Instruction("load", 4, value_list.get(0), "$a1"));
 			ArrayList <String> parameters = new ArrayList<>();
-			if (instruction_type.equals("slt") || instruction_type.equals("sge"))
+			parameters.add("$a0");
+			parameters.add("$a1");
+			switch (instruction_type)
 			{
-				parameters.add("$a0");
-				parameters.add("$a1");
-				return_list.b.a.add(new Instruction("call", "stringLess", parameters, "$v0"));
-				if (instruction_type.equals("slt"))
-					return_list.b.a.add(new Instruction("seq", "$v0", 1, "$s2"));
-				else
-					return_list.b.a.add(new Instruction("seq", "$v0", 0, "$s2"));
+				case "sge":
+					return_list.b.a.add(new Instruction("call", "func__stringGeq", parameters, "$v0"));
+					break;
+				case "sgt":
+					return_list.b.a.add(new Instruction("call", "func__stringLarge", parameters, "$v0"));
+					break;
+				case "sle":
+					return_list.b.a.add(new Instruction("call", "func__stringLeq", parameters, "$v0"));
+					break;
+				case "slt":
+					return_list.b.a.add(new Instruction("call", "func__stringLess", parameters, "$v0"));
+					break;
 			}
-			else
-			{
-				parameters.add("$a1");
-				parameters.add("$a0");
-				return_list.b.a.add(new Instruction("call", "stringLess", parameters, "$v0"));
-				if (instruction_type.equals("sgt"))
-					return_list.b.a.add(new Instruction("seq", "$v0", 1, "$s2"));
-				else
-					return_list.b.a.add(new Instruction("seq", "$v0", 0, "$s2"));
-			}
+			return_list.b.a.add(new Instruction("store", 4, return_list.a, "$v0"));
 		}
-		return_list.b.a.add(new Instruction("store", 4, return_list.a, "$s2"));
 		return return_list;
 	}
 	/**
@@ -688,7 +683,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 				ArrayList <String> parameters = new ArrayList<>();
 				parameters.add("$a0");
 				parameters.add("$a1");
-				return_list.b.a.add(new Instruction("call", "stringConcatenate", parameters, "$v0"));
+				return_list.b.a.add(new Instruction("call", "func__stringConcatenate", parameters, "$v0"));
 				return_list.b.a.add(new Instruction("move", "$v0", "$a0"));
 			}
 			return_list.b.a.add(new Instruction("store", 4, return_list.a, "$a0"));
@@ -881,7 +876,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 						ArrayList <String> parameters = new ArrayList<>();
 						return_list.b.a.add(new Instruction("load", 4, return_list.a, "$a0"));
 						parameters.add("$a0");
-						return_list.b.a.add(new Instruction("call", "func_string.length", parameters, "$v0"));
+						return_list.b.a.add(new Instruction("call", "func__string.length", parameters, "$v0"));
 						return_list.b.a.add(new Instruction("store", 4, return_list.a, "$v0"));
 					}
 					if (ctx.postfix(i).function_call_expression().Identifier().getText().equals("substring"))
@@ -902,7 +897,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 						parameters.add("$a0");
 						parameters.add("$a1");
 						parameters.add("$a2");
-						return_list.b.a.add(new Instruction("call", "func_string.substring", parameters, "$v0"));
+						return_list.b.a.add(new Instruction("call", "func__string.substring", parameters, "$v0"));
 						return_list.b.a.add(new Instruction("store", 4, return_list.a, "$v0"));
 					}
 					if (ctx.postfix(i).function_call_expression().Identifier().getText().equals("parseInt"))
@@ -911,7 +906,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 						ArrayList <String> parameters = new ArrayList<>();
 						return_list.b.a.add(new Instruction("load", return_list.a, "$a0"));
 						parameters.add("$a0");
-						return_list.b.a.add(new Instruction("call", "func_string.parseInt", parameters, "$v0"));
+						return_list.b.a.add(new Instruction("call", "func__string.parseInt", parameters, "$v0"));
 						return_list.b.a.add(new Instruction("store", 4, return_list.a, "$v0"));
 					}
 					if (ctx.postfix(i).function_call_expression().Identifier().getText().equals("ord"))
@@ -925,7 +920,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 						ArrayList <String> parameters = new ArrayList<>();
 						parameters.add("$a0");
 						parameters.add("$a1");
-						return_list.b.a.add(new Instruction("call", "func_string.ord", parameters, "$v0"));
+						return_list.b.a.add(new Instruction("call", "func__string.ord", parameters, "$v0"));
 						return_list.b.a.add(new Instruction("store", 4, return_list.a, "$v0"));
 					}
 				}
