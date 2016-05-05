@@ -4,107 +4,290 @@ $t_main_0 = alloc 4
 $t_main_1 = alloc 4 
 $t_main_2 = alloc 4 
 $t_main_3 = alloc 4 
-$s0 = move 3 
-store 4 $t_main_3 $s0 0
-$s0 = load 4 $t_main_3 0
-store 4 $t_main_0 $s0 0
 $t_main_4 = alloc 4 
-$s0 = move 2 
-store 4 $t_main_4 $s0 0
-$s0 = load 4 $t_main_4 0
-store 4 $t_main_1 $s0 0
 $t_main_5 = alloc 4 
-$s0 = move 1 
+$s0 = move 99 
 store 4 $t_main_5 $s0 0
-$s0 = load 4 $t_main_5 0
-store 4 $t_main_2 $s0 0
 $t_main_6 = alloc 4 
-$t_main_7 = load 4 $t_main_0 0
-$t_main_8 = load 4 $t_main_1 0
-$t_main_9 = load 4 $t_main_2 0
-$v0 = call tak $t_main_7 $t_main_8 $t_main_9
-store 4 $t_main_6 $v0 0
-$v0 = load 4 $t_main_6 0
-ret $v0
-}
-func tak $t_tak_0 $t_tak_1 $t_tak_2 {
-%tak_start:
-$t_tak_3 = alloc 4 
-store 4 $t_tak_3 $t_tak_0 0
-$t_tak_4 = alloc 4 
-store 4 $t_tak_4 $t_tak_1 0
-$t_tak_5 = alloc 4 
-store 4 $t_tak_5 $t_tak_2 0
-$t_tak_6 = alloc 4 
-$s0 = load 4 $t_tak_4 0
-$s1 = load 4 $t_tak_3 0
-$s2 = slt $s0 $s1 
-store 4 $t_tak_6 $s2 0
-$s0 = load 4 $t_tak_6 0
+$s0 = load 4 $t_main_5 0
+store 4 $t_main_6 $s0 0
+$t_main_7 = alloc 4 
+$s0 = move 5 
+store 4 $t_main_7 $s0 0
+$t_main_8 = alloc 4 
+$s0 = load 4 $t_main_7 0
+store 4 $t_main_8 $s0 0
+$t_main_9 = alloc 4 
+$s0 = move 0 
+store 4 $t_main_9 $s0 0
+$t_main_10 = alloc 4 
+$s0 = load 4 $t_main_9 0
+store 4 $t_main_10 $s0 0
+$t_main_11 = alloc 4 
+$s0 = move 1 
+store 4 $t_main_11 $s0 0
+$s0 = load 4 $t_main_11 0
+store 4 $t_main_0 $s0 0
+jump %for_judge_0
+%for_judge_0:
+$t_main_12 = alloc 4 
+$s0 = load 4 $t_main_0 0
+$s1 = load 4 $t_main_8 0
+$s2 = sle $s0 $s1 
+store 4 $t_main_12 $s2 0
+$s0 = load 4 $t_main_12 0
+br $s0 %for_start_0 %for_end_0
+%for_start_0:
+$t_main_13 = alloc 4 
+$s0 = move 1 
+store 4 $t_main_13 $s0 0
+$s0 = load 4 $t_main_13 0
+store 4 $t_main_1 $s0 0
+jump %for_judge_1
+%for_judge_1:
+$t_main_14 = alloc 4 
+$s0 = load 4 $t_main_1 0
+$s1 = load 4 $t_main_8 0
+$s2 = sle $s0 $s1 
+store 4 $t_main_14 $s2 0
+$s0 = load 4 $t_main_14 0
+br $s0 %for_start_1 %for_end_1
+%for_start_1:
+$t_main_15 = alloc 4 
+$s0 = move 1 
+store 4 $t_main_15 $s0 0
+$s0 = load 4 $t_main_15 0
+store 4 $t_main_2 $s0 0
+jump %for_judge_2
+%for_judge_2:
+$t_main_16 = alloc 4 
+$s0 = load 4 $t_main_2 0
+$s1 = load 4 $t_main_8 0
+$s2 = sle $s0 $s1 
+store 4 $t_main_16 $s2 0
+$s0 = load 4 $t_main_16 0
+br $s0 %for_start_2 %for_end_2
+%for_start_2:
+$t_main_17 = alloc 4 
+$s0 = move 1 
+store 4 $t_main_17 $s0 0
+$s0 = load 4 $t_main_17 0
+store 4 $t_main_3 $s0 0
+jump %for_judge_3
+%for_judge_3:
+$t_main_18 = alloc 4 
+$s0 = load 4 $t_main_3 0
+$s1 = load 4 $t_main_8 0
+$s2 = sle $s0 $s1 
+store 4 $t_main_18 $s2 0
+$s0 = load 4 $t_main_18 0
+br $s0 %for_start_3 %for_end_3
+%for_start_3:
+$t_main_19 = alloc 4 
+$s0 = move 1 
+store 4 $t_main_19 $s0 0
+$s0 = load 4 $t_main_19 0
+store 4 $t_main_4 $s0 0
+jump %for_judge_4
+%for_judge_4:
+$t_main_20 = alloc 4 
+$s0 = load 4 $t_main_4 0
+$s1 = load 4 $t_main_8 0
+$s2 = sle $s0 $s1 
+store 4 $t_main_20 $s2 0
+$s0 = load 4 $t_main_20 0
+br $s0 %for_start_4 %for_end_4
+%for_start_4:
+$t_main_21 = alloc 4 
+store 4 $t_main_21 0 0
+jump %and_expression_1_0
+%and_expression_1_0:
+$t_main_22 = alloc 4 
+$s0 = load 4 $t_main_0 0
+$s1 = load 4 $t_main_1 0
+$s2 = sne $s0 $s1 
+store 4 $t_main_22 $s2 0
+$s0 = load 4 $t_main_22 0
+br $s0 %and_expression_1_1 %and_expression_1_end
+%and_expression_1_1:
+$t_main_23 = alloc 4 
+$s0 = load 4 $t_main_0 0
+$s1 = load 4 $t_main_2 0
+$s2 = sne $s0 $s1 
+store 4 $t_main_23 $s2 0
+$s0 = load 4 $t_main_23 0
+br $s0 %and_expression_1_2 %and_expression_1_end
+%and_expression_1_2:
+$t_main_24 = alloc 4 
+$s0 = load 4 $t_main_0 0
+$s1 = load 4 $t_main_3 0
+$s2 = sne $s0 $s1 
+store 4 $t_main_24 $s2 0
+$s0 = load 4 $t_main_24 0
+br $s0 %and_expression_1_3 %and_expression_1_end
+%and_expression_1_3:
+$t_main_25 = alloc 4 
+$s0 = load 4 $t_main_0 0
+$s1 = load 4 $t_main_4 0
+$s2 = sne $s0 $s1 
+store 4 $t_main_25 $s2 0
+$s0 = load 4 $t_main_25 0
+br $s0 %and_expression_1_4 %and_expression_1_end
+%and_expression_1_4:
+$t_main_26 = alloc 4 
+$s0 = load 4 $t_main_0 0
+$s1 = load 4 $t_main_6 0
+$s2 = sne $s0 $s1 
+store 4 $t_main_26 $s2 0
+$s0 = load 4 $t_main_26 0
+br $s0 %and_expression_1_5 %and_expression_1_end
+%and_expression_1_5:
+$t_main_27 = alloc 4 
+$s0 = load 4 $t_main_1 0
+$s1 = load 4 $t_main_2 0
+$s2 = sne $s0 $s1 
+store 4 $t_main_27 $s2 0
+$s0 = load 4 $t_main_27 0
+br $s0 %and_expression_1_6 %and_expression_1_end
+%and_expression_1_6:
+$t_main_28 = alloc 4 
+$s0 = load 4 $t_main_1 0
+$s1 = load 4 $t_main_3 0
+$s2 = sne $s0 $s1 
+store 4 $t_main_28 $s2 0
+$s0 = load 4 $t_main_28 0
+br $s0 %and_expression_1_7 %and_expression_1_end
+%and_expression_1_7:
+$t_main_29 = alloc 4 
+$s0 = load 4 $t_main_1 0
+$s1 = load 4 $t_main_4 0
+$s2 = sne $s0 $s1 
+store 4 $t_main_29 $s2 0
+$s0 = load 4 $t_main_29 0
+br $s0 %and_expression_1_8 %and_expression_1_end
+%and_expression_1_8:
+$t_main_30 = alloc 4 
+$s0 = load 4 $t_main_1 0
+$s1 = load 4 $t_main_6 0
+$s2 = sne $s0 $s1 
+store 4 $t_main_30 $s2 0
+$s0 = load 4 $t_main_30 0
+br $s0 %and_expression_1_9 %and_expression_1_end
+%and_expression_1_9:
+$t_main_31 = alloc 4 
+$s0 = load 4 $t_main_2 0
+$s1 = load 4 $t_main_3 0
+$s2 = sne $s0 $s1 
+store 4 $t_main_31 $s2 0
+$s0 = load 4 $t_main_31 0
+br $s0 %and_expression_1_10 %and_expression_1_end
+%and_expression_1_10:
+$t_main_32 = alloc 4 
+$s0 = load 4 $t_main_2 0
+$s1 = load 4 $t_main_4 0
+$s2 = sne $s0 $s1 
+store 4 $t_main_32 $s2 0
+$s0 = load 4 $t_main_32 0
+br $s0 %and_expression_1_11 %and_expression_1_end
+%and_expression_1_11:
+$t_main_33 = alloc 4 
+$s0 = load 4 $t_main_2 0
+$s1 = load 4 $t_main_6 0
+$s2 = sne $s0 $s1 
+store 4 $t_main_33 $s2 0
+$s0 = load 4 $t_main_33 0
+br $s0 %and_expression_1_12 %and_expression_1_end
+%and_expression_1_12:
+$t_main_34 = alloc 4 
+$s0 = load 4 $t_main_3 0
+$s1 = load 4 $t_main_4 0
+$s2 = sne $s0 $s1 
+store 4 $t_main_34 $s2 0
+$s0 = load 4 $t_main_34 0
+br $s0 %and_expression_1_13 %and_expression_1_end
+%and_expression_1_13:
+$t_main_35 = alloc 4 
+$s0 = load 4 $t_main_3 0
+$s1 = load 4 $t_main_6 0
+$s2 = sne $s0 $s1 
+store 4 $t_main_35 $s2 0
+$s0 = load 4 $t_main_35 0
+br $s0 %and_expression_1_14 %and_expression_1_end
+%and_expression_1_14:
+$t_main_36 = alloc 4 
+$s0 = load 4 $t_main_4 0
+$s1 = load 4 $t_main_6 0
+$s2 = sne $s0 $s1 
+store 4 $t_main_36 $s2 0
+$s0 = load 4 $t_main_36 0
+br $s0 %and_expression_1_true %and_expression_1_end
+%and_expression_1_true:
+store 4 $t_main_21 1 0
+jump %and_expression_1_end
+%and_expression_1_end:
+$s0 = load 4 $t_main_21 0
 br $s0 %if_true_0 %if_false_0
 %if_true_0:
-$t_tak_7 = alloc 4 
-$t_tak_8 = alloc 4 
-$s0 = move 1 
-store 4 $t_tak_8 $s0 0
-$t_tak_9 = alloc 4 
-$t_tak_10 = alloc 4 
-$t_tak_11 = alloc 4 
-$t_tak_12 = alloc 4 
-$s0 = move 1 
-store 4 $t_tak_12 $s0 0
-$s0 = load 4 $t_tak_3 0
-$s1 = load 4 $t_tak_12 0
-$s0 = sub $s0 $s1 
-store 4 $t_tak_11 $s0 0
-$t_tak_13 = load 4 $t_tak_11 0
-$t_tak_14 = load 4 $t_tak_4 0
-$t_tak_15 = load 4 $t_tak_5 0
-$v0 = call tak $t_tak_13 $t_tak_14 $t_tak_15
-store 4 $t_tak_10 $v0 0
-$t_tak_16 = alloc 4 
-$t_tak_17 = alloc 4 
-$t_tak_18 = alloc 4 
-$s0 = move 1 
-store 4 $t_tak_18 $s0 0
-$s0 = load 4 $t_tak_4 0
-$s1 = load 4 $t_tak_18 0
-$s0 = sub $s0 $s1 
-store 4 $t_tak_17 $s0 0
-$t_tak_19 = load 4 $t_tak_17 0
-$t_tak_20 = load 4 $t_tak_5 0
-$t_tak_21 = load 4 $t_tak_3 0
-$v0 = call tak $t_tak_19 $t_tak_20 $t_tak_21
-store 4 $t_tak_16 $v0 0
-$t_tak_22 = alloc 4 
-$t_tak_23 = alloc 4 
-$t_tak_24 = alloc 4 
-$s0 = move 1 
-store 4 $t_tak_24 $s0 0
-$s0 = load 4 $t_tak_5 0
-$s1 = load 4 $t_tak_24 0
-$s0 = sub $s0 $s1 
-store 4 $t_tak_23 $s0 0
-$t_tak_25 = load 4 $t_tak_23 0
-$t_tak_26 = load 4 $t_tak_3 0
-$t_tak_27 = load 4 $t_tak_4 0
-$v0 = call tak $t_tak_25 $t_tak_26 $t_tak_27
-store 4 $t_tak_22 $v0 0
-$t_tak_28 = load 4 $t_tak_10 0
-$t_tak_29 = load 4 $t_tak_16 0
-$t_tak_30 = load 4 $t_tak_22 0
-$v0 = call tak $t_tak_28 $t_tak_29 $t_tak_30
-store 4 $t_tak_9 $v0 0
-$s0 = load 4 $t_tak_8 0
-$s1 = load 4 $t_tak_9 0
-$s0 = add $s0 $s1 
-store 4 $t_tak_7 $s0 0
-$v0 = load 4 $t_tak_7 0
-ret $v0
+$t_main_37 = alloc 4 
+$s0 = move $t_main_10 
+$t_main_37 = move $s0 
+$s0 = load 4 $t_main_37 0
+$s0 = add $s0 1 
+store 4 $t_main_37 $s0 0
 jump %if_end_0
 %if_false_0:
-$v0 = load 4 $t_tak_5 0
-ret $v0
 jump %if_end_0
 %if_end_0:
+jump %for_todo_4
+%for_todo_4:
+$t_main_38 = alloc 4 
+$s0 = move $t_main_4 
+$t_main_38 = move $s0 
+$s0 = load 4 $t_main_38 0
+$s0 = add $s0 1 
+store 4 $t_main_38 $s0 0
+jump %for_judge_4
+%for_end_4:
+jump %for_todo_3
+%for_todo_3:
+$t_main_39 = alloc 4 
+$s0 = move $t_main_3 
+$t_main_39 = move $s0 
+$s0 = load 4 $t_main_39 0
+$s0 = add $s0 1 
+store 4 $t_main_39 $s0 0
+jump %for_judge_3
+%for_end_3:
+jump %for_todo_2
+%for_todo_2:
+$t_main_40 = alloc 4 
+$s0 = move $t_main_2 
+$t_main_40 = move $s0 
+$s0 = load 4 $t_main_40 0
+$s0 = add $s0 1 
+store 4 $t_main_40 $s0 0
+jump %for_judge_2
+%for_end_2:
+jump %for_todo_1
+%for_todo_1:
+$t_main_41 = alloc 4 
+$s0 = move $t_main_1 
+$t_main_41 = move $s0 
+$s0 = load 4 $t_main_41 0
+$s0 = add $s0 1 
+store 4 $t_main_41 $s0 0
+jump %for_judge_1
+%for_end_1:
+jump %for_todo_0
+%for_todo_0:
+$t_main_42 = alloc 4 
+$s0 = move $t_main_0 
+$t_main_42 = move $s0 
+$s0 = load 4 $t_main_42 0
+$s0 = add $s0 1 
+store 4 $t_main_42 $s0 0
+jump %for_judge_0
+%for_end_0:
+$v0 = load 4 $t_main_10 0
+ret $v0
 }

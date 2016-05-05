@@ -1016,8 +1016,9 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 		for (int i = 0; i < value.length(); i ++)
 			value_ascii.add((int)value_char[i]);
 		int length = value.length() + 5;
-		return_list.b.a.add(new Instruction("alloc", length, "$v0"));
-		return_list.b.a.add(new Instruction("store", 4, "$v0", length));
+		return_list.b.a.add(new Instruction("move", length, "$s0"));
+		return_list.b.a.add(new Instruction("alloc", "$s0", "$v0"));
+		return_list.b.a.add(new Instruction("store", 4, "$v0", "$s0"));
 		return_list.b.a.add(new Instruction("add", "$v0", 4, "$v0"));
 		return_list.b.a.add(new Instruction("store", 4, return_list.a, "$v0"));
 		for (int i = 0; i < value.length(); i ++)

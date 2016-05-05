@@ -5,8 +5,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.io.*;
 
-public class Instruction
-{
+public class Instruction {
 	public String instruction_type;
 	public String source1, source2, source3;
 	public String target;
@@ -16,47 +15,41 @@ public class Instruction
 
 	//for function call
 	public String function_name;
-	ArrayList <String> parameters;
+	ArrayList<String> parameters;
 
 	//There must be target, but can be null
-	Instruction(String Instruction_type, String Target)
-	{
+	Instruction(String Instruction_type, String Target) {
 		instruction_type = Instruction_type;
 		target = Target;
 	}
 
-	Instruction(String Instruction_type, Integer Source1, String Target)
-	{
+	Instruction(String Instruction_type, Integer Source1, String Target) {
 		instruction_type = Instruction_type;
 		source1 = Source1.toString();
 		target = Target;
 	}
 
-	Instruction(String Instruction_type, String Source1, String Target)
-	{
+	Instruction(String Instruction_type, String Source1, String Target) {
 		instruction_type = Instruction_type;
 		source1 = Source1;
 		target = Target;
 	}
 
-	Instruction(String Instruction_type, Integer Source1, String Source2, String Target)
-	{
+	Instruction(String Instruction_type, Integer Source1, String Source2, String Target) {
 		instruction_type = Instruction_type;
 		source1 = Source1.toString();
 		source2 = Source2;
 		target = Target;
 	}
 
-	Instruction(String Instruction_type, String Source1, Integer Source2, String Target)
-	{
+	Instruction(String Instruction_type, String Source1, Integer Source2, String Target) {
 		instruction_type = Instruction_type;
 		source1 = Source1;
 		source2 = Source2.toString();
 		target = Target;
 	}
 
-	Instruction(String Instruction_type, String Source1, String Source2, String Target)
-	{
+	Instruction(String Instruction_type, String Source1, String Source2, String Target) {
 		instruction_type = Instruction_type;
 		source1 = Source1;
 		source2 = Source2;
@@ -71,7 +64,7 @@ public class Instruction
 		target = Target.toString();
 	}
 
-	Instruction(String Instruction_type, String Function_name, ArrayList <String> Parameters, String Target)
+	Instruction(String Instruction_type, String Function_name, ArrayList<String> Parameters, String Target)
 	//function_call
 	{
 		instruction_type = Instruction_type;
@@ -80,12 +73,73 @@ public class Instruction
 		target = Target;
 	}
 
-	Instruction(String Instruction_type, String Function_name, ArrayList <String> Parameters)
+	Instruction(String Instruction_type, String Function_name, ArrayList<String> Parameters)
 	//function_definition
 	{
 		instruction_type = Instruction_type;
 		function_name = Function_name;
 		parameters = Parameters;
+	}
+
+	public ArrayList <String> translate()
+	{
+		ArrayList <String> ans = new ArrayList<>();
+		switch (instruction_type)
+		{
+			case "ret":
+				break;
+			case "jump":
+				break;
+			case "br":
+				break;
+			case "store":
+				break;
+			case "load":
+				break;
+			case "alloc":
+				break;
+			case "call":
+				break;
+			case "move":
+				break;
+			case "neg":
+				break;
+			case "add":
+				break;
+			case "sub":
+				break;
+			case "mul":
+				break;
+			case "div":
+				break;
+			case "rem":
+				break;
+			case "shl":
+				break;
+			case "shr":
+				break;
+			case "and":
+				break;
+			case "xor":
+				break;
+			case "or":
+				break;
+			case "not":
+				break;
+			case "slt":
+				break;
+			case "sgt":
+				break;
+			case "sle":
+				break;
+			case "sge":
+				break;
+			case "seq":
+				break;
+			case "sne":
+				break;
+		}
+		return ans;
 	}
 
 	public void print()
