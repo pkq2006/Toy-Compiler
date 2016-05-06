@@ -68,6 +68,7 @@ public class Main
 		for (int i = 0; i < IR_list.b.a.size(); i ++)
 			IR_list.b.a.get(i).print();
 		ArrayList <String> MIPS = new ArrayList<>();
+		builtin_MIPS = new ArrayList<>();
 		get_builtin_MIPS_data();
 		MIPS.addAll(builtin_MIPS);
 		for (int i = 0; i < IR_list.b.a.size(); i ++)

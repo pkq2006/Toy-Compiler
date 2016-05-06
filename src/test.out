@@ -1,39 +1,15 @@
 func main {
 %main_start:
-$t_main_0 = alloc 4 
-$t_main_1 = alloc 4 
-$s0 = move 10 
-store 4 $t_main_1 $s0 0
 $t_main_2 = alloc 4 
-$s0 = move 20 
-store 4 $t_main_2 $s0 0
-$t_main_3 = load 4 $t_main_1 0
-$t_main_4 = load 4 $t_main_2 0
-$v0 = call min $t_main_3 $t_main_4
-store 4 $t_main_0 $v0 0
-$v0 = load 4 $t_main_0 0
-ret $v0
-}
-func min $t_min_2 $t_min_3 {
-%min_start:
-$t_min_4 = alloc 4 
-store 4 $t_min_4 $t_min_2 0
-$t_min_5 = alloc 4 
-store 4 $t_min_5 $t_min_3 0
-$t_min_6 = alloc 4 
-$s0 = load 4 $t_min_4 0
-$s1 = load 4 $t_min_5 0
-$s2 = slt $s0 $s1 
-store 4 $t_min_6 $s2 0
-$s0 = load 4 $t_min_6 0
-br $s0 %if_true_0 %if_false_0
-%if_true_0:
-$v0 = load 4 $t_min_4 0
-ret $v0
-jump %if_end_0
-%if_false_0:
-jump %if_end_0
-%if_end_0:
-$v0 = load 4 $t_min_5 0
-ret $v0
+$t_main_3 = alloc 4 
+$s0 = move 5 
+$v0 = alloc $s0 
+store 4 $v0 $s0 0
+$v0 = add $v0 4 
+store 4 $t_main_3 $v0 0
+$s0 = move 1 
+store 1 $v0 $s0 0
+$a0 = load 4 $t_main_3 0
+$v0 = call println $a0
+store 4 $t_main_2 $v0 0
 }
