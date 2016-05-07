@@ -137,22 +137,6 @@ public class Instruction {
 		return ans;
 	}
 
-	Pair <Integer, String> get_true_address_pair(String variable)
-	{
-		String ans;
-		Integer variable_id = get_variable_id(variable);
-		variable_id *= 4;
-		String register;
-		if (variable.startsWith("$g"))
-			register = "$t9";
-		else
-		{
-			variable_id *= -1;
-			register = "$sp";
-		}
-		return new Pair<>(variable_id, register);
-	}
-
 	boolean is_number(String s)
 	{
 		char[] c = s.toCharArray();

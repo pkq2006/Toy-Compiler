@@ -68,7 +68,6 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 			if (ctx.function_definition(i).Identifier().getText().equals("main"))
 			{
 				variable_prefix = "$t_" + ctx.function_definition(i).Identifier().getText() + "_";
-				Type function = symbol_table.get(Name.getSymbolName(ctx.function_definition(i).Identifier().getText()));
 				Pair <String, Pair<ArrayList<Instruction>, ArrayList<Instruction>>> tmp = visit(ctx.function_definition(i));
 				return_list.b.a.addAll(tmp.b.a);
 				return_list.b.a.addAll(tmp.b.b);

@@ -94,15 +94,22 @@ public class Main
 	public static void main(String args[]) throws Exception
 	{
 		symbol_table = new Symbol_table();
-		/*
-		File input_file = new File("src/test.mx");
-		File output_file = new File("src/test.s");
-		InputStream in = new FileInputStream(input_file);
-		PrintStream out = new PrintStream(output_file);
-		*/
-		Instruction.out = System.out;
-		compile_start(System.in);
-		for (int i = 0; i < MIPS.size(); i ++)
-			System.out.println(MIPS.get(i));
+		boolean debug = true;
+		if (debug)
+		{
+			File input_file = new File("src/test.mx");
+			File output_file = new File("src/test.s");
+			InputStream in = new FileInputStream(input_file);
+			PrintStream out = new PrintStream(output_file);
+			compile_start(in);
+			for (int i = 0; i < MIPS.size(); i ++)
+				out.println(MIPS.get(i));
+		}
+		else
+		{
+			compile_start(System.in);
+			for (int i = 0; i < MIPS.size(); i++)
+				System.out.println(MIPS.get(i));
+		}
 	}
 }
