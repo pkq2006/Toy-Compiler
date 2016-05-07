@@ -1025,11 +1025,11 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 		return_list.b.a.add(new Instruction("store", 4, return_list.a, "$v0"));
 		for (int i = 0; i < value.length(); i ++)
 		{
-			return_list.b.b.add(new Instruction("move", value_ascii.get(i), "$s0"));
+			return_list.b.a.add(new Instruction("move", value_ascii.get(i), "$s0"));
 			return_list.b.a.add(new Instruction("store", 1, "$v0", "$s0"));
 			return_list.b.a.add(new Instruction("add", "$v0", 1, "$v0"));
 		}
-		return_list.b.a.add(new Instruction("move", 1, "$s0"));
+		return_list.b.a.add(new Instruction("move", 0, "$s0"));
 		return_list.b.a.add(new Instruction("store", 1, "$v0", "$s0"));
 		return return_list;
 	}
@@ -1146,7 +1146,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 				parameters.add(new_register_id);
 			}
 		}
-		return_list.b.a.add(new Instruction("call", function_name, parameters, "$v0", temporary_variable_counter));
+		return_list.b.a.add(new Instruction("call", true_function_name, parameters, "$v0", temporary_variable_counter));
 		return_list.b.a.add(new Instruction("store", 4, return_list.a, "$v0"));
 		return return_list;
 	}

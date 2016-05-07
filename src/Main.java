@@ -1,7 +1,6 @@
 import Parser.*;
 import IR.*;
 import org.antlr.v4.runtime.ANTLRInputStream;
-import org.antlr.v4.runtime.CommonToken;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.misc.Pair;
 import org.antlr.v4.runtime.tree.ParseTree;
@@ -12,8 +11,9 @@ import java.util.Scanner;
 
 public class Main
 {
-	static Symbol_table symbol_table;
-	static ArrayList <String> builtin_MIPS;
+	private static Symbol_table symbol_table;
+	private static ArrayList <String> builtin_MIPS;
+	private static ArrayList <String> MIPS;
 
 	static void get_builtin_MIPS_data() throws IOException
 	{
@@ -65,9 +65,7 @@ public class Main
 		constructer.symbol_table = symbol_table;
 		constructer.checker = checker;
 		Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> IR_list = constructer.visit(parse_tree);
-		for (int i = 0; i < IR_list.b.a.size(); i ++)
-			IR_list.b.a.get(i).print();
-		ArrayList <String> MIPS = new ArrayList<>();
+		MIPS = new ArrayList<>();
 		builtin_MIPS = new ArrayList<>();
 		get_builtin_MIPS_data();
 		MIPS.addAll(builtin_MIPS);
@@ -91,8 +89,6 @@ public class Main
 		}
 		get_builtin_MIPS_text();
 		MIPS.addAll(builtin_MIPS);
-		for (int i = 0; i < MIPS.size(); i ++)
-			System.out.println(MIPS.get(i));
 	}
 
 	public static void main(String args[]) throws Exception
@@ -110,11 +106,13 @@ public class Main
 		}
 		System.exit(0);
 		*/
-		File input_file = new File("src/test.in");
-		File output_file = new File("src/test.out");
+		File input_file = new File("src/test.mx");
+		File output_file = new File("src/test.s");
 		InputStream in = new FileInputStream(input_file);
 		PrintStream out = new PrintStream(output_file);
-		Instruction.out = out;
+		Instruction.out = System.out;
 		compile_start(in);
+		for (int i = 0; i < MIPS.size(); i ++)
+			out.println(MIPS.get(i));
 	}
 }

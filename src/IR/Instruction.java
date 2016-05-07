@@ -172,7 +172,7 @@ public class Instruction {
 		switch (instruction_type)
 		{
 			case "ret":
-				ans.add("lw $ra, 4($sp)");
+				ans.add("lw $ra, -4($sp)");
 				ans.add("lw $sp, 0($sp)");
 				ans.add("jr $ra");
 				break;
@@ -195,7 +195,7 @@ public class Instruction {
 				if (source1.equals("4"))
 				{
 					if (is_true_register(source2))
-						ans.add("sw " + target + ", " + source2);
+						ans.add("sw " + target + ", " + "(" + source2 + ")");
 					else
 					{
 						ans.add("lw $t0, " + get_true_address(source2));
@@ -203,13 +203,16 @@ public class Instruction {
 					}
 				}
 				else
-					ans.add("sb " + target + ", " + source2);
+					ans.add("sb " + target + ", " + "(" + source2 + ")");
 				break;
 			case "load":
 				if (is_true_register(source2))
-					ans.add("lw " + target + ", " + source2);
+					ans.add("lw " + target + ", " + "(" + source2 + ")");
 				else
+				{
 					ans.add("lw " + target + ", " + get_true_address(source2));
+					ans.add("lw " + target + ", (" + target + ")");
+				}
 				break;
 			case "alloc":
 				if (is_true_register(source1))
@@ -219,7 +222,10 @@ public class Instruction {
 				ans.add("li $v0, 9");
 				ans.add("syscall");
 				if (is_true_register(target))
-					ans.add("move " + target + ", $v0");
+				{
+					if (!target.equals("$v0"))
+						ans.add("move " + target + ", $v0");
+				}
 				else
 					ans.add("sw $v0, " + get_true_address(target));
 				break;
@@ -230,11 +236,11 @@ public class Instruction {
 					ans.add("addi $sp, $sp, " + tmp.toString());
 					ans.add("jal " + function_name);
 					tmp *= -1;
-					ans.add("addi $sp, $sp" + tmp.toString());
+					ans.add("addi $sp, $sp, " + tmp.toString());
 				}
 				else
 				{
-					Integer tmp = -(register_num + 1) * 4;
+					Integer tmp = -register_num * 4;
 					ans.add("sw $sp, " + tmp.toString() + "($sp)");
 					ans.add("addi $sp, $sp, " + tmp.toString());
 					ans.add("jal " + function_name);
@@ -320,20 +326,23 @@ public class Instruction {
 				ans.add("sne " + target + ", " + source1 + ", " + source2);
 				break;
 			case "label":
-				ans.add(target + ":");
+				if (!target.endsWith("start"))
+					ans.add(target + ":");
 				break;
 			case "func":
 				if (function_name != null)
 				{
 					ans.add(function_name + ":");
-					ans.add("sw $ra, 4($sp)");
+					ans.add("sw $ra, -4($sp)");
 				}
 				else
 				{
-					ans.add("lw $ra, 4($sp)");
+					ans.add("lw $ra, -4($sp)");
 					ans.add("lw $sp, 0($sp)");
 					ans.add("jr $ra");
 				}
+				break;
+			default:
 				break;
 		}
 		return ans;
