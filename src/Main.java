@@ -65,6 +65,7 @@ public class Main
 		constructer.symbol_table = symbol_table;
 		constructer.checker = checker;
 		Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> IR_list = constructer.visit(parse_tree);
+		Translate.global_variable_number = constructer.global_variable_counter;
 		MIPS = new ArrayList<>();
 		builtin_MIPS = new ArrayList<>();
 		get_builtin_MIPS_data();
@@ -94,7 +95,7 @@ public class Main
 	public static void main(String args[]) throws Exception
 	{
 		symbol_table = new Symbol_table();
-		boolean debug = true;
+		boolean debug = false;
 		if (debug)
 		{
 			File input_file = new File("src/test.mx");

@@ -137,6 +137,22 @@ public class Instruction {
 		return ans;
 	}
 
+	Pair <Integer, String> get_true_address_pair(String variable)
+	{
+		String ans;
+		Integer variable_id = get_variable_id(variable);
+		variable_id *= 4;
+		String register;
+		if (variable.startsWith("$g"))
+			register = "$t9";
+		else
+		{
+			variable_id *= -1;
+			register = "$sp";
+		}
+		return new Pair<>(variable_id, register);
+	}
+
 	boolean is_number(String s)
 	{
 		char[] c = s.toCharArray();
@@ -176,12 +192,22 @@ public class Instruction {
 			case "store":
 				if (source1.equals("4"))
 				{
-					if (is_true_register(source2))
-						ans.add("sw " + target + ", " + "(" + source2 + ")");
+					if (is_true_register(target))
+					{
+						if (is_true_register(source2))
+							ans.add("sw " + target + ", " + "(" + source2 + ")");
+						else
+						{
+							ans.add("lw $t0, " + get_true_address(source2));
+							ans.add("sw " + target + ", ($t0)");
+						}
+					}
 					else
 					{
-						ans.add("lw $t0, " + get_true_address(source2));
-						ans.add("sw " + target + ", ($t0)");
+						Pair <Integer, String> tmp = get_true_address_pair(target);
+						assert (!is_true_register(source2));
+						ans.add("addi $t0, " + tmp.b + ", " + tmp.a);
+						ans.add("sw $t0, " + get_true_address(source2));
 					}
 				}
 				else
@@ -316,7 +342,10 @@ public class Instruction {
 			case "func":
 				if (function_name != null)
 				{
-					ans.add(function_name + ":");
+					if (function_name.equals("func_main"))
+						ans.add("main:");
+					else
+						ans.add(function_name + ":");
 					ans.add("sw $ra, -4($sp)");
 				}
 				else

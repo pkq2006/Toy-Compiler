@@ -21,7 +21,8 @@ import java.util.*;
 public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>>> implements MinamiKotoriVisitor<Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>>> {
 	public Symbol_table symbol_table;
 	public Parser.Checker checker;
-	private Integer temporary_variable_counter = 0, global_variable_counter = 0;
+	private Integer temporary_variable_counter = 0;
+	public Integer global_variable_counter = 0;
 	private Integer or_expression_counter = 0, and_expression_counter = 0;
 	private int for_counter = 0, while_counter = 0, if_counter = 0;
 	private ArrayList <Pair <String, Integer>> break_list;
@@ -233,7 +234,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 		if (ctx.logical_and_expression().size() == 1)
 			return visit(ctx.logical_and_expression(0));
 		Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> return_list = new Pair<>(variable_prefix + (temporary_variable_counter ++).toString(), new Pair<>(new ArrayList<>(), new ArrayList<>()));
-		return_list.b.a.add(new Instruction("alloc", 4, return_list.a));
+		return_list.b.a.add(new Instruction("store", 4, return_list.a, variable_prefix + (temporary_variable_counter ++).toString()));
 		return_list.b.a.add(new Instruction("move", 1, "$s0"));
 		return_list.b.a.add(new Instruction("store", 4, return_list.a, "$s0"));
 		or_expression_counter ++;
@@ -276,7 +277,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 		if (ctx.bitwise_or_expression().size() == 1)
 			return visit(ctx.bitwise_or_expression(0));
 		Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> return_list = new Pair<>(variable_prefix + (temporary_variable_counter ++).toString(), new Pair<>(new ArrayList<>(), new ArrayList<>()));
-		return_list.b.a.add(new Instruction("alloc", 4, return_list.a));
+		return_list.b.a.add(new Instruction("store", 4, return_list.a, variable_prefix + (temporary_variable_counter ++).toString()));
 		return_list.b.a.add(new Instruction("move", 0, "$s0"));
 		return_list.b.a.add(new Instruction("store", 4, return_list.a, "$s0"));
 		and_expression_counter ++;
@@ -319,7 +320,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 		if (ctx.bitwise_xor_expression().size() == 1)
 			return visit(ctx.bitwise_xor_expression(0));
 		Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> return_list = new Pair<>(variable_prefix + (temporary_variable_counter ++).toString(), new Pair<>(new ArrayList<>(), new ArrayList<>()));
-		return_list.b.a.add(new Instruction("alloc", 4, return_list.a));
+		return_list.b.a.add(new Instruction("store", 4, return_list.a, variable_prefix + (temporary_variable_counter ++).toString()));
 		ArrayList <String> value_list = new ArrayList<>();
 		for (int i = 0; i < ctx.bitwise_xor_expression().size(); i++)
 		{
@@ -355,7 +356,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 		if (ctx.bitwise_and_expression().size() == 1)
 			return visit(ctx.bitwise_and_expression(0));
 		Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> return_list = new Pair<>(variable_prefix + (temporary_variable_counter ++).toString(), new Pair<>(new ArrayList<>(), new ArrayList<>()));
-		return_list.b.a.add(new Instruction("alloc", 4, return_list.a));
+		return_list.b.a.add(new Instruction("store", 4, return_list.a, variable_prefix + (temporary_variable_counter ++).toString()));
 		ArrayList <String> value_list = new ArrayList<>();
 		for (int i = 0; i < ctx.bitwise_and_expression().size(); i++)
 		{
@@ -391,7 +392,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 		if (ctx.equality_expression().size() == 1)
 			return visit(ctx.equality_expression(0));
 		Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> return_list = new Pair<>(variable_prefix + (temporary_variable_counter ++).toString(), new Pair<>(new ArrayList<>(), new ArrayList<>()));
-		return_list.b.a.add(new Instruction("alloc", 4, return_list.a));
+		return_list.b.a.add(new Instruction("store", 4, return_list.a, variable_prefix + (temporary_variable_counter ++).toString()));
 		ArrayList <String> value_list = new ArrayList<>();
 		for (int i = 0; i < ctx.equality_expression().size(); i++)
 		{
@@ -427,7 +428,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 		if (ctx.relation_expression().size() == 1)
 			return visit(ctx.relation_expression(0));
 		Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> return_list = new Pair<>(variable_prefix + (temporary_variable_counter ++).toString(), new Pair<>(new ArrayList<>(), new ArrayList<>()));
-		return_list.b.a.add(new Instruction("alloc", 4, return_list.a));
+		return_list.b.a.add(new Instruction("store", 4, return_list.a, variable_prefix + (temporary_variable_counter ++).toString()));
 		ArrayList <String> value_list = new ArrayList<>();
 		for (int i = 0; i < ctx.relation_expression().size(); i ++)
 		{
@@ -502,7 +503,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 		if (ctx.shift_expression().size() == 1)
 			return visit(ctx.shift_expression(0));
 		Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> return_list = new Pair<>(variable_prefix + (temporary_variable_counter ++).toString(), new Pair<>(new ArrayList<>(), new ArrayList<>()));
-		return_list.b.a.add(new Instruction("alloc", 4, return_list.a));
+		return_list.b.a.add(new Instruction("store", 4, return_list.a, variable_prefix + (temporary_variable_counter ++).toString()));
 		ArrayList <String> value_list = new ArrayList<>();
 		for (int i = 0; i < ctx.shift_expression().size(); i++)
 		{
@@ -600,7 +601,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 		if (ctx.add_expression().size() == 1)
 			return visit(ctx.add_expression(0));
 		Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> return_list = new Pair<>(variable_prefix + (temporary_variable_counter ++).toString(), new Pair<>(new ArrayList<>(), new ArrayList<>()));
-		return_list.b.a.add(new Instruction("alloc", 4, return_list.a));
+		return_list.b.a.add(new Instruction("store", 4, return_list.a, variable_prefix + (temporary_variable_counter ++).toString()));
 		ArrayList <String> value_list = new ArrayList<>();
 		for (int i = 0; i < ctx.add_expression().size(); i++)
 		{
@@ -655,7 +656,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 		if (ctx.multiply_expression().size() == 1)
 			return visit(ctx.multiply_expression(0));
 		Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> return_list = new Pair<>(variable_prefix + (temporary_variable_counter ++).toString(), new Pair<>(new ArrayList<>(), new ArrayList<>()));
-		return_list.b.a.add(new Instruction("alloc", 4, return_list.a));
+		return_list.b.a.add(new Instruction("store", 4, return_list.a, variable_prefix + (temporary_variable_counter ++).toString()));
 		ArrayList <String> value_list = new ArrayList<>();
 		for (int i = 0; i < ctx.multiply_expression().size(); i++)
 		{
@@ -728,7 +729,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 		if (ctx.unary_expression().size() == 1)
 			return visit(ctx.unary_expression(0));
 		Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> return_list = new Pair<>(variable_prefix + (temporary_variable_counter ++).toString(), new Pair<>(new ArrayList<>(), new ArrayList<>()));
-		return_list.b.a.add(new Instruction("alloc", 4, return_list.a));
+		return_list.b.a.add(new Instruction("store", 4, return_list.a, variable_prefix + (temporary_variable_counter ++).toString()));
 		ArrayList <String> value_list = new ArrayList<>();
 		for (int i = 0; i < ctx.unary_expression().size(); i++)
 		{
@@ -819,7 +820,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 		Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> return_list = new Pair<>(variable_prefix + (temporary_variable_counter ++).toString(), new Pair<>(new ArrayList<>(), new ArrayList<>()));
 		Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> left = visit(ctx.primary_expression());
 		return_list.b.a.addAll(left.b.a);
-		return_list.b.a.add(new Instruction("alloc", 4, return_list.a));
+		return_list.b.a.add(new Instruction("store", 4, return_list.a, variable_prefix + (temporary_variable_counter ++).toString()));
 		Type now = checker.visit(ctx.primary_expression()).get(0).a;
 		if (now.equal(symbol_table.INT) || now.equal(symbol_table.BOOL))
 		{
@@ -979,7 +980,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 	@Override public Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> visitInteger_constant(MinamiKotoriParser.Integer_constantContext ctx)
 	{
 		Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> return_list = new Pair<>(variable_prefix + (temporary_variable_counter ++).toString(), new Pair<>(new ArrayList<>(), new ArrayList<>()));
-		return_list.b.a.add(new Instruction("alloc", 4, return_list.a));
+		return_list.b.a.add(new Instruction("store", 4, return_list.a, variable_prefix + (temporary_variable_counter ++).toString()));
 		return_list.b.a.add(new Instruction("move", Integer.valueOf(ctx.getText()), "$s0"));
 		return_list.b.a.add(new Instruction("store", 4, return_list.a, "$s0"));
 		return return_list;
@@ -993,7 +994,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 	@Override public Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> visitString_constant(MinamiKotoriParser.String_constantContext ctx)
 	{
 		Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> return_list = new Pair<>(variable_prefix + (temporary_variable_counter ++).toString(), new Pair<>(new ArrayList<>(), new ArrayList<>()));
-		return_list.b.a.add(new Instruction("alloc", 4, return_list.a));
+		return_list.b.a.add(new Instruction("store", 4, return_list.a, variable_prefix + (temporary_variable_counter ++).toString()));
 		String value = ctx.getText();
 		value = value.substring(1, value.length() - 1);
 		String tmp = "";
@@ -1113,7 +1114,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 	@Override public Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> visitFunction_call_expression(MinamiKotoriParser.Function_call_expressionContext ctx)
 	{
 		Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> return_list = new Pair<>(variable_prefix + (temporary_variable_counter ++).toString(), new Pair<>(new ArrayList<>(), new ArrayList<>()));
-		return_list.b.a.add(new Instruction("alloc", 4, return_list.a));
+		return_list.b.a.add(new Instruction("store", 4, return_list.a, variable_prefix + (temporary_variable_counter ++).toString()));
 		ArrayList <String> value_list = new ArrayList<>();
 		if (ctx.arguments() != null)
 		{
@@ -1145,6 +1146,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 				return_list.b.a.add(new Instruction("move", "$s0", new_register_id));
 				parameters.add(new_register_id);
 			}
+			true_function_name = "func_" + true_function_name;
 		}
 		return_list.b.a.add(new Instruction("call", true_function_name, parameters, "$v0", temporary_variable_counter));
 		return_list.b.a.add(new Instruction("store", 4, return_list.a, "$v0"));
@@ -1168,7 +1170,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 		if (ctx.class_new_type() != null)
 		{
 			Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> return_list = new Pair<>(variable_prefix + (temporary_variable_counter ++).toString(), new Pair<>(new ArrayList<>(), new ArrayList<>()));
-			return_list.b.a.add(new Instruction("alloc", 4, return_list.a));
+			return_list.b.a.add(new Instruction("store", 4, return_list.a, variable_prefix + (temporary_variable_counter ++).toString()));
 			Type class_type = symbol_table.get(Name.getSymbolName(ctx.class_new_type().getText()));
 			return_list.b.a.add(new Instruction("alloc", class_type.members.size() * 4, "$s0"));
 			return_list.b.a.add(new Instruction("store", 4, return_list.a, "$s0"));
@@ -1186,7 +1188,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 	@Override public Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> visitArray_new_type(MinamiKotoriParser.Array_new_typeContext ctx)
 	{
 		Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> return_list = new Pair<>(variable_prefix + (temporary_variable_counter ++).toString(), new Pair<>(new ArrayList<>(), new ArrayList<>()));
-		return_list.b.a.add(new Instruction("alloc", 4, return_list.a));
+		return_list.b.a.add(new Instruction("store", 4, return_list.a, variable_prefix + (temporary_variable_counter ++).toString()));
 		Pair <String, Pair<ArrayList<Instruction>, ArrayList<Instruction>>> tmp = visit(ctx.expression(0));
 		return_list.b.a.addAll(tmp.b.a);
 		return_list.b.a.add(new Instruction("load", 4, tmp.a, "$s0"));
@@ -1225,7 +1227,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 	@Override public Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> visitBuiltin_constant(MinamiKotoriParser.Builtin_constantContext ctx)
 	{
 		Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> return_list = new Pair<>(variable_prefix + (temporary_variable_counter ++).toString(), new Pair<>(new ArrayList<>(), new ArrayList<>()));
-		return_list.b.a.add(new Instruction("alloc", 4, return_list.a));
+		return_list.b.a.add(new Instruction("store", 4, return_list.a, variable_prefix + (temporary_variable_counter ++).toString()));
 		if (Objects.equals(ctx.getText(), "true"))
 			return_list.b.a.add(new Instruction("move", 1, "$s0"));
 		else
@@ -1252,14 +1254,14 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 			function_type.parameters.get(i).register_id = register_id;
 		}
 		temporary_variable_counter += 2;
-		return_list.b.a.add(new Instruction("func", ctx.Identifier().getText(), parameters));
+		return_list.b.a.add(new Instruction("func", "func_" + ctx.Identifier().getText(), parameters));
 		return_list.b.a.add(new Instruction("label", ctx.Identifier().getText() + "_start"));
 		if (function_type.name.equals(Name.getSymbolName("main")))
 			return_list.b.a.addAll(global_variable);
 		for (int i = 0; i < function_type.parameters.size(); i ++)
 		{
 			String register_id = variable_prefix + (temporary_variable_counter ++).toString();
-			return_list.b.a.add(new Instruction("alloc", 4, register_id));
+			return_list.b.a.add(new Instruction("store", 4, register_id, variable_prefix + (temporary_variable_counter ++).toString()));
 			return_list.b.a.add(new Instruction("move", function_type.parameters.get(i).register_id, "$s0"));
 			return_list.b.a.add(new Instruction("store", 4, register_id, "$s0"));
 			function_type.parameters.get(i).register_id = register_id;
