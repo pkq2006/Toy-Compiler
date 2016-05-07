@@ -17,7 +17,7 @@ public class Main
 
 	static void get_builtin_MIPS_data() throws IOException
 	{
-		File input_file = new File("src/build_in_functions_data.s");
+		File input_file = new File("build_in_functions_data.s");
 		InputStream inputstream = new FileInputStream(input_file);
 		Scanner in = new Scanner(inputstream);
 		builtin_MIPS.clear();
@@ -27,7 +27,7 @@ public class Main
 
 	static void get_builtin_MIPS_text() throws IOException
 	{
-		File input_file = new File("src/build_in_functions_text.s");
+		File input_file = new File("build_in_functions_text.s");
 		InputStream inputstream = new FileInputStream(input_file);
 		Scanner in = new Scanner(inputstream);
 		builtin_MIPS.clear();
