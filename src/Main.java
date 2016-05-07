@@ -95,18 +95,6 @@ public class Main
 	{
 		symbol_table = new Symbol_table();
 		/*
-		try
-		{
-			compile_start(System.in);
-		}
-		catch(Exception e)
-		{
-			System.out.println(e.getMessage());
-			System.exit(1);
-		}
-		System.exit(0);
-		*/
-		/*
 		File input_file = new File("src/test.mx");
 		File output_file = new File("src/test.s");
 		InputStream in = new FileInputStream(input_file);
