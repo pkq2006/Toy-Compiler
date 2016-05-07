@@ -254,7 +254,9 @@ public class Instruction {
 					else if (is_number(source1))
 						ans.add("li " + target + ", " + source1);
 					else
+					{
 						ans.add("lw " + target + ", " + get_true_address(source1));
+					}
 				}
 				else
 					ans.add("sw " + source1 + ", " + get_true_address(target));

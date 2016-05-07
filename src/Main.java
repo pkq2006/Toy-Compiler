@@ -111,8 +111,8 @@ public class Main
 		InputStream in = new FileInputStream(input_file);
 		PrintStream out = new PrintStream(output_file);
 		Instruction.out = System.out;
-		compile_start(in);
+		compile_start(System.in);
 		for (int i = 0; i < MIPS.size(); i ++)
-			out.println(MIPS.get(i));
+			System.out.println(MIPS.get(i));
 	}
 }

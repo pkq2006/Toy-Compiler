@@ -871,7 +871,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 					{
 						now = symbol_table.INT;
 						ArrayList <String> parameters = new ArrayList<>();
-						return_list.b.a.add(new Instruction("move", return_list.a, "$a0"));
+						return_list.b.a.add(new Instruction("load", 4, return_list.a, "$a0"));
 						parameters.add("$a0");
 						return_list.b.a.add(new Instruction("call", "func__array.size", parameters, "$v0", temporary_variable_counter));
 						return_list.b.a.add(new Instruction("store", 4, return_list.a, "$v0"));
@@ -1020,6 +1020,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 		int length = value.length() + 5;
 		return_list.b.a.add(new Instruction("move", length, "$s0"));
 		return_list.b.a.add(new Instruction("alloc", "$s0", "$v0"));
+		return_list.b.a.add(new Instruction("move", value.length(), "$s0"));
 		return_list.b.a.add(new Instruction("store", 4, "$v0", "$s0"));
 		return_list.b.a.add(new Instruction("add", "$v0", 4, "$v0"));
 		return_list.b.a.add(new Instruction("store", 4, return_list.a, "$v0"));
