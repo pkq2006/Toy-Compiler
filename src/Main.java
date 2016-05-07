@@ -106,10 +106,12 @@ public class Main
 		}
 		System.exit(0);
 		*/
+		/*
 		File input_file = new File("src/test.mx");
 		File output_file = new File("src/test.s");
 		InputStream in = new FileInputStream(input_file);
 		PrintStream out = new PrintStream(output_file);
+		*/
 		Instruction.out = System.out;
 		compile_start(System.in);
 		for (int i = 0; i < MIPS.size(); i ++)
