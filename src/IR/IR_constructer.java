@@ -56,6 +56,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 		global_variable = new ArrayList<>();
 		variable_prefix = "$t_main_";
 		is_global = true;
+		temporary_variable_counter = 2;
 		for (int i = 0; i < ctx.declaration().size(); i ++)
 		{
 			Pair <String, Pair<ArrayList<Instruction>, ArrayList<Instruction>>> tmp = visit(ctx.declaration(i));
@@ -68,7 +69,6 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 			{
 				variable_prefix = "$t_" + ctx.function_definition(i).Identifier().getText() + "_";
 				Type function = symbol_table.get(Name.getSymbolName(ctx.function_definition(i).Identifier().getText()));
-				temporary_variable_counter = -function.parameters.size();
 				Pair <String, Pair<ArrayList<Instruction>, ArrayList<Instruction>>> tmp = visit(ctx.function_definition(i));
 				return_list.b.a.addAll(tmp.b.a);
 				return_list.b.a.addAll(tmp.b.b);

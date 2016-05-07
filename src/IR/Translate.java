@@ -19,7 +19,7 @@ public class Translate
 		if (function_name.equals("main"))
 		{
 			MIPS_list.add("li $v0, 9");
-			MIPS_list.add("li $a0, 524288");
+			MIPS_list.add("li $a0, 32768");
 			MIPS_list.add("syscall");
 			MIPS_list.add("move $t9, $v0");
 		}

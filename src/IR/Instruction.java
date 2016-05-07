@@ -129,8 +129,6 @@ public class Instruction {
 		variable_id *= 4;
 		if (variable.startsWith("$g"))
 			ans = variable_id.toString() + "(" + "$t9" + ")";
-		else if (variable_id >= 0)
-			ans = "-" + variable_id.toString() + "(" + "$sp" + ")";
 		else
 		{
 			variable_id *= -1;
