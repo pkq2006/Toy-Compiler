@@ -113,6 +113,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 			variable.register_id = variable_prefix + (temporary_variable_counter ++).toString();
 		variable.name = Name.getSymbolName(ctx.init_declarator().declarator().getText());
 		symbol_table.put(variable.name, variable);
+		tmp.b.a.add(new Instruction("store", 4, variable.register_id, (temporary_variable_counter ++).toString()));
 		tmp.b.a.add(new Instruction("alloc", 4, variable.register_id));
 		if (ctx.init_declarator().initializer() != null)
 		{

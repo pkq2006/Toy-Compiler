@@ -1,21 +1,16 @@
 int[] a = new int[4];
 int main()
 {
-    int[] b = new int[a.size()];
+    int[][] b = new int[1][];
 	int i;
-    for (i = 0; i < a.size(); i++)
-	{
-		a[i] = 0;
-		b[i] = getInt();
-	}
+	b[0] = a;
+	for (i = 0; i < b[0].size(); i++)
+		a[i] = getInt();
 	for (i = 0; i < a.size(); i++)
-	{
 		print(toString(a[i]));
-	}
 	println("");
-	a=b;
 	for (i = 0; i < a.size(); i++)
-	{
+		a[i] = 0;
+	for (i = 0; i < a.size(); i++)
 		print(toString(a[i]));
-	}
 }

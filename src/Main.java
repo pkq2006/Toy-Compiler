@@ -14,6 +14,7 @@ public class Main
 	private static Symbol_table symbol_table;
 	private static ArrayList <String> builtin_MIPS;
 	private static ArrayList <String> MIPS;
+	private static boolean debug = false;
 
 	static void get_builtin_MIPS_data() throws IOException
 	{
@@ -70,6 +71,9 @@ public class Main
 		builtin_MIPS = new ArrayList<>();
 		get_builtin_MIPS_data();
 		MIPS.addAll(builtin_MIPS);
+		if (debug)
+			for (int i = 0; i < IR_list.b.a.size(); i ++)
+				IR_list.b.a.get(i).print();
 		for (int i = 0; i < IR_list.b.a.size(); i ++)
 		{
 			if (IR_list.b.a.get(i).instruction_type.equals("func"))
@@ -95,13 +99,13 @@ public class Main
 	public static void main(String args[]) throws Exception
 	{
 		symbol_table = new Symbol_table();
-		boolean debug = false;
 		if (debug)
 		{
 			File input_file = new File("src/test.mx");
 			File output_file = new File("src/test.s");
 			InputStream in = new FileInputStream(input_file);
 			PrintStream out = new PrintStream(output_file);
+			Instruction.out = System.out;
 			compile_start(in);
 			for (int i = 0; i < MIPS.size(); i ++)
 				out.println(MIPS.get(i));
