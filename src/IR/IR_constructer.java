@@ -946,7 +946,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 			if (ctx.postfix(i).minusminus_operator() != null)
 			{
 				return_list.b.b.add(new Instruction("load", 4, return_list.a, "$s0"));
-				return_list.b.b.add(new Instruction("add", "$s0", 1, "$s0"));
+				return_list.b.b.add(new Instruction("sub", "$s0", 1, "$s0"));
 				return_list.b.b.add(new Instruction("store", 4, return_list.a, "$s0"));
 			}
 		}
@@ -1320,7 +1320,10 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 	 */
 	@Override public Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> visitAssignment_statement(MinamiKotoriParser.Assignment_statementContext ctx)
 	{
-		return visit(ctx.expression());
+		Pair <String, Pair<ArrayList<Instruction>, ArrayList<Instruction>>> return_list = visit(ctx.expression());
+		return_list.b.a.addAll(return_list.b.b);
+		return_list.b.b.clear();
+		return return_list;
 	}
 	/**
 	 * {@inheritDoc}
