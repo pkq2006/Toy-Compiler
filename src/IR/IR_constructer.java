@@ -270,10 +270,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 			return_list.b.a.add(new Instruction("label", prefix + "_" + Integer.toString(i)));
 			return_list.b.a.addAll(tmp.b.a);
 			return_list.b.b.addAll(tmp.b.b);
-			if (stupid_map.get(tmp.a) != null)
-				return_list.b.a.add(new Instruction("move", stupid_map.get(tmp.a), "$s0"));
-			else
-				return_list.b.a.add(new Instruction("load", 4, tmp.a, "$s0"));
+			return_list.b.a.add(new Instruction("load", 4, tmp.a, "$s0"));
 			if (i == ctx.logical_and_expression().size() - 1)
 				return_list.b.a.add(new Instruction("br", "$s0", prefix + "_end", prefix + "_false"));
 			else
@@ -281,7 +278,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 		}
 		return_list.b.a.add(new Instruction("label", prefix + "_false"));
 		return_list.b.a.add(new Instruction("move", 1, "$s0"));
-		return_list.b.a.add(new Instruction("move", stupid_map.get(return_list.a), "$s0"));
+		return_list.b.a.add(new Instruction("store", 4, return_list.a, "$s0"));
 		return_list.b.a.add(new Instruction("jump", prefix + "_end"));
 		return_list.b.a.add(new Instruction("label", prefix + "_end"));
 		return return_list;
@@ -317,10 +314,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 			return_list.b.a.add(new Instruction("label", prefix + "_" + Integer.toString(i)));
 			return_list.b.a.addAll(tmp.b.a);
 			return_list.b.b.addAll(tmp.b.b);
-			if (stupid_map.get(tmp.a) != null)
-				return_list.b.a.add(new Instruction("move", stupid_map.get(tmp.a), "$s0"));
-			else
-				return_list.b.a.add(new Instruction("load", 4, tmp.a, "$s0"));
+			return_list.b.a.add(new Instruction("load", 4, tmp.a, "$s0"));
 			if (i == ctx.bitwise_or_expression().size() - 1)
 				return_list.b.a.add(new Instruction("br", "$s0", prefix + "_true", prefix + "_end"));
 			else
@@ -328,7 +322,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 		}
 		return_list.b.a.add(new Instruction("label", prefix + "_true"));
 		return_list.b.a.add(new Instruction("move", 1, "$s0"));
-		return_list.b.a.add(new Instruction("move", stupid_map.get(return_list.a), "$s0"));
+		return_list.b.a.add(new Instruction("store", 4, return_list.a, "$s0"));
 		return_list.b.a.add(new Instruction("jump", prefix + "_end"));
 		return_list.b.a.add(new Instruction("label", prefix + "_end"));
 		return return_list;
@@ -398,16 +392,10 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 			return_list.b.b.addAll(tmp.b.b);
 			value_list.add(tmp.a);
 		}
-		if (stupid_map.get(value_list.get(0)) != null)
-			return_list.b.a.add(new Instruction("move", stupid_map.get(value_list.get(0)), "$s0"));
-		else
-			return_list.b.a.add(new Instruction("load", 4, value_list.get(0), "$s0"));
+		return_list.b.a.add(new Instruction("load", 4, value_list.get(0), "$s0"));
 		for (int i = 1; i < value_list.size(); i ++)
 		{
-			if (stupid_map.get(value_list.get(i)) != null)
-				return_list.b.a.add(new Instruction("move", stupid_map.get(value_list.get(i)), "$s1"));
-			else
-				return_list.b.a.add(new Instruction("load", 4, value_list.get(i), "$s1"));
+			return_list.b.a.add(new Instruction("load", 4, value_list.get(i), "$s1"));
 			return_list.b.a.add(new Instruction("xor", "$s0", "$s1", "$s0"));
 		}
 		return_list.b.a.add(new Instruction("store", 4, return_list.a, "$s0"));
@@ -441,16 +429,10 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 			return_list.b.b.addAll(tmp.b.b);
 			value_list.add(tmp.a);
 		}
-		if (stupid_map.get(value_list.get(0)) != null)
-			return_list.b.a.add(new Instruction("move", stupid_map.get(value_list.get(0)), "$s0"));
-		else
-			return_list.b.a.add(new Instruction("load", 4, value_list.get(0), "$s0"));
+		return_list.b.a.add(new Instruction("load", 4, value_list.get(0), "$s0"));
 		for (int i = 1; i < value_list.size(); i ++)
 		{
-			if (stupid_map.get(value_list.get(i)) != null)
-				return_list.b.a.add(new Instruction("move", stupid_map.get(value_list.get(i)), "$s1"));
-			else
-				return_list.b.a.add(new Instruction("load", 4, value_list.get(i), "$s1"));
+			return_list.b.a.add(new Instruction("load", 4, value_list.get(i), "$s1"));
 			return_list.b.a.add(new Instruction("and", "$s0", "$s1", "$s0"));
 		}
 		return_list.b.a.add(new Instruction("store", 4, return_list.a, "$s0"));
@@ -718,10 +700,16 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 		Type return_type = checker.visit(ctx.multiply_expression(0)).get(0).a;
 		if (return_type.equal(symbol_table.INT))
 		{
-			return_list.b.a.add(new Instruction("load", 4, value_list.get(0), "$s0"));
+			if (stupid_map.get(value_list.get(0)) != null)
+				return_list.b.a.add(new Instruction("move", stupid_map.get(value_list.get(0)), "$s0"));
+			else
+				return_list.b.a.add(new Instruction("load", 4, value_list.get(0), "$s0"));
 			for (int i = 1; i < ctx.multiply_expression().size(); i ++)
 			{
-				return_list.b.a.add(new Instruction("load", 4, value_list.get(i), "$s1"));
+				if (stupid_map.get(value_list.get(i)) != null)
+					return_list.b.a.add(new Instruction("move", stupid_map.get(value_list.get(i)), "$s1"));
+				else
+					return_list.b.a.add(new Instruction("load", 4, value_list.get(i), "$s1"));
 				String instruction_type = "";
 				if (ctx.add_operators(i - 1).plus_operator() != null)
 					instruction_type = "add";
@@ -1040,7 +1028,6 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 	{
 		Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> return_list = new Pair<>(variable_prefix + (temporary_variable_counter ++).toString(), new Pair<>(new ArrayList<>(), new ArrayList<>()));
 		return_list.b.a.add(new Instruction("store", 4, return_list.a, variable_prefix + (temporary_variable_counter ++).toString()));
-		stupid_map.put(return_list.a, return_list.b.a.get(0).target);
 		return_list.b.a.add(new Instruction("move", Integer.valueOf(ctx.getText()), "$s0"));
 		return_list.b.a.add(new Instruction("store", 4, return_list.a, "$s0"));
 		return return_list;
