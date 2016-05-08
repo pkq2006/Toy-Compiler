@@ -30,7 +30,6 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 	private String variable_prefix;
 	private boolean is_global;
 	private HashMap <String, String> builtin_function;
-	private ArrayList <String> last_parameters_list;
 	private HashMap <String, String> string_constant;
 
 	/**
@@ -46,18 +45,6 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 		return function_name;
 	}
 
-	private boolean is_identifier(String parameters_name)
-	{
-		char[] char_list = parameters_name.toCharArray();
-		for (int i = 0; i < parameters_name.length(); i ++)
-		{
-			if ((char_list[i] >= 'a' && char_list[i] <= 'z') || (char_list[i] >= 'A' && char_list[i] <= 'Z') || (char_list[i] >= '0' && char_list[i] <= '9') || (char_list[i] == '_'))
-				continue;
-			return false;
-		}
-		return true;
-	}
-
 	@Override public Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> visitProgram(MinamiKotoriParser.ProgramContext ctx)
 	{
 		break_list = new ArrayList<>();
@@ -69,7 +56,6 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 		builtin_function.put("toString", "func__toString");
 		Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> return_list = new Pair<>("", new Pair<>(new ArrayList<>(), new ArrayList<>()));
 		global_variable = new ArrayList<>();
-		last_parameters_list = new ArrayList<>();
 		string_constant = new HashMap<>();
 		variable_prefix = "$t_main_";
 		is_global = true;
@@ -1154,18 +1140,18 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 		}
 		ArrayList <String> value_list = new ArrayList<>();
 		ArrayList <String> parameters = new ArrayList<>();
+		if (ctx.arguments() != null)
+		{
+			for (int i = 0; i < ctx.arguments().assignment_expression().size(); i ++)
+			{
+				Pair <String, Pair<ArrayList<Instruction>, ArrayList<Instruction>>> tmp = visit(ctx.arguments().assignment_expression(i));
+				return_list.b.a.addAll(tmp.b.a);
+				return_list.b.b.addAll(tmp.b.b);
+				value_list.add(tmp.a);
+			}
+		}
 		if (!function_name.equals(true_function_name))
 		{
-			if (ctx.arguments() != null)
-			{
-				for (int i = 0; i < ctx.arguments().assignment_expression().size(); i ++)
-				{
-					Pair <String, Pair<ArrayList<Instruction>, ArrayList<Instruction>>> tmp = visit(ctx.arguments().assignment_expression(i));
-					return_list.b.a.addAll(tmp.b.a);
-					return_list.b.b.addAll(tmp.b.b);
-					value_list.add(tmp.a);
-				}
-			}
 			for (int i = 0; i < value_list.size(); i ++)
 			{
 				return_list.b.a.add(new Instruction("load", 4, value_list.get(i), "$a" + Integer.toString(i)));
@@ -1174,52 +1160,15 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 		}
 		else if (function_type.parameters.size() <= 8)
 		{
-			ArrayList <String> now_parameters_list = new ArrayList<>();
-			ArrayList <Boolean> is_equal_list = new ArrayList<>();
-			if (ctx.arguments() != null)
-			{
-				for (int i = 0; i < ctx.arguments().assignment_expression().size(); i ++)
-				{
-					String name = ctx.arguments().assignment_expression(i).getText();
-					now_parameters_list.add(name);
-					boolean is_equal = true;
-					if (!is_identifier(name))
-						is_equal = false;
-					if (last_parameters_list.size() < i + 1 || !last_parameters_list.get(i).equals(name))
-						is_equal = false;
-					is_equal_list.add(is_equal);
-					if (is_equal)
-					{
-						value_list.add("");
-						continue;
-					}
-					Pair <String, Pair<ArrayList<Instruction>, ArrayList<Instruction>>> tmp = visit(ctx.arguments().assignment_expression(i));
-					return_list.b.a.addAll(tmp.b.a);
-					return_list.b.b.addAll(tmp.b.b);
-					value_list.add(tmp.a);
-				}
-				last_parameters_list = now_parameters_list;
-			}
 			for (int i = 0; i < value_list.size(); i ++)
 			{
-				if (!is_equal_list.get(i))
-					return_list.b.a.add(new Instruction("load", 4, value_list.get(i), "$t" + Integer.toString(i)));
+				return_list.b.a.add(new Instruction("load", 4, value_list.get(i), "$t" + Integer.toString(i)));
 				parameters.add("$t" + Integer.toString(i));
 			}
 			true_function_name = "func_" + true_function_name;
 		}
 		else
 		{
-			if (ctx.arguments() != null)
-			{
-				for (int i = 0; i < ctx.arguments().assignment_expression().size(); i ++)
-				{
-					Pair <String, Pair<ArrayList<Instruction>, ArrayList<Instruction>>> tmp = visit(ctx.arguments().assignment_expression(i));
-					return_list.b.a.addAll(tmp.b.a);
-					return_list.b.b.addAll(tmp.b.b);
-					value_list.add(tmp.a);
-				}
-			}
 			for (int i = 0; i < value_list.size(); i ++)
 			{
 				String new_register_id = variable_prefix + (temporary_variable_counter ++).toString();
