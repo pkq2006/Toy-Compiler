@@ -353,7 +353,6 @@ public class Instruction {
 			default:
 				break;
 		}
-		ans.add("");
 		return ans;
 	}
 
