@@ -62,14 +62,6 @@ public class Instruction {
 		target = Target;
 	}
 
-	Instruction(String Instruction_type, Integer Source1, String Source2, Integer Target) //store imm
-	{
-		instruction_type = Instruction_type;
-		source1 = Source1.toString();
-		source2 = Source2;
-		target = Target.toString();
-	}
-
 	Instruction(String Instruction_type, String Function_name, ArrayList<String> Parameters, String Target, Integer Register_num)
 	//function_call
 	{
@@ -140,7 +132,6 @@ public class Instruction {
 
 	Pair <Integer, String> get_true_address_pair(String variable)
 	{
-		String ans;
 		Integer variable_id = get_variable_id(variable);
 		variable_id *= 4;
 		String register;

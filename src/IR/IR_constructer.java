@@ -31,6 +31,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 	private boolean is_global;
 	private HashMap <String, String> builtin_function;
 	private HashMap <String, String> string_constant;
+	private HashMap <String, String> stupid_map;
 
 	/**
 	 * {@inheritDoc}
@@ -45,6 +46,25 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 		return function_name;
 	}
 
+	private Pair <String, Integer> get_register_pair(String register)
+	{
+		char[] s = register.toCharArray();
+		int base = 1;
+		int ans = 0;
+		int pos = 0;
+		for (int i = register.length() - 1; i >= 0; i --)
+		{
+			if (s[i] > '9' || s[i] < '0')
+			{
+				pos = i + 1;
+				break;
+			}
+			ans += base * (s[i] - '0');
+			base *= 10;
+		}
+		return new Pair<>(register.substring(0, pos), ans);
+	}
+
 	@Override public Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> visitProgram(MinamiKotoriParser.ProgramContext ctx)
 	{
 		break_list = new ArrayList<>();
@@ -57,6 +77,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 		Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> return_list = new Pair<>("", new Pair<>(new ArrayList<>(), new ArrayList<>()));
 		global_variable = new ArrayList<>();
 		string_constant = new HashMap<>();
+		stupid_map = new HashMap<>();
 		variable_prefix = "$t_main_";
 		is_global = true;
 		temporary_variable_counter = 2;
@@ -685,10 +706,16 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 		}
 		else
 		{
-			return_list.b.a.add(new Instruction("load", 4, value_list.get(0), "$a0"));
+			if (stupid_map.get(value_list.get(0)) != null)
+				return_list.b.a.add(new Instruction("move", stupid_map.get(value_list.get(0)), "$a0"));
+			else
+				return_list.b.a.add(new Instruction("load", 4, value_list.get(0), "$a0"));
 			for (int i = 1; i < ctx.multiply_expression().size(); i ++)
 			{
-				return_list.b.a.add(new Instruction("load", 4, value_list.get(i), "$a1"));
+				if (stupid_map.get(value_list.get(1)) != null)
+					return_list.b.a.add(new Instruction("move", stupid_map.get(value_list.get(1)), "$a1"));
+				else
+					return_list.b.a.add(new Instruction("load", 4, value_list.get(i), "$a1"));
 				ArrayList <String> parameters = new ArrayList<>();
 				parameters.add("$a0");
 				parameters.add("$a1");
@@ -1027,6 +1054,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 		}
 		return_list = new Pair<>("$g_" + (global_variable_counter ++).toString(), new Pair<>(new ArrayList<>(), new ArrayList<>()));
 		return_list.b.a.add(new Instruction("store", 4, return_list.a, "$g_" + (global_variable_counter ++).toString()));
+		stupid_map.put(return_list.a, return_list.b.a.get(0).target);
 		string_constant.put(value, return_list.a);
 		ArrayList <Integer> value_ascii = new ArrayList<>();
 		for (int i = 0; i < value.length(); i ++)
