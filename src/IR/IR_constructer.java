@@ -641,10 +641,16 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 			return_list.b.b.addAll(tmp.b.b);
 			value_list.add(tmp.a);
 		}
-		return_list.b.a.add(new Instruction("load", 4, value_list.get(0), "$s0"));
+		if (stupid_map.get(value_list.get(0)) != null)
+			return_list.b.a.add(new Instruction("move", stupid_map.get(value_list.get(0)), "$s0"));
+		else
+			return_list.b.a.add(new Instruction("load", 4, value_list.get(0), "$s0"));
 		for (int i = 1; i < value_list.size(); i ++)
 		{
-			return_list.b.a.add(new Instruction("load", 4, value_list.get(i), "$s1"));
+			if (stupid_map.get(value_list.get(i)) != null)
+				return_list.b.a.add(new Instruction("move", stupid_map.get(value_list.get(i)), "$s1"));
+			else
+				return_list.b.a.add(new Instruction("load", 4, value_list.get(i), "$s1"));
 			String instruction_type = "";
 			if (ctx.shift_operators(i - 1).lshift_operator() != null)
 				instruction_type = "shl";
@@ -780,7 +786,10 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 			return_list.b.b.addAll(tmp.b.b);
 			value_list.add(tmp.a);
 		}
-		return_list.b.a.add(new Instruction("load", 4, value_list.get(0), "$s0"));
+		if (stupid_map.get(value_list.get(0)) != null)
+			return_list.b.a.add(new Instruction("move", stupid_map.get(value_list.get(0)), "$s0"));
+		else
+			return_list.b.a.add(new Instruction("load", 4, value_list.get(0), "$s0"));
 		for (int i = 1; i < ctx.unary_expression().size(); i ++)
 		{
 			String instruction_type = "";
@@ -790,7 +799,10 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 				instruction_type = "div";
 			if (ctx.multiply_operators(i - 1).mod_operator() != null)
 				instruction_type = "rem";
-			return_list.b.a.add(new Instruction("load", 4, value_list.get(i), "$s1"));
+			if (stupid_map.get(value_list.get(i)) != null)
+				return_list.b.a.add(new Instruction("move", stupid_map.get(value_list.get(i)), "$s1"));
+			else
+				return_list.b.a.add(new Instruction("load", 4, value_list.get(i), "$s1"));
 			return_list.b.a.add(new Instruction(instruction_type, "$s0", "$s1", "$s0"));
 		}
 		return_list.b.a.add(new Instruction("store", 4, return_list.a, "$s0"));

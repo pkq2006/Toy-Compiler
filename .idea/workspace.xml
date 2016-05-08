@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0467849c-faca-48e3-ba2d-f6a6aaa4dff0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Compiler Project/IR/IR_constructer.class" afterPath="$PROJECT_DIR$/out/production/Compiler Project/IR/IR_constructer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Compiler Project/Main.class" afterPath="$PROJECT_DIR$/out/production/Compiler Project/Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Compiler Project/test.mx" afterPath="$PROJECT_DIR$/out/production/Compiler Project/test.mx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Compiler Project/test.s" afterPath="$PROJECT_DIR$/out/production/Compiler Project/test.s" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/IR_constructer.java" afterPath="$PROJECT_DIR$/src/IR/IR_constructer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test.mx" afterPath="$PROJECT_DIR$/src/test.mx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test.s" afterPath="$PROJECT_DIR$/src/test.s" />
     </list>
     <ignored path="Compiler Project.iws" />
@@ -55,7 +49,7 @@
         <entry file="file://$PROJECT_DIR$/src/test.s">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1530">
-              <caret line="599" column="14" selection-start-line="599" selection-start-column="14" selection-end-line="599" selection-end-column="14" />
+              <caret line="595" column="14" selection-start-line="595" selection-start-column="14" selection-end-line="595" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -106,8 +100,8 @@
       <file leaf-file-name="IR_constructer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/IR/IR_constructer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="381">
-              <caret line="711" column="16" selection-start-line="711" selection-start-column="16" selection-end-line="711" selection-end-column="16" />
+            <state relative-caret-position="355">
+              <caret line="652" column="12" selection-start-line="652" selection-start-column="12" selection-end-line="652" selection-end-column="12" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -972,7 +966,7 @@
     <entry file="file://$PROJECT_DIR$/src/test.s">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1530">
-          <caret line="599" column="14" selection-start-line="599" selection-start-column="14" selection-end-line="599" selection-end-column="14" />
+          <caret line="595" column="14" selection-start-line="595" selection-start-column="14" selection-end-line="595" selection-end-column="14" />
           <folding />
         </state>
       </provider>
@@ -1017,8 +1011,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/IR/IR_constructer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="711" column="16" selection-start-line="711" selection-start-column="16" selection-end-line="711" selection-end-column="16" />
+        <state relative-caret-position="355">
+          <caret line="652" column="12" selection-start-line="652" selection-start-column="12" selection-end-line="652" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
