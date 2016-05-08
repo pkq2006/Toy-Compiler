@@ -31,7 +31,6 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 	private boolean is_global;
 	private HashMap <String, String> builtin_function;
 	private HashMap <String, String> string_constant;
-	private HashMap <Integer, String> integer_constant;
 
 	/**
 	 * {@inheritDoc}
@@ -58,7 +57,6 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 		Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> return_list = new Pair<>("", new Pair<>(new ArrayList<>(), new ArrayList<>()));
 		global_variable = new ArrayList<>();
 		string_constant = new HashMap<>();
-		integer_constant = new HashMap<>();
 		variable_prefix = "$t_main_";
 		is_global = true;
 		temporary_variable_counter = 2;
@@ -988,17 +986,9 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 	 */
 	@Override public Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> visitInteger_constant(MinamiKotoriParser.Integer_constantContext ctx)
 	{
-		Integer value = Integer.valueOf(ctx.getText());
-		Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> return_list;
-		if (integer_constant.get(value) != null)
-		{
-			return_list = new Pair<>(integer_constant.get(value), new Pair<>(new ArrayList<>(), new ArrayList<>()));
-			return return_list;
-		}
-		return_list= new Pair<>("$g_" + (global_variable_counter ++).toString(), new Pair<>(new ArrayList<>(), new ArrayList<>()));
-		return_list.b.a.add(new Instruction("store", 4, return_list.a, "$g_" + (global_variable_counter ++).toString()));
-		integer_constant.put(value, return_list.a);
-		return_list.b.a.add(new Instruction("move", value, "$s0"));
+		Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> return_list = new Pair<>(variable_prefix + (temporary_variable_counter ++).toString(), new Pair<>(new ArrayList<>(), new ArrayList<>()));
+		return_list.b.a.add(new Instruction("store", 4, return_list.a, variable_prefix + (temporary_variable_counter ++).toString()));
+		return_list.b.a.add(new Instruction("move", Integer.valueOf(ctx.getText()), "$s0"));
 		return_list.b.a.add(new Instruction("store", 4, return_list.a, "$s0"));
 		return return_list;
 	}
