@@ -474,14 +474,26 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 			instruction_type = "sne";
 		if (the_first_type.equal(symbol_table.INT))
 		{
-			return_list.b.a.add(new Instruction("load", 4, value_list.get(0), "$s0"));
-			return_list.b.a.add(new Instruction("load", 4, value_list.get(1), "$s1"));
+			if (stupid_map.get(value_list.get(0)) != null)
+				return_list.b.a.add(new Instruction("move", stupid_map.get(value_list.get(0)), "$s0"));
+			else
+				return_list.b.a.add(new Instruction("load", 4, value_list.get(0), "$s0"));
+			if (stupid_map.get(value_list.get(1)) != null)
+				return_list.b.a.add(new Instruction("move", stupid_map.get(value_list.get(1)), "$s1"));
+			else
+				return_list.b.a.add(new Instruction("load", 4, value_list.get(1), "$s1"));
 			return_list.b.a.add(new Instruction(instruction_type, "$s0", "$s1", "$s2"));
 		}
 		else
 		{
-			return_list.b.a.add(new Instruction("load", 4, value_list.get(0), "$a0"));
-			return_list.b.a.add(new Instruction("load", 4, value_list.get(1), "$a1"));
+			if (stupid_map.get(value_list.get(0)) != null)
+				return_list.b.a.add(new Instruction("move", stupid_map.get(value_list.get(0)), "$a0"));
+			else
+				return_list.b.a.add(new Instruction("load", 4, value_list.get(0), "$a0"));
+			if (stupid_map.get(value_list.get(1)) != null)
+				return_list.b.a.add(new Instruction("move", stupid_map.get(value_list.get(1)), "$a1"));
+			else
+				return_list.b.a.add(new Instruction("load", 4, value_list.get(1), "$a1"));
 			ArrayList <String> parameters = new ArrayList<>();
 			parameters.add("$a0");
 			parameters.add("$a1");
@@ -490,7 +502,10 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 		}
 		for (int i = 2; i < value_list.size(); i ++)
 		{
-			return_list.b.a.add(new Instruction("load", 4, value_list.get(i), "$s0"));
+			if (stupid_map.get(value_list.get(i)) != null)
+				return_list.b.a.add(new Instruction("move", stupid_map.get(value_list.get(i)), "$s0"));
+			else
+				return_list.b.a.add(new Instruction("load", 4, value_list.get(i), "$s0"));
 			if (ctx.equality_operators(i - 1).is_equal_operator() != null)
 				instruction_type = "seq";
 			else
