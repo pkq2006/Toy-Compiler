@@ -96,7 +96,8 @@ public class Instruction {
 
 	boolean is_true_register(String register_id)
 	{
-		if (register_id.startsWith("$s") || register_id.startsWith("$v") || register_id.startsWith("$a"))
+		if (register_id.startsWith("$s") || register_id.startsWith("$v") || register_id.startsWith("$a") ||
+				(register_id.startsWith("$t") && !register_id.startsWith("$t_")))
 			return true;
 		return false;
 	}
@@ -198,16 +199,16 @@ public class Instruction {
 							ans.add("sw " + target + ", " + "(" + source2 + ")");
 						else
 						{
-							ans.add("lw $t0, " + get_true_address(source2));
-							ans.add("sw " + target + ", ($t0)");
+							ans.add("lw $s4, " + get_true_address(source2));
+							ans.add("sw " + target + ", ($s4)");
 						}
 					}
 					else
 					{
 						Pair <Integer, String> tmp = get_true_address_pair(target);
 						assert (!is_true_register(source2));
-						ans.add("addi $t0, " + tmp.b + ", " + tmp.a);
-						ans.add("sw $t0, " + get_true_address(source2));
+						ans.add("addi $s4, " + tmp.b + ", " + tmp.a);
+						ans.add("sw $s4, " + get_true_address(source2));
 					}
 				}
 				else
@@ -352,6 +353,7 @@ public class Instruction {
 			default:
 				break;
 		}
+		ans.add("");
 		return ans;
 	}
 

@@ -1143,6 +1143,15 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 				parameters.add("$a" + Integer.toString(i));
 			}
 		}
+		else if (function_type.parameters.size() <= 8)
+		{
+			for (int i = 0; i < value_list.size(); i ++)
+			{
+				return_list.b.a.add(new Instruction("load", 4, value_list.get(i), "$t" + Integer.toString(i)));
+				parameters.add("$t" + Integer.toString(i));
+			}
+			true_function_name = "func_" + true_function_name;
+		}
 		else
 		{
 			for (int i = 0; i < value_list.size(); i ++)
@@ -1265,14 +1274,28 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 		return_list.b.a.add(new Instruction("label", ctx.Identifier().getText() + "_start"));
 		if (function_type.name.equals(Name.getSymbolName("main")))
 			return_list.b.a.addAll(global_variable);
-		for (int i = 0; i < function_type.parameters.size(); i ++)
+		if (function_type.parameters.size() <= 8)
 		{
-			String register_id = variable_prefix + (temporary_variable_counter ++).toString();
-			return_list.b.a.add(new Instruction("store", 4, register_id, variable_prefix + (temporary_variable_counter ++).toString()));
-			return_list.b.a.add(new Instruction("move", function_type.parameters.get(i).register_id, "$s0"));
-			return_list.b.a.add(new Instruction("store", 4, register_id, "$s0"));
-			function_type.parameters.get(i).register_id = register_id;
-			symbol_table.put(function_type.parameters.get(i).name, function_type.parameters.get(i));
+			for (int i = 0; i < function_type.parameters.size(); i ++)
+			{
+				String register_id = variable_prefix + (temporary_variable_counter ++).toString();
+				return_list.b.a.add(new Instruction("store", 4, register_id, variable_prefix + (temporary_variable_counter ++).toString()));
+				return_list.b.a.add(new Instruction("store", 4, "$s4", "$t" + Integer.toString(i)));
+				function_type.parameters.get(i).register_id = register_id;
+				symbol_table.put(function_type.parameters.get(i).name, function_type.parameters.get(i));
+			}
+		}
+		else
+		{
+			for (int i = 0; i < function_type.parameters.size(); i++)
+			{
+				String register_id = variable_prefix + (temporary_variable_counter ++).toString();
+				return_list.b.a.add(new Instruction("store", 4, register_id, variable_prefix + (temporary_variable_counter++).toString()));
+				return_list.b.a.add(new Instruction("move", function_type.parameters.get(i).register_id, "$s0"));
+				return_list.b.a.add(new Instruction("store", 4, "$s4", "$s0"));
+				function_type.parameters.get(i).register_id = register_id;
+				symbol_table.put(function_type.parameters.get(i).name, function_type.parameters.get(i));
+			}
 		}
 		for (int i = 0; i < ctx.base_statement().size(); i++)
 		{
