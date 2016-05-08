@@ -953,7 +953,10 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 				return_list.b.a.addAll(tmp.b.a);
 				return_list.b.b.addAll(tmp.b.b);
 				return_list.b.a.add(new Instruction("load", 4, return_list.a, "$s0"));
-				return_list.b.a.add(new Instruction("load", 4, tmp.a, "$s1"));
+				if (stupid_map.get(tmp.a) != null)
+					return_list.b.a.add(new Instruction("move", stupid_map.get(tmp.a), "$s1"));
+				else
+					return_list.b.a.add(new Instruction("load", 4, tmp.a, "$s1"));
 				if (now.dim == 0 && now.members != null)
 					return_list.b.a.add(new Instruction("mul", "$s1", now.members.size(), "$s1"));
 				return_list.b.a.add(new Instruction("mul", "$s1", 4, "$s1"));
@@ -1378,6 +1381,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 	{
 		Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> return_list = new Pair<>(variable_prefix + (temporary_variable_counter ++).toString(), new Pair<>(new ArrayList<>(), new ArrayList<>()));
 		return_list.b.a.add(new Instruction("store", 4, return_list.a, variable_prefix + (temporary_variable_counter ++).toString()));
+		stupid_map.put(return_list.a, return_list.b.a.get(0).target);
 		if (Objects.equals(ctx.getText(), "true"))
 			return_list.b.a.add(new Instruction("move", 1, "$s0"));
 		else
@@ -1413,7 +1417,9 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 			for (int i = 0; i < function_type.parameters.size(); i ++)
 			{
 				String register_id = variable_prefix + (temporary_variable_counter ++).toString();
-				return_list.b.a.add(new Instruction("store", 4, register_id, variable_prefix + (temporary_variable_counter ++).toString()));
+				String add = variable_prefix + (temporary_variable_counter ++).toString();
+				return_list.b.a.add(new Instruction("store", 4, register_id, add.toString()));
+				stupid_map.put(register_id, add);
 				return_list.b.a.add(new Instruction("store", 4, "$s4", "$t" + Integer.toString(i)));
 				function_type.parameters.get(i).register_id = register_id;
 				symbol_table.put(function_type.parameters.get(i).name, function_type.parameters.get(i));
