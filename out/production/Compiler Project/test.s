@@ -505,8 +505,7 @@ li $s0, 0
 sb $s0, ($v0)
 lw $a0, -8($sp)
 lw $a0, ($a0)
-lw $a1, 40($t9)
-lw $a1, ($a1)
+lw $a1, 44($t9)
 addi $sp, $sp, -64
 jal func__stringConcatenate
 addi $sp, $sp, 64
@@ -517,8 +516,7 @@ addi $sp, $sp, -64
 jal func__stringConcatenate
 addi $sp, $sp, 64
 move $a0, $v0
-lw $a1, 48($t9)
-lw $a1, ($a1)
+lw $a1, 52($t9)
 addi $sp, $sp, -64
 jal func__stringConcatenate
 addi $sp, $sp, 64
@@ -625,8 +623,7 @@ li $s0, 0
 sb $s0, ($v0)
 lw $a0, -8($sp)
 lw $a0, ($a0)
-lw $a1, 40($t9)
-lw $a1, ($a1)
+lw $a1, 44($t9)
 addi $sp, $sp, -80
 jal func__stringConcatenate
 addi $sp, $sp, 80
@@ -637,8 +634,7 @@ addi $sp, $sp, -80
 jal func__stringConcatenate
 addi $sp, $sp, 80
 move $a0, $v0
-lw $a1, 56($t9)
-lw $a1, ($a1)
+lw $a1, 60($t9)
 addi $sp, $sp, -80
 jal func__stringConcatenate
 addi $sp, $sp, 80
