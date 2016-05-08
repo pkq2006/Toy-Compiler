@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0467849c-faca-48e3-ba2d-f6a6aaa4dff0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Compiler Project/IR/IR_constructer.class" afterPath="$PROJECT_DIR$/out/production/Compiler Project/IR/IR_constructer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Compiler Project/IR/Instruction.class" afterPath="$PROJECT_DIR$/out/production/Compiler Project/IR/Instruction.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Compiler Project/test.out" afterPath="$PROJECT_DIR$/out/production/Compiler Project/test.out" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Compiler Project/test.mx" afterPath="$PROJECT_DIR$/out/production/Compiler Project/test.mx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Compiler Project/test.s" afterPath="$PROJECT_DIR$/out/production/Compiler Project/test.s" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/IR_constructer.java" afterPath="$PROJECT_DIR$/src/IR/IR_constructer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/Instruction.java" afterPath="$PROJECT_DIR$/src/IR/Instruction.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test.mx" afterPath="$PROJECT_DIR$/src/test.mx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test.out" afterPath="$PROJECT_DIR$/src/test.out" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test.s" afterPath="$PROJECT_DIR$/src/test.s" />
@@ -34,11 +27,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Instruction.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Instruction.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/IR/Instruction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="222" column="28" selection-start-line="222" selection-start-column="28" selection-end-line="222" selection-end-column="28" />
+            <state relative-caret-position="1735">
+              <caret line="224" column="16" selection-start-line="224" selection-start-column="16" selection-end-line="224" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -68,26 +61,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test.mx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test.mx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test.s" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test.s">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-90">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Translate.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/IR/Translate.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -98,11 +71,31 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="test.mx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test.mx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="25" column="1" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.s" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test.s">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="507" column="14" selection-start-line="507" selection-start-column="14" selection-end-line="507" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="test.out" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test.out">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="1007" column="11" selection-start-line="1007" selection-start-column="11" selection-end-line="1007" selection-end-column="11" />
+            <state relative-caret-position="45">
+              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -111,8 +104,8 @@
       <file leaf-file-name="IR_constructer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/IR/IR_constructer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="691" column="32" selection-start-line="691" selection-start-column="32" selection-end-line="691" selection-end-column="32" />
+            <state relative-caret-position="171">
+              <caret line="1155" column="31" selection-start-line="1155" selection-start-column="31" selection-end-line="1155" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -134,11 +127,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="14" column="50" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
+            <state relative-caret-position="90">
+              <caret line="16" column="39" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -189,11 +182,11 @@
         <option value="$PROJECT_DIR$/src/IR/Translate.java" />
         <option value="$PROJECT_DIR$/src/Parser/Symbol_table.java" />
         <option value="$PROJECT_DIR$/src/test.in" />
-        <option value="$PROJECT_DIR$/src/test.s" />
-        <option value="$PROJECT_DIR$/src/test.mx" />
         <option value="$PROJECT_DIR$/src/IR/Instruction.java" />
-        <option value="$PROJECT_DIR$/src/IR/IR_constructer.java" />
+        <option value="$PROJECT_DIR$/src/test.mx" />
+        <option value="$PROJECT_DIR$/src/test.s" />
         <option value="$PROJECT_DIR$/src/test.out" />
+        <option value="$PROJECT_DIR$/src/IR/IR_constructer.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
       </list>
     </option>
@@ -612,7 +605,7 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871014" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.325" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3236111" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30290458" sideWeight="0.5028612" order="8" side_tool="true" content_ui="tabs" />
@@ -978,19 +971,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test.s">
+    <entry file="file://$PROJECT_DIR$/src/IR/Instruction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-90">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test.mx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
-          <folding />
+        <state relative-caret-position="1735">
+          <caret line="224" column="16" selection-start-line="224" selection-start-column="16" selection-end-line="224" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1002,38 +989,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test.out">
+    <entry file="file://$PROJECT_DIR$/src/test.mx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="1007" column="11" selection-start-line="1007" selection-start-column="11" selection-end-line="1007" selection-end-column="11" />
+        <state relative-caret-position="375">
+          <caret line="25" column="1" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/test.s">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="14" column="50" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="225">
+          <caret line="507" column="14" selection-start-line="507" selection-start-column="14" selection-end-line="507" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test.out">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/IR/IR_constructer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="691" column="32" selection-start-line="691" selection-start-column="32" selection-end-line="691" selection-end-column="32" />
+        <state relative-caret-position="171">
+          <caret line="1155" column="31" selection-start-line="1155" selection-start-column="31" selection-end-line="1155" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/IR/Instruction.java">
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="222" column="28" selection-start-line="222" selection-start-column="28" selection-end-line="222" selection-end-column="28" />
+        <state relative-caret-position="90">
+          <caret line="16" column="39" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

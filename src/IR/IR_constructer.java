@@ -706,14 +706,11 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 		}
 		else
 		{
-			if (stupid_map.get(value_list.get(0)) != null)
-				return_list.b.a.add(new Instruction("move", stupid_map.get(value_list.get(0)), "$a0"));
-			else
-				return_list.b.a.add(new Instruction("load", 4, value_list.get(0), "$a0"));
+			return_list.b.a.add(new Instruction("load", 4, value_list.get(0), "$a0"));
 			for (int i = 1; i < ctx.multiply_expression().size(); i ++)
 			{
-				if (stupid_map.get(value_list.get(1)) != null)
-					return_list.b.a.add(new Instruction("move", stupid_map.get(value_list.get(1)), "$a1"));
+				if (stupid_map.get(value_list.get(i)) != null)
+					return_list.b.a.add(new Instruction("move", stupid_map.get(value_list.get(i)), "$a1"));
 				else
 					return_list.b.a.add(new Instruction("load", 4, value_list.get(i), "$a1"));
 				ArrayList <String> parameters = new ArrayList<>();
