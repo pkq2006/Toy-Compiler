@@ -554,15 +554,27 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 		Type return_type = checker.visit(ctx.shift_expression(0)).get(0).a;
 		if (return_type.equal(symbol_table.INT))
 		{
-			return_list.b.a.add(new Instruction("load", 4, value_list.get(0), "$s0"));
-			return_list.b.a.add(new Instruction("load", 4, value_list.get(1), "$s1"));
+			if (stupid_map.get(value_list.get(0)) != null)
+				return_list.b.a.add(new Instruction("move", stupid_map.get(value_list.get(0)), "$s0"));
+			else
+				return_list.b.a.add(new Instruction("load", 4, value_list.get(0), "$s0"));
+			if (stupid_map.get(value_list.get(1)) != null)
+				return_list.b.a.add(new Instruction("move", stupid_map.get(value_list.get(1)), "$s1"));
+			else
+				return_list.b.a.add(new Instruction("load", 4, value_list.get(1), "$s1"));
 			return_list.b.a.add(new Instruction(instruction_type, "$s0", "$s1", "$s2"));
 			return_list.b.a.add(new Instruction("store", 4, return_list.a, "$s2"));
 		}
 		else
 		{
-			return_list.b.a.add(new Instruction("load", 4, value_list.get(0), "$a0"));
-			return_list.b.a.add(new Instruction("load", 4, value_list.get(0), "$a1"));
+			if (stupid_map.get(value_list.get(0)) != null)
+				return_list.b.a.add(new Instruction("move", stupid_map.get(value_list.get(0)), "$a0"));
+			else
+				return_list.b.a.add(new Instruction("load", 4, value_list.get(0), "$a0"));
+			if (stupid_map.get(value_list.get(1)) != null)
+				return_list.b.a.add(new Instruction("move", stupid_map.get(value_list.get(1)), "$a1"));
+			else
+				return_list.b.a.add(new Instruction("load", 4, value_list.get(0), "$a1"));
 			ArrayList <String> parameters = new ArrayList<>();
 			parameters.add("$a0");
 			parameters.add("$a1");
