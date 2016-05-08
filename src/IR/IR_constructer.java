@@ -270,7 +270,10 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 			return_list.b.a.add(new Instruction("label", prefix + "_" + Integer.toString(i)));
 			return_list.b.a.addAll(tmp.b.a);
 			return_list.b.b.addAll(tmp.b.b);
-			return_list.b.a.add(new Instruction("load", 4, tmp.a, "$s0"));
+			if (stupid_map.get(tmp.a) != null)
+				return_list.b.a.add(new Instruction("move", stupid_map.get(tmp.a), "$s0"));
+			else
+				return_list.b.a.add(new Instruction("load", 4, tmp.a, "$s0"));
 			if (i == ctx.logical_and_expression().size() - 1)
 				return_list.b.a.add(new Instruction("br", "$s0", prefix + "_end", prefix + "_false"));
 			else
@@ -314,7 +317,10 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 			return_list.b.a.add(new Instruction("label", prefix + "_" + Integer.toString(i)));
 			return_list.b.a.addAll(tmp.b.a);
 			return_list.b.b.addAll(tmp.b.b);
-			return_list.b.a.add(new Instruction("load", 4, tmp.a, "$s0"));
+			if (stupid_map.get(tmp.a) != null)
+				return_list.b.a.add(new Instruction("move", stupid_map.get(tmp.a), "$s0"));
+			else
+				return_list.b.a.add(new Instruction("load", 4, tmp.a, "$s0"));
 			if (i == ctx.bitwise_or_expression().size() - 1)
 				return_list.b.a.add(new Instruction("br", "$s0", prefix + "_true", prefix + "_end"));
 			else
