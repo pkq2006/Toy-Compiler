@@ -1283,7 +1283,10 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 			for (int i = 0; i < value_list.size(); i ++)
 			{
 				String new_register_id = variable_prefix + (temporary_variable_counter ++).toString();
-				return_list.b.a.add(new Instruction("load", 4, value_list.get(i), "$s0"));
+				if (stupid_map.get(value_list.get(i)) != null)
+					return_list.b.a.add(new Instruction("move", stupid_map.get(value_list.get(i)), "$s0"));
+				else
+					return_list.b.a.add(new Instruction("load", 4, value_list.get(i), "$s0"));
 				return_list.b.a.add(new Instruction("move", "$s0", new_register_id));
 				parameters.add(new_register_id);
 			}
@@ -1313,6 +1316,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 		{
 			Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> return_list = new Pair<>(variable_prefix + (temporary_variable_counter ++).toString(), new Pair<>(new ArrayList<>(), new ArrayList<>()));
 			return_list.b.a.add(new Instruction("store", 4, return_list.a, variable_prefix + (temporary_variable_counter ++).toString()));
+			stupid_map.put(return_list.a, return_list.b.a.get(0).target);
 			Type class_type = symbol_table.get(Name.getSymbolName(ctx.class_new_type().getText()));
 			return_list.b.a.add(new Instruction("alloc", class_type.members.size() * 4, "$s0"));
 			return_list.b.a.add(new Instruction("store", 4, return_list.a, "$s0"));
@@ -1331,9 +1335,13 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 	{
 		Pair <String, Pair <ArrayList <Instruction>, ArrayList <Instruction>>> return_list = new Pair<>(variable_prefix + (temporary_variable_counter ++).toString(), new Pair<>(new ArrayList<>(), new ArrayList<>()));
 		return_list.b.a.add(new Instruction("store", 4, return_list.a, variable_prefix + (temporary_variable_counter ++).toString()));
+		stupid_map.put(return_list.a, return_list.b.a.get(0).target);
 		Pair <String, Pair<ArrayList<Instruction>, ArrayList<Instruction>>> tmp = visit(ctx.expression(0));
 		return_list.b.a.addAll(tmp.b.a);
-		return_list.b.a.add(new Instruction("load", 4, tmp.a, "$s0"));
+		if (stupid_map.get(tmp.a) != null)
+			return_list.b.a.add(new Instruction("move", stupid_map.get(tmp.a), "$s0"));
+		else
+			return_list.b.a.add(new Instruction("load", 4, tmp.a, "$s0"));
 		return_list.b.a.add(new Instruction("move", "$s0", "$s1"));
 		return_list.b.a.addAll(tmp.b.b);
 		if (ctx.Left_square_bracket().size() == ctx.expression().size())

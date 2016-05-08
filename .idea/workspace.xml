@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0467849c-faca-48e3-ba2d-f6a6aaa4dff0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IR/IR_constructer.java" afterPath="$PROJECT_DIR$/src/IR/IR_constructer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test.mx" afterPath="$PROJECT_DIR$/src/test.mx" />
     </list>
     <ignored path="Compiler Project.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -100,8 +99,8 @@
       <file leaf-file-name="IR_constructer.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/IR/IR_constructer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="1275" column="16" selection-start-line="1275" selection-start-column="16" selection-end-line="1275" selection-end-column="16" />
+            <state relative-caret-position="96">
+              <caret line="1343" column="8" selection-start-line="1343" selection-start-column="8" selection-end-line="1343" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1021,8 +1020,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/IR/IR_constructer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="1275" column="16" selection-start-line="1275" selection-start-column="16" selection-end-line="1275" selection-end-column="16" />
+        <state relative-caret-position="96">
+          <caret line="1343" column="8" selection-start-line="1343" selection-start-column="8" selection-end-line="1343" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
