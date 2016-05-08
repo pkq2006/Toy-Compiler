@@ -355,10 +355,16 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 			return_list.b.b.addAll(tmp.b.b);
 			value_list.add(tmp.a);
 		}
-		return_list.b.a.add(new Instruction("load", 4, value_list.get(0), "$s0"));
+		if (stupid_map.get(value_list.get(0)) != null)
+			return_list.b.a.add(new Instruction("move", stupid_map.get(value_list.get(0)), "$s0"));
+		else
+			return_list.b.a.add(new Instruction("load", 4, value_list.get(0), "$s0"));
 		for (int i = 1; i < value_list.size(); i ++)
 		{
-			return_list.b.a.add(new Instruction("load", 4, value_list.get(i), "$s1"));
+			if (stupid_map.get(value_list.get(i)) != null)
+				return_list.b.a.add(new Instruction("move", stupid_map.get(value_list.get(i)), "$s1"));
+			else
+				return_list.b.a.add(new Instruction("load", 4, value_list.get(i), "$s1"));
 			return_list.b.a.add(new Instruction("or", "$s0", "$s1", "$s0"));
 		}
 		return_list.b.a.add(new Instruction("store", 4, return_list.a, "$s0"));
@@ -392,10 +398,16 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 			return_list.b.b.addAll(tmp.b.b);
 			value_list.add(tmp.a);
 		}
-		return_list.b.a.add(new Instruction("load", 4, value_list.get(0), "$s0"));
+		if (stupid_map.get(value_list.get(0)) != null)
+			return_list.b.a.add(new Instruction("move", stupid_map.get(value_list.get(0)), "$s0"));
+		else
+			return_list.b.a.add(new Instruction("load", 4, value_list.get(0), "$s0"));
 		for (int i = 1; i < value_list.size(); i ++)
 		{
-			return_list.b.a.add(new Instruction("load", 4, value_list.get(i), "$s1"));
+			if (stupid_map.get(value_list.get(i)) != null)
+				return_list.b.a.add(new Instruction("move", stupid_map.get(value_list.get(i)), "$s1"));
+			else
+				return_list.b.a.add(new Instruction("load", 4, value_list.get(i), "$s1"));
 			return_list.b.a.add(new Instruction("xor", "$s0", "$s1", "$s0"));
 		}
 		return_list.b.a.add(new Instruction("store", 4, return_list.a, "$s0"));
@@ -429,10 +441,16 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 			return_list.b.b.addAll(tmp.b.b);
 			value_list.add(tmp.a);
 		}
-		return_list.b.a.add(new Instruction("load", 4, value_list.get(0), "$s0"));
+		if (stupid_map.get(value_list.get(0)) != null)
+			return_list.b.a.add(new Instruction("move", stupid_map.get(value_list.get(0)), "$s0"));
+		else
+			return_list.b.a.add(new Instruction("load", 4, value_list.get(0), "$s0"));
 		for (int i = 1; i < value_list.size(); i ++)
 		{
-			return_list.b.a.add(new Instruction("load", 4, value_list.get(i), "$s1"));
+			if (stupid_map.get(value_list.get(i)) != null)
+				return_list.b.a.add(new Instruction("move", stupid_map.get(value_list.get(i)), "$s1"));
+			else
+				return_list.b.a.add(new Instruction("load", 4, value_list.get(i), "$s1"));
 			return_list.b.a.add(new Instruction("and", "$s0", "$s1", "$s0"));
 		}
 		return_list.b.a.add(new Instruction("store", 4, return_list.a, "$s0"));
