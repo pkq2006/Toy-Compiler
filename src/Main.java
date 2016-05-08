@@ -108,7 +108,15 @@ public class Main
 			Instruction.out = System.out;
 			compile_start(in);
 			for (int i = 0; i < MIPS.size(); i ++)
+			{
+				if (MIPS.get(i).startsWith("j "))
+				{
+					String tmp = MIPS.get(i).substring(2, MIPS.get(i).length());
+					if (i + 1 != MIPS.size() && MIPS.get(i + 1).equals(tmp + ":"))
+						continue;
+				}
 				out.println(MIPS.get(i));
+			}
 		}
 		else
 		{

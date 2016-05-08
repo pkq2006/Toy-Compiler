@@ -2,23 +2,19 @@ package Parser;
 
 import java.util.*;
 import org.antlr.v4.runtime.misc.Pair;
-import org.omg.CORBA.IMP_LIMIT;
-import org.stringtemplate.v4.ST;
-
-import javax.print.attribute.standard.MediaSize;
 
 public class Symbol_table
 {
-    public int current_scope;
-    public ArrayList <HashMap <Name, Type>> table;
-	public Type BOOL, INT, STRING, VOID;
-	public Type TRUE, FALSE, NULL;
+    private int current_scope;
+    private ArrayList <HashMap <Name, Type>> table;
+	public Type BOOL, INT, STRING, VOID, NULL;
+	private Type TRUE, FALSE;
 
     public Symbol_table()
     {
         current_scope = 0;
-        table = new ArrayList <HashMap <Name, Type>> ();
-        HashMap <Name, Type> tmp = new HashMap <Name, Type> ();
+        table = new ArrayList <> ();
+        HashMap <Name, Type> tmp = new HashMap<>();
 
         //type: bool int string void
 
@@ -77,7 +73,7 @@ public class Symbol_table
 	    PRINT.type = "function";
 	    PRINT.return_type = VOID;
 	    PRINT.name = Name.getSymbolName("print");
-	    PRINT.parameters = new ArrayList <Type> ();
+	    PRINT.parameters = new ArrayList <> ();
 	    PRINT.parameters.add(str);
 	    tmp.put(PRINT.name, PRINT);
 
@@ -85,7 +81,7 @@ public class Symbol_table
 	    PRINTLN.type = "function";
 	    PRINTLN.return_type = VOID;
 	    PRINTLN.name = Name.getSymbolName("println");
-	    PRINTLN.parameters = new ArrayList <Type> ();
+	    PRINTLN.parameters = new ArrayList <> ();
 	    PRINTLN.parameters.add(str);
 	    tmp.put(PRINTLN.name, PRINTLN);
 
@@ -119,7 +115,7 @@ public class Symbol_table
 	    table.add(tmp);
     }
 
-    int find(Name id)
+    private int find(Name id)
     {
         for (int i = current_scope; i >= 0; i --)
             if (table.get(i).get(id) != null)
@@ -127,7 +123,7 @@ public class Symbol_table
         return -1;
     }
 
-    public void put(Name id, Type type, Pair <Integer, Integer> position)
+    void put(Name id, Type type, Pair <Integer, Integer> position)
     {
         int scope = find(id);
         if (scope == current_scope)
@@ -159,7 +155,7 @@ public class Symbol_table
     public void begin_scope()
     {
         current_scope ++;
-        table.add(new HashMap <Name, Type> ());
+        table.add(new HashMap <> ());
     }
 
     public void end_scope()

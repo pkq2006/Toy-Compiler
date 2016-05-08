@@ -78,8 +78,7 @@ sw $s0, ($t0)
 lw $s0, -16($sp)
 lw $s0, ($s0)
 move $s1, $s0
-li $t0, 4
-mul $s0, $s0, $t0
+mul $s0, $s0, 4
 addi $s0, $s0, 4
 move $a0, $s0
 li $v0, 9
@@ -91,10 +90,6 @@ lw $t0, -8($sp)
 sw $s2, ($t0)
 addi $t0, $sp, -24
 sw $t0, 0($t9)
-li $a0, 4
-li $v0, 9
-syscall
-sw $v0, 0($t9)
 lw $s0, -8($sp)
 lw $s0, ($s0)
 lw $t0, 0($t9)
@@ -109,8 +104,7 @@ sw $s0, ($t0)
 lw $s0, -44($sp)
 lw $s0, ($s0)
 move $s1, $s0
-li $t0, 4
-mul $s0, $s0, $t0
+mul $s0, $s0, 4
 addi $s0, $s0, 4
 move $a0, $s0
 li $v0, 9
@@ -122,20 +116,12 @@ lw $t0, -36($sp)
 sw $s2, ($t0)
 addi $t0, $sp, -56
 sw $t0, -52($sp)
-li $a0, 4
-li $v0, 9
-syscall
-sw $v0, -52($sp)
 lw $s0, -36($sp)
 lw $s0, ($s0)
 lw $t0, -52($sp)
 sw $s0, ($t0)
 addi $t0, $sp, -64
 sw $t0, -60($sp)
-li $a0, 4
-li $v0, 9
-syscall
-sw $v0, -60($sp)
 addi $t0, $sp, -72
 sw $t0, -68($sp)
 lw $s0, -52($sp)
@@ -151,8 +137,7 @@ lw $s0, -68($sp)
 lw $s0, ($s0)
 lw $s1, -76($sp)
 lw $s1, ($s1)
-li $t0, 4
-mul $s1, $s1, $t0
+mul $s1, $s1, 4
 add $s0, $s0, $s1
 sw $s0, -68($sp)
 lw $s0, 0($t9)
@@ -174,8 +159,7 @@ lw $s0, -84($sp)
 lw $s0, ($s0)
 lw $s1, -92($sp)
 lw $s1, ($s1)
-li $t0, 4
-mul $s1, $s1, $t0
+mul $s1, $s1, 4
 add $s0, $s0, $s1
 sw $s0, -84($sp)
 lw $s0, 0($t9)
@@ -197,8 +181,7 @@ lw $s0, -100($sp)
 lw $s0, ($s0)
 lw $s1, -108($sp)
 lw $s1, ($s1)
-li $t0, 4
-mul $s1, $s1, $t0
+mul $s1, $s1, 4
 add $s0, $s0, $s1
 sw $s0, -100($sp)
 lw $s0, 0($t9)
@@ -220,8 +203,7 @@ lw $s0, -116($sp)
 lw $s0, ($s0)
 lw $s1, -124($sp)
 lw $s1, ($s1)
-li $t0, 4
-mul $s1, $s1, $t0
+mul $s1, $s1, 4
 add $s0, $s0, $s1
 sw $s0, -116($sp)
 lw $s0, 0($t9)
@@ -230,15 +212,6 @@ lw $t0, -116($sp)
 sw $s0, ($t0)
 addi $t0, $sp, -136
 sw $t0, -132($sp)
-li $s0, 0
-lw $t0, -132($sp)
-sw $s0, ($t0)
-lw $s0, -132($sp)
-lw $s0, ($s0)
-lw $t0, -60($sp)
-sw $s0, ($t0)
-j for_judge_0
-for_judge_0:
 addi $t0, $sp, -144
 sw $t0, -140($sp)
 addi $t0, $sp, -152
@@ -247,161 +220,232 @@ lw $s0, -52($sp)
 lw $s0, ($s0)
 lw $t0, -148($sp)
 sw $s0, ($t0)
-addi $t0, $sp, -160
-sw $t0, -156($sp)
-li $s0, 0
-lw $t0, -156($sp)
-sw $s0, ($t0)
-lw $s0, -148($sp)
-lw $s0, ($s0)
-lw $s1, -156($sp)
-lw $s1, ($s1)
-li $t0, 4
-mul $s1, $s1, $t0
-add $s0, $s0, $s1
-sw $s0, -148($sp)
 lw $a0, -148($sp)
 lw $a0, ($a0)
-addi $sp, $sp, -164
+addi $sp, $sp, -156
 jal func__array.size
-addi $sp, $sp, 164
+addi $sp, $sp, 156
+addi $t0, $sp, -156
+sw $t0, -148($sp)
 lw $t0, -148($sp)
 sw $v0, ($t0)
-lw $s0, -60($sp)
-lw $s0, ($s0)
-lw $s1, -148($sp)
-lw $s1, ($s1)
-slt $s2, $s0, $s1
+lw $a0, -148($sp)
+lw $a0, ($a0)
+addi $sp, $sp, -160
+jal func__toString
+addi $sp, $sp, 160
 lw $t0, -140($sp)
-sw $s2, ($t0)
-lw $s0, -140($sp)
-lw $s0, ($s0)
-beqz $s0, for_end_0
-for_start_0:
-addi $t0, $sp, -168
-sw $t0, -164($sp)
-addi $sp, $sp, -172
-jal func__getInt
-addi $sp, $sp, 172
-lw $t0, -164($sp)
 sw $v0, ($t0)
-addi $t0, $sp, -176
-sw $t0, -172($sp)
-lw $s0, 0($t9)
-lw $s0, ($s0)
-lw $t0, -172($sp)
-sw $s0, ($t0)
-lw $s0, -172($sp)
-lw $s0, ($s0)
-lw $s1, -60($sp)
-lw $s1, ($s1)
-li $t0, 4
-mul $s1, $s1, $t0
-add $s0, $s0, $s1
-sw $s0, -172($sp)
-lw $s0, -164($sp)
-lw $s0, ($s0)
-lw $t0, -172($sp)
-sw $s0, ($t0)
-j for_todo_0
-for_todo_0:
-addi $t0, $sp, -184
-sw $t0, -180($sp)
-lw $s0, -60($sp)
-sw $s0, -180($sp)
-lw $s0, -180($sp)
-lw $s0, ($s0)
-addi $s0, $s0, 1
-lw $t0, -180($sp)
-sw $s0, ($t0)
-j for_judge_0
-for_end_0:
-addi $t0, $sp, -192
-sw $t0, -188($sp)
+lw $a0, -140($sp)
+lw $a0, ($a0)
+addi $sp, $sp, -160
+jal func__println
+addi $sp, $sp, 160
+addi $t0, $sp, -164
+sw $t0, -160($sp)
 li $s0, 0
-lw $t0, -188($sp)
+lw $t0, -160($sp)
 sw $s0, ($t0)
-lw $s0, -188($sp)
+lw $s0, -160($sp)
 lw $s0, ($s0)
 lw $t0, -60($sp)
 sw $s0, ($t0)
-j for_judge_1
-for_judge_1:
-addi $t0, $sp, -200
-sw $t0, -196($sp)
-addi $t0, $sp, -208
-sw $t0, -204($sp)
-lw $s0, 0($t9)
+for_judge_0:
+addi $t0, $sp, -172
+sw $t0, -168($sp)
+addi $t0, $sp, -180
+sw $t0, -176($sp)
+lw $s0, -52($sp)
 lw $s0, ($s0)
-lw $t0, -204($sp)
+lw $t0, -176($sp)
 sw $s0, ($t0)
-lw $a0, -204($sp)
+addi $t0, $sp, -188
+sw $t0, -184($sp)
+li $s0, 0
+lw $t0, -184($sp)
+sw $s0, ($t0)
+lw $s0, -176($sp)
+lw $s0, ($s0)
+lw $s1, -184($sp)
+lw $s1, ($s1)
+mul $s1, $s1, 4
+add $s0, $s0, $s1
+sw $s0, -176($sp)
+lw $a0, -176($sp)
 lw $a0, ($a0)
-addi $sp, $sp, -212
+addi $sp, $sp, -192
 jal func__array.size
-addi $sp, $sp, 212
-lw $t0, -204($sp)
+addi $sp, $sp, 192
+addi $t0, $sp, -192
+sw $t0, -176($sp)
+lw $t0, -176($sp)
 sw $v0, ($t0)
 lw $s0, -60($sp)
 lw $s0, ($s0)
-lw $s1, -204($sp)
+lw $s1, -176($sp)
 lw $s1, ($s1)
 slt $s2, $s0, $s1
-lw $t0, -196($sp)
+lw $t0, -168($sp)
 sw $s2, ($t0)
-lw $s0, -196($sp)
+lw $s0, -168($sp)
 lw $s0, ($s0)
-beqz $s0, for_end_1
-for_start_1:
+beqz $s0, for_end_0
+for_start_0:
+addi $t0, $sp, -200
+sw $t0, -196($sp)
+addi $sp, $sp, -204
+jal func__getInt
+addi $sp, $sp, 204
+lw $t0, -196($sp)
+sw $v0, ($t0)
+addi $t0, $sp, -208
+sw $t0, -204($sp)
+lw $s0, -52($sp)
+lw $s0, ($s0)
+lw $t0, -204($sp)
+sw $s0, ($t0)
 addi $t0, $sp, -216
 sw $t0, -212($sp)
+li $s0, 0
+lw $t0, -212($sp)
+sw $s0, ($t0)
+lw $s0, -204($sp)
+lw $s0, ($s0)
+lw $s1, -212($sp)
+lw $s1, ($s1)
+mul $s1, $s1, 4
+add $s0, $s0, $s1
+sw $s0, -204($sp)
+lw $s0, -204($sp)
+lw $s0, ($s0)
+lw $s1, -60($sp)
+lw $s1, ($s1)
+mul $s1, $s1, 4
+add $s0, $s0, $s1
+sw $s0, -204($sp)
+lw $s0, -196($sp)
+lw $s0, ($s0)
+lw $t0, -204($sp)
+sw $s0, ($t0)
+for_todo_0:
 addi $t0, $sp, -224
 sw $t0, -220($sp)
+lw $s0, -60($sp)
+sw $s0, -220($sp)
+lw $s0, -220($sp)
+lw $s0, ($s0)
+addi $s0, $s0, 1
+lw $t0, -220($sp)
+sw $s0, ($t0)
+j for_judge_0
+for_end_0:
 addi $t0, $sp, -232
 sw $t0, -228($sp)
-lw $s0, 0($t9)
-lw $s0, ($s0)
+li $s0, 0
 lw $t0, -228($sp)
 sw $s0, ($t0)
 lw $s0, -228($sp)
 lw $s0, ($s0)
-lw $s1, -60($sp)
-lw $s1, ($s1)
-li $t0, 4
-mul $s1, $s1, $t0
-add $s0, $s0, $s1
-sw $s0, -228($sp)
-lw $a0, -228($sp)
-lw $a0, ($a0)
-addi $sp, $sp, -236
-jal func__toString
-addi $sp, $sp, 236
-lw $t0, -220($sp)
-sw $v0, ($t0)
-lw $a0, -220($sp)
-lw $a0, ($a0)
-addi $sp, $sp, -236
-jal func__print
-addi $sp, $sp, 236
-lw $t0, -212($sp)
-sw $v0, ($t0)
-j for_todo_1
-for_todo_1:
+lw $t0, -60($sp)
+sw $s0, ($t0)
+for_judge_1:
 addi $t0, $sp, -240
 sw $t0, -236($sp)
+addi $t0, $sp, -248
+sw $t0, -244($sp)
+lw $s0, -52($sp)
+lw $s0, ($s0)
+lw $t0, -244($sp)
+sw $s0, ($t0)
+addi $t0, $sp, -256
+sw $t0, -252($sp)
+li $s0, 1
+lw $t0, -252($sp)
+sw $s0, ($t0)
+lw $s0, -244($sp)
+lw $s0, ($s0)
+lw $s1, -252($sp)
+lw $s1, ($s1)
+mul $s1, $s1, 4
+add $s0, $s0, $s1
+sw $s0, -244($sp)
+lw $a0, -244($sp)
+lw $a0, ($a0)
+addi $sp, $sp, -260
+jal func__array.size
+addi $sp, $sp, 260
+addi $t0, $sp, -260
+sw $t0, -244($sp)
+lw $t0, -244($sp)
+sw $v0, ($t0)
 lw $s0, -60($sp)
-sw $s0, -236($sp)
+lw $s0, ($s0)
+lw $s1, -244($sp)
+lw $s1, ($s1)
+slt $s2, $s0, $s1
+lw $t0, -236($sp)
+sw $s2, ($t0)
 lw $s0, -236($sp)
 lw $s0, ($s0)
+beqz $s0, for_end_1
+for_start_1:
+addi $t0, $sp, -268
+sw $t0, -264($sp)
+addi $t0, $sp, -276
+sw $t0, -272($sp)
+addi $t0, $sp, -284
+sw $t0, -280($sp)
+lw $s0, -52($sp)
+lw $s0, ($s0)
+lw $t0, -280($sp)
+sw $s0, ($t0)
+addi $t0, $sp, -292
+sw $t0, -288($sp)
+li $s0, 1
+lw $t0, -288($sp)
+sw $s0, ($t0)
+lw $s0, -280($sp)
+lw $s0, ($s0)
+lw $s1, -288($sp)
+lw $s1, ($s1)
+mul $s1, $s1, 4
+add $s0, $s0, $s1
+sw $s0, -280($sp)
+lw $s0, -280($sp)
+lw $s0, ($s0)
+lw $s1, -60($sp)
+lw $s1, ($s1)
+mul $s1, $s1, 4
+add $s0, $s0, $s1
+sw $s0, -280($sp)
+lw $a0, -280($sp)
+lw $a0, ($a0)
+addi $sp, $sp, -296
+jal func__toString
+addi $sp, $sp, 296
+lw $t0, -272($sp)
+sw $v0, ($t0)
+lw $a0, -272($sp)
+lw $a0, ($a0)
+addi $sp, $sp, -296
+jal func__print
+addi $sp, $sp, 296
+for_todo_1:
+addi $t0, $sp, -300
+sw $t0, -296($sp)
+lw $s0, -60($sp)
+sw $s0, -296($sp)
+lw $s0, -296($sp)
+lw $s0, ($s0)
 addi $s0, $s0, 1
-lw $t0, -236($sp)
+lw $t0, -296($sp)
 sw $s0, ($t0)
 j for_judge_1
 for_end_1:
-addi $t0, $sp, -248
-sw $t0, -244($sp)
-addi $t0, $sp, -256
-sw $t0, -252($sp)
+addi $t0, $sp, -308
+sw $t0, -304($sp)
+addi $t0, $sp, -316
+sw $t0, -312($sp)
 li $s0, 5
 move $a0, $s0
 li $v0, 9
@@ -409,169 +453,211 @@ syscall
 li $s0, 0
 sw $s0, ($v0)
 addi $v0, $v0, 4
-lw $t0, -252($sp)
+lw $t0, -312($sp)
 sw $v0, ($t0)
 li $s0, 0
 sb $s0, ($v0)
-lw $a0, -252($sp)
+lw $a0, -312($sp)
 lw $a0, ($a0)
-addi $sp, $sp, -260
+addi $sp, $sp, -320
 jal func__println
-addi $sp, $sp, 260
-lw $t0, -244($sp)
-sw $v0, ($t0)
-addi $t0, $sp, -264
-sw $t0, -260($sp)
+addi $sp, $sp, 320
+addi $t0, $sp, -324
+sw $t0, -320($sp)
 li $s0, 0
-lw $t0, -260($sp)
+lw $t0, -320($sp)
 sw $s0, ($t0)
-lw $s0, -260($sp)
+lw $s0, -320($sp)
 lw $s0, ($s0)
 lw $t0, -60($sp)
 sw $s0, ($t0)
-j for_judge_2
 for_judge_2:
-addi $t0, $sp, -272
-sw $t0, -268($sp)
-addi $t0, $sp, -280
-sw $t0, -276($sp)
-lw $s0, 0($t9)
+addi $t0, $sp, -332
+sw $t0, -328($sp)
+addi $t0, $sp, -340
+sw $t0, -336($sp)
+lw $s0, -52($sp)
 lw $s0, ($s0)
-lw $t0, -276($sp)
+lw $t0, -336($sp)
 sw $s0, ($t0)
-lw $a0, -276($sp)
+addi $t0, $sp, -348
+sw $t0, -344($sp)
+li $s0, 2
+lw $t0, -344($sp)
+sw $s0, ($t0)
+lw $s0, -336($sp)
+lw $s0, ($s0)
+lw $s1, -344($sp)
+lw $s1, ($s1)
+mul $s1, $s1, 4
+add $s0, $s0, $s1
+sw $s0, -336($sp)
+lw $a0, -336($sp)
 lw $a0, ($a0)
-addi $sp, $sp, -284
+addi $sp, $sp, -352
 jal func__array.size
-addi $sp, $sp, 284
-lw $t0, -276($sp)
+addi $sp, $sp, 352
+addi $t0, $sp, -352
+sw $t0, -336($sp)
+lw $t0, -336($sp)
 sw $v0, ($t0)
 lw $s0, -60($sp)
 lw $s0, ($s0)
-lw $s1, -276($sp)
+lw $s1, -336($sp)
 lw $s1, ($s1)
 slt $s2, $s0, $s1
-lw $t0, -268($sp)
+lw $t0, -328($sp)
 sw $s2, ($t0)
-lw $s0, -268($sp)
+lw $s0, -328($sp)
 lw $s0, ($s0)
 beqz $s0, for_end_2
 for_start_2:
-addi $t0, $sp, -288
-sw $t0, -284($sp)
+addi $t0, $sp, -360
+sw $t0, -356($sp)
 li $s0, 0
-lw $t0, -284($sp)
+lw $t0, -356($sp)
 sw $s0, ($t0)
-addi $t0, $sp, -296
-sw $t0, -292($sp)
-lw $s0, 0($t9)
+addi $t0, $sp, -368
+sw $t0, -364($sp)
+lw $s0, -52($sp)
 lw $s0, ($s0)
-lw $t0, -292($sp)
+lw $t0, -364($sp)
 sw $s0, ($t0)
-lw $s0, -292($sp)
+addi $t0, $sp, -376
+sw $t0, -372($sp)
+li $s0, 2
+lw $t0, -372($sp)
+sw $s0, ($t0)
+lw $s0, -364($sp)
+lw $s0, ($s0)
+lw $s1, -372($sp)
+lw $s1, ($s1)
+mul $s1, $s1, 4
+add $s0, $s0, $s1
+sw $s0, -364($sp)
+lw $s0, -364($sp)
 lw $s0, ($s0)
 lw $s1, -60($sp)
 lw $s1, ($s1)
-li $t0, 4
-mul $s1, $s1, $t0
+mul $s1, $s1, 4
 add $s0, $s0, $s1
-sw $s0, -292($sp)
-lw $s0, -284($sp)
+sw $s0, -364($sp)
+lw $s0, -356($sp)
 lw $s0, ($s0)
-lw $t0, -292($sp)
+lw $t0, -364($sp)
 sw $s0, ($t0)
-j for_todo_2
 for_todo_2:
-addi $t0, $sp, -304
-sw $t0, -300($sp)
+addi $t0, $sp, -384
+sw $t0, -380($sp)
 lw $s0, -60($sp)
-sw $s0, -300($sp)
-lw $s0, -300($sp)
+sw $s0, -380($sp)
+lw $s0, -380($sp)
 lw $s0, ($s0)
 addi $s0, $s0, 1
-lw $t0, -300($sp)
+lw $t0, -380($sp)
 sw $s0, ($t0)
 j for_judge_2
 for_end_2:
-addi $t0, $sp, -312
-sw $t0, -308($sp)
+addi $t0, $sp, -392
+sw $t0, -388($sp)
 li $s0, 0
-lw $t0, -308($sp)
+lw $t0, -388($sp)
 sw $s0, ($t0)
-lw $s0, -308($sp)
+lw $s0, -388($sp)
 lw $s0, ($s0)
 lw $t0, -60($sp)
 sw $s0, ($t0)
-j for_judge_3
 for_judge_3:
-addi $t0, $sp, -320
-sw $t0, -316($sp)
-addi $t0, $sp, -328
-sw $t0, -324($sp)
-lw $s0, 0($t9)
+addi $t0, $sp, -400
+sw $t0, -396($sp)
+addi $t0, $sp, -408
+sw $t0, -404($sp)
+lw $s0, -52($sp)
 lw $s0, ($s0)
-lw $t0, -324($sp)
+lw $t0, -404($sp)
 sw $s0, ($t0)
-lw $a0, -324($sp)
+addi $t0, $sp, -416
+sw $t0, -412($sp)
+li $s0, 3
+lw $t0, -412($sp)
+sw $s0, ($t0)
+lw $s0, -404($sp)
+lw $s0, ($s0)
+lw $s1, -412($sp)
+lw $s1, ($s1)
+mul $s1, $s1, 4
+add $s0, $s0, $s1
+sw $s0, -404($sp)
+lw $a0, -404($sp)
 lw $a0, ($a0)
-addi $sp, $sp, -332
+addi $sp, $sp, -420
 jal func__array.size
-addi $sp, $sp, 332
-lw $t0, -324($sp)
+addi $sp, $sp, 420
+addi $t0, $sp, -420
+sw $t0, -404($sp)
+lw $t0, -404($sp)
 sw $v0, ($t0)
 lw $s0, -60($sp)
 lw $s0, ($s0)
-lw $s1, -324($sp)
+lw $s1, -404($sp)
 lw $s1, ($s1)
 slt $s2, $s0, $s1
-lw $t0, -316($sp)
+lw $t0, -396($sp)
 sw $s2, ($t0)
-lw $s0, -316($sp)
+lw $s0, -396($sp)
 lw $s0, ($s0)
 beqz $s0, for_end_3
 for_start_3:
-addi $t0, $sp, -336
-sw $t0, -332($sp)
-addi $t0, $sp, -344
-sw $t0, -340($sp)
-addi $t0, $sp, -352
-sw $t0, -348($sp)
-lw $s0, 0($t9)
+addi $t0, $sp, -428
+sw $t0, -424($sp)
+addi $t0, $sp, -436
+sw $t0, -432($sp)
+addi $t0, $sp, -444
+sw $t0, -440($sp)
+lw $s0, -52($sp)
 lw $s0, ($s0)
-lw $t0, -348($sp)
+lw $t0, -440($sp)
 sw $s0, ($t0)
-lw $s0, -348($sp)
+addi $t0, $sp, -452
+sw $t0, -448($sp)
+li $s0, 3
+lw $t0, -448($sp)
+sw $s0, ($t0)
+lw $s0, -440($sp)
+lw $s0, ($s0)
+lw $s1, -448($sp)
+lw $s1, ($s1)
+mul $s1, $s1, 4
+add $s0, $s0, $s1
+sw $s0, -440($sp)
+lw $s0, -440($sp)
 lw $s0, ($s0)
 lw $s1, -60($sp)
 lw $s1, ($s1)
-li $t0, 4
-mul $s1, $s1, $t0
+mul $s1, $s1, 4
 add $s0, $s0, $s1
-sw $s0, -348($sp)
-lw $a0, -348($sp)
+sw $s0, -440($sp)
+lw $a0, -440($sp)
 lw $a0, ($a0)
-addi $sp, $sp, -356
+addi $sp, $sp, -456
 jal func__toString
-addi $sp, $sp, 356
-lw $t0, -340($sp)
+addi $sp, $sp, 456
+lw $t0, -432($sp)
 sw $v0, ($t0)
-lw $a0, -340($sp)
+lw $a0, -432($sp)
 lw $a0, ($a0)
-addi $sp, $sp, -356
+addi $sp, $sp, -456
 jal func__print
-addi $sp, $sp, 356
-lw $t0, -332($sp)
-sw $v0, ($t0)
-j for_todo_3
+addi $sp, $sp, 456
 for_todo_3:
-addi $t0, $sp, -360
-sw $t0, -356($sp)
+addi $t0, $sp, -460
+sw $t0, -456($sp)
 lw $s0, -60($sp)
-sw $s0, -356($sp)
-lw $s0, -356($sp)
+sw $s0, -456($sp)
+lw $s0, -456($sp)
 lw $s0, ($s0)
 addi $s0, $s0, 1
-lw $t0, -356($sp)
+lw $t0, -456($sp)
 sw $s0, ($t0)
 j for_judge_3
 for_end_3:

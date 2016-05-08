@@ -285,13 +285,7 @@ public class Instruction {
 					ans.add("sub " + target + ", " + source1 + ", " + source2);
 				break;
 			case "mul":
-				if (is_number(source2))
-				{
-					ans.add("li $t0, " + source2);
-					ans.add("mul " + target + ", " + source1 + ", $t0");
-				}
-				else
-					ans.add("mul " + target + ", " + source1 + ", " + source2);
+				ans.add("mul " + target + ", " + source1 + ", " + source2);
 				break;
 			case "div":
 				ans.add("div " + target + ", " + source1 + ", " + source2);
