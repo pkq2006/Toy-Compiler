@@ -1241,6 +1241,7 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 		{
 			return_list = new Pair<>(variable_prefix + (temporary_variable_counter++).toString(), new Pair<>(new ArrayList<>(), new ArrayList<>()));
 			return_list.b.a.add(new Instruction("store", 4, return_list.a, variable_prefix + (temporary_variable_counter++).toString()));
+			stupid_map.put(return_list.a, return_list.b.a.get(0).target);
 		}
 		ArrayList <String> value_list = new ArrayList<>();
 		ArrayList <String> parameters = new ArrayList<>();
@@ -1258,7 +1259,10 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 		{
 			for (int i = 0; i < value_list.size(); i ++)
 			{
-				return_list.b.a.add(new Instruction("load", 4, value_list.get(i), "$a" + Integer.toString(i)));
+				if (stupid_map.get(value_list.get(i)) != null)
+					return_list.b.a.add(new Instruction("move", stupid_map.get(value_list.get(i)), "$a" + Integer.toString(i)));
+				else
+					return_list.b.a.add(new Instruction("load", 4, value_list.get(i), "$a" + Integer.toString(i)));
 				parameters.add("$a" + Integer.toString(i));
 			}
 		}
@@ -1266,7 +1270,10 @@ public class IR_constructer extends AbstractParseTreeVisitor<Pair <String, Pair 
 		{
 			for (int i = 0; i < value_list.size(); i ++)
 			{
-				return_list.b.a.add(new Instruction("load", 4, value_list.get(i), "$t" + Integer.toString(i)));
+				if (stupid_map.get(value_list.get(i)) != null)
+					return_list.b.a.add(new Instruction("move", stupid_map.get(value_list.get(i)), "$t" + Integer.toString(i)));
+				else
+					return_list.b.a.add(new Instruction("load", 4, value_list.get(i), "$t" + Integer.toString(i)));
 				parameters.add("$t" + Integer.toString(i));
 			}
 			true_function_name = "func_" + true_function_name;
